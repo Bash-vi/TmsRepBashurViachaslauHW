@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
    
     enum config {
-        static var spacing: CGFloat = 10
+        static var spacing: CGFloat = 5
         static var cortRad: CGFloat = 45
     }
     lazy var lable = UILabel()
