@@ -10,13 +10,13 @@ import UIKit
 class ShowVC: UIViewController {
     
     func addVc(vc: UIViewController){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let showvc = storyboard.instantiateViewController(identifier: "PersonVC") as? PersonVC else { return }
+        
+        let showvc = vc
         show(showvc, sender: nil)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addVc(vc: PersonVC.User(name: "Kristina", sureName: "Toer", age: 33, male: "Female" ))
+        addVc(vc: PersonVC(user: .init(name: "Kristina", sureName: "Toer", age: 35, male: "Female" )))
     }
 
     override func viewDidLoad() {
