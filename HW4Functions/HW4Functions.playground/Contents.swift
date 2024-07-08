@@ -234,11 +234,11 @@ func months1(month1: Int) -> String {
     case 9, 10, 11:
         yeartime1 = "Осень"
     default:
-        yeartime1 = "non"
+        yeartime1 = "Нет такого месяца"
        }
     return yeartime1
 }
-months1(month1: 9)
+print(months1(month1: 13))
 print("вернул время года")
 
 
@@ -363,6 +363,7 @@ print(zadanie(11))
 
 
 func sum0000(number: Int) -> Int {
+    
     var numstr = String(number)
     var array = [Int]()
     for char in numstr {
@@ -375,6 +376,6 @@ func sum0000(number: Int) -> Int {
     return summ
 }
 
-print(sum0000(number: 1234))
+print(sum0000(number: 12345678))
        
 
