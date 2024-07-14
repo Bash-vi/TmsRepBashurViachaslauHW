@@ -18,12 +18,8 @@ class ScreenOne: UIViewController {
 
         private func nextPage() {
             let vc = ScreenTwo(
-                labelText: label.text, 
-                labelText2: label.text, 
+                labelText: label.text,
                 onSave: { newText in
-                    self.label.text = newText
-                },
-                onSave2: { newText in
                     self.label.text = newText
                 }
             )

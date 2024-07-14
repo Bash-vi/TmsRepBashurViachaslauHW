@@ -23,20 +23,14 @@ class ScreenTwo: UIViewController {
     }
     
     let labelText: String?
-    let labelText2: String?
     let onSave: (String) -> Void
-    let onSave2: (String) -> Void
     
     init(
         labelText: String?,
-        labelText2: String?,
-        onSave: @escaping (String) -> Void,
-        onSave2: @escaping (String) -> Void
+        onSave: @escaping (String) -> Void
     ) {
         self.labelText = labelText
         self.onSave = onSave
-        self.labelText2 = labelText2
-        self.onSave2 = onSave2
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,8 +39,7 @@ class ScreenTwo: UIViewController {
     }
     
     private func save() {
-        onSave(field1.text ?? "")
-        onSave2(field2.text ?? "")
+        onSave( "\(field1.text ?? "") \(field2.text ?? "") \(field3.text ?? "")" )
         dismiss(animated: true)
     }
     override func viewDidLoad() {
@@ -60,7 +53,7 @@ class ScreenTwo: UIViewController {
         field1.placeholder = "Напиши сюда"
         field1.text = labelText
         field2.placeholder = "Напиши сюда"
-        field2.text = labelText2
+        field2.text = labelText
         field3.placeholder = "Напиши сюда цифру"
         field3.text = labelText
         field3.keyboardType = .numberPad
