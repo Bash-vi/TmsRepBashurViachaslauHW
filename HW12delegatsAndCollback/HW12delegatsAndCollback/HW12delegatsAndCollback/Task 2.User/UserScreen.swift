@@ -12,22 +12,45 @@ class UserScreen: UIViewController, EditUserScreenDelegate {
     
     func newNameDidSave(newName: String) {
         defaults.set(newName, forKey: KeysDefaults.keyName)
+        let defName = defaults.string(forKey: KeysDefaults.keyName) ?? "Введите"
+        nameLab.text = defName
+        welcom.text = "Добро пожаловать \(fullName())"
     }
     
     func newSureNameDidSave(newSureName: String) {
         defaults.set(newSureName, forKey: KeysDefaults.keySureName)
+        let defSureName = defaults.string(forKey: KeysDefaults.keySureName) ?? "Введите"
+        sureNameLab.text = defSureName
+        welcom.text = "Добро пожаловать \(fullName())"
     }
     
-func newAgeDidSave(newAge: String) {
+    func newAgeDidSave(newAge: String) {
         defaults.set(newAge, forKey: KeysDefaults.keyAge)
+        let defAge = defaults.string(forKey: KeysDefaults.keyAge)
+        ageLab.text = defAge
     }
     
     func newBirthdayDidSave(newBirthday: String) {
         defaults.set(newBirthday, forKey: KeysDefaults.keyBirthday)
+        let defBirthday = defaults.string(forKey:KeysDefaults.keyBirthday) ?? "Введите"
+        birthdayLab.text = defBirthday
     }
     
     func newMaleDidSave(newMale: String) {
         defaults.set(newMale, forKey: KeysDefaults.keyMale)
+        let defMale = defaults.string(forKey: KeysDefaults.keyMale) ?? "Введите"
+        maleLab.text = defMale
+    }
+    //MARK: - UserDefaults
+    let defaults = UserDefaults.standard
+    
+    struct TitleShow {
+        static let name = "Имя:"
+        static let sureName = "Фамилия:"
+        static let age = "Лет:"
+        static let birthday = "Дата Рождения:"
+        static let male = "Пол:"
+        static let hobby = "Увлечения:"
     }
     
     struct KeysDefaults {
@@ -38,12 +61,17 @@ func newAgeDidSave(newAge: String) {
         static let keyMale = "male"
     }
     
-    let defaults = UserDefaults.standard
-    let hobbiesList = [String]()
+    
     
     lazy var stackUser = UIStackView()
     lazy var userIicon = UIImageView(image: .init(systemName: "person.circle"))
     lazy var welcom = UILabel()
+    lazy var nameLab = UILabel()
+    lazy var sureNameLab = UILabel()
+    lazy var ageLab = UILabel()
+    lazy var birthdayLab = UILabel()
+    lazy var maleLab = UILabel()
+    lazy var hobbyLab = UILabel()
     
     enum config {
         static var topConst: CGFloat = 400
@@ -54,13 +82,11 @@ func newAgeDidSave(newAge: String) {
     //MARK: - методы для создания горизонтальных стаков
     func userNameHorStak(
         titleShow: String,
-        titleName: String,
+        nameLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = titleName
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
@@ -73,117 +99,112 @@ func newAgeDidSave(newAge: String) {
     }
     func userSureNameHorStak(
         titleShow: String,
-        titleName: String,
+        sureNameLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = titleName
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
         stack.distribution = .equalCentering
         stack.distribution = .equalSpacing
         stack.addArrangedSubview(showLab)
-        stack.addArrangedSubview(nameLab)
+        stack.addArrangedSubview(sureNameLab)
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
     func userMaleHorStak(
         titleShow: String,
-        titleName: String,
+        maleLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = titleName
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.addArrangedSubview(showLab)
-        stack.addArrangedSubview(nameLab)
+        stack.addArrangedSubview(maleLab)
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
     func userAgeHorStak(
         titleShow: String,
-        titleName: Int,
+        ageLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = String(titleName)
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.addArrangedSubview(showLab)
-        stack.addArrangedSubview(nameLab)
+        stack.addArrangedSubview(ageLab)
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
     func userBirthdayHorStak(
         titleShow: String,
-        titleName: String,
+        birthdayLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = titleName
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.addArrangedSubview(showLab)
-        stack.addArrangedSubview(nameLab)
+        stack.addArrangedSubview(birthdayLab)
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
     func userHobbyListStak(
         titleShow: String,
-        titleName: String,
+        hobbyLab: UILabel,
         action: UIAction
     ) -> UIStackView {
         let showLab = UILabel()
         showLab.text = titleShow
-        let nameLab = UILabel()
-        nameLab.text = titleName
         let buttonEdit = UIButton(primaryAction: action)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         stack.addArrangedSubview(showLab)
-        stack.addArrangedSubview(nameLab)
+        stack.addArrangedSubview(hobbyLab)
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
     
+    func fullName() -> String {
+        let full = "\(nameLab.text ?? "") \(sureNameLab.text ?? "")"
+        return full
+    }
+        
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Профиль"
         
-        //MARK: - UserDefaults
         let defName = defaults.string(forKey: KeysDefaults.keyName) ?? "Введите"
+        nameLab.text = defName
         let defSureName = defaults.string(forKey: KeysDefaults.keySureName) ?? "Введите"
-        let defAge = defaults.integer(forKey: KeysDefaults.keyAge)
+        sureNameLab.text = defSureName
+        let defAge = defaults.string(forKey: KeysDefaults.keyAge)
+        ageLab.text = defAge
         let defBirthday = defaults.string(forKey:KeysDefaults.keyBirthday) ?? "Введите"
+        birthdayLab.text = defBirthday
         let defMale = defaults.string(forKey: KeysDefaults.keyMale) ?? "Введите"
-        let hobbiLab = "spisok"
+        maleLab.text = defMale
         
-        func fullName() -> String {
-            let full = "\(defName) \(defSureName)"
-            return full
-        }
         view.addSubview(stackUser)
         view.addSubview(userIicon)
         view.addSubview(welcom)
@@ -215,8 +236,8 @@ func newAgeDidSave(newAge: String) {
         
         //MARK: - добавиление в stakUser
         stackUser.addArrangedSubview(userNameHorStak(
-            titleShow: "Имя:",
-            titleName: defName,
+            titleShow: TitleShow.name,
+            nameLab: nameLab,
             action: .init(handler: { _ in
                 let editUserScreen = EditUserScreen(titleName: "Имя")
                 editUserScreen.delegate = self
@@ -225,8 +246,8 @@ func newAgeDidSave(newAge: String) {
                 editUserScreen.SaveName()
             })))
         stackUser.addArrangedSubview(userSureNameHorStak(
-            titleShow: "Фамилия:",
-            titleName: defSureName,
+            titleShow: TitleShow.sureName,
+            sureNameLab: sureNameLab,
             action: .init(handler: { _ in
                 let editUserScreen = EditUserScreen(titleName: "Фамилия")
                     editUserScreen.delegate = self
@@ -235,8 +256,8 @@ func newAgeDidSave(newAge: String) {
                 editUserScreen.SaveSureName()
             })))
         stackUser.addArrangedSubview(userMaleHorStak(
-            titleShow: "Пол:",
-            titleName: defMale,
+            titleShow: TitleShow.male,
+            maleLab: maleLab,
             action: .init(handler: { _ in
                 let editUserScreen = EditUserScreen(titleName: "Пол")
                     editUserScreen.delegate = self
@@ -245,8 +266,8 @@ func newAgeDidSave(newAge: String) {
                 editUserScreen.SaveMale()
             })))
         stackUser.addArrangedSubview(userAgeHorStak(
-            titleShow: "Лет:",
-            titleName: defAge,
+            titleShow: TitleShow.age,
+            ageLab: ageLab,
             action: .init(handler: { _ in
                 let editUserScreen = EditUserScreen(titleName: "Возраст")
                     editUserScreen.delegate = self
@@ -255,8 +276,8 @@ func newAgeDidSave(newAge: String) {
                 editUserScreen.SaveAge()
             })))
         stackUser.addArrangedSubview(userBirthdayHorStak(
-            titleShow: "Дата Рождения:",
-            titleName: defBirthday,
+            titleShow: TitleShow.birthday,
+            birthdayLab: birthdayLab,
             action: .init(handler: { _ in
                 let editUserScreen = EditUserScreen(titleName: "Дата Рождения")
                     editUserScreen.delegate = self
@@ -265,8 +286,8 @@ func newAgeDidSave(newAge: String) {
                 editUserScreen.SaveBirthday()
             })))
         stackUser.addArrangedSubview(userHobbyListStak(
-            titleShow: "Увлечения:",
-            titleName: hobbiLab,
+            titleShow: TitleShow.hobby,
+            hobbyLab: hobbyLab,
             action: .init(handler: { _ in
             let scrollHobbiList = ScrollHobbiList()
                 self.navigationController?.pushViewController(scrollHobbiList, animated: true)

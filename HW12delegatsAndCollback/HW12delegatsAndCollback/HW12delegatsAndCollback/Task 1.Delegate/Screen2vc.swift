@@ -54,11 +54,8 @@ class Screen2vc: UIViewController {
         stackFild.translatesAutoresizingMaskIntoConstraints = false
         buttonSave.translatesAutoresizingMaskIntoConstraints = false
         field1.placeholder = "Напиши сюда"
-        
         field2.placeholder = "Напиши сюда"
-    
         field3.placeholder = "Напиши сюда цифру"
-        
         field3.keyboardType = .numberPad
         buttonSave.setTitle("Save", for: .normal)
         stackFild.axis = .vertical
