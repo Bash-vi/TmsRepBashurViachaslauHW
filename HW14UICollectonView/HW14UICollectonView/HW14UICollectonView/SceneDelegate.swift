@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  HW11StackAndScroll
+//  HW14UICollectonView
 //
-//  Created by Вячеслав Башур on 05/07/2024.
+//  Created by Вячеслав Башур on 03/08/2024.
 //
 
 import UIKit
