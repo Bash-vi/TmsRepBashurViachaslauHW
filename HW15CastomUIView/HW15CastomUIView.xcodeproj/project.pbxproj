@@ -14,6 +14,7 @@
 		A89590912C624D5D00612691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A89590902C624D5D00612691 /* Assets.xcassets */; };
 		A89590942C624D5D00612691 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A89590932C624D5D00612691 /* Base */; };
 		A895909C2C626C2800612691 /* CastomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895909B2C626C2800612691 /* CastomView.swift */; };
+		A895909E2C65667C00612691 /* CastomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895909D2C65667C00612691 /* CastomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A89590932C624D5D00612691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A89590952C624D5D00612691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A895909B2C626C2800612691 /* CastomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomView.swift; sourceTree = "<group>"; };
+		A895909D2C65667C00612691 /* CastomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				A89590892C624D5C00612691 /* SceneDelegate.swift */,
 				A895908B2C624D5C00612691 /* ViewController.swift */,
 				A895909B2C626C2800612691 /* CastomView.swift */,
+				A895909D2C65667C00612691 /* CastomAlert.swift */,
 				A895908D2C624D5C00612691 /* Main.storyboard */,
 				A89590902C624D5D00612691 /* Assets.xcassets */,
 				A89590922C624D5D00612691 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				A895909C2C626C2800612691 /* CastomView.swift in Sources */,
 				A89590882C624D5C00612691 /* AppDelegate.swift in Sources */,
 				A895908A2C624D5C00612691 /* SceneDelegate.swift in Sources */,
+				A895909E2C65667C00612691 /* CastomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

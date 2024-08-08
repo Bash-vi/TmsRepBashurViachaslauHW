@@ -11,14 +11,12 @@ class CastomView: UIView {
     var titleLab = UILabel()
     var textLab = UILabel()
     var acceptButton = UIButton(type: .system)
-    var closeButton = UIButton(type: .system, primaryAction: .init(handler: { _ in
-        
-    }))
+    var closeButton = UIButton(type: .system)
     var stackButton = UIStackView()
     var stackView = UIStackView()
-    let action: UIAction
+    let action: UIAction?
   
-    init(action: UIAction) {
+    init(action: UIAction?) {
         self.action = action
         super.init(frame: .zero)
         setupUI()

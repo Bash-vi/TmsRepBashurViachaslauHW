@@ -15,29 +15,13 @@ class ViewController: UIViewController {
         self.actionBut2()
     }))
     func actionBut1(){
-//        Var1Button.addAction(<#T##action: UIAction##UIAction#>, for: .)
-//        view.addSubview(castomView)
-        castomView.backgroundColor = .systemYellow
-        castomView.titleLabText(text: "Заголовок №1")
-        castomView.textLabText(text: "Информация №1")
         
     }
     func actionBut2(){
-        view.addSubview(castomView)
-        castomView.backgroundColor = .systemYellow
-        castomView.titleLabText(text: "Заголовок №2")
-        castomView.textLabText(text: "Информация №2")
-        
-        castomView.acceptButton = UIButton.init(primaryAction: .init(handler: { _ in
-            self.castomView.removeFromSuperview()
-        }))
+        let castomAlert = CastomAlert(titleAlert: "Внимание", messegeAlert: "Тут важная информация")
+        present(castomAlert, animated: true)
     }
-    lazy var castomView: CastomView = CastomView(frame: .init(
-        x: 40,
-        y: 200  / 2,
-        width: view.bounds.width * 0.8,
-        height: view.bounds.height * 0.5
-    ))
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
