@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         self.actionBut2()
     }))
     func actionBut1(){
-        view.addSubview(castomView)
+//        Var1Button.addAction(<#T##action: UIAction##UIAction#>, for: .)
+//        view.addSubview(castomView)
         castomView.backgroundColor = .systemYellow
         castomView.titleLabText(text: "Заголовок №1")
         castomView.textLabText(text: "Информация №1")

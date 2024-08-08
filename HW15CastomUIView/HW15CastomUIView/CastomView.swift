@@ -16,18 +16,22 @@ class CastomView: UIView {
     }))
     var stackButton = UIStackView()
     var stackView = UIStackView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let action: UIAction
+  
+    init(action: UIAction) {
+        self.action = action
+        super.init(frame: .zero)
         setupUI()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
    private func setupUI(){
        addSubview(stackView)
+       NSLayoutConstraint.activate([
+        stackView.topAnchor.constraint(equalTo: self.topAnchor)
+       ])
        stackView.translatesAutoresizingMaskIntoConstraints = false
        stackView.axis = .vertical
        stackView.spacing = 30
