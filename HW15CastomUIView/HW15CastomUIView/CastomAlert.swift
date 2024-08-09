@@ -8,26 +8,33 @@
 import UIKit
 
 class CastomAlert: UIViewController {
-    private let wrapper: UIView = .init()
+    private let shadowAlertView: UIView = .init()
+    private let alertView: UIView = .init()
     private let titleLab = UILabel()
     private let textLab = UILabel()
     private let acceptButton = UIButton()
     private let closeButton = UIButton()
     private let stackButton = UIStackView()
     private let stackView = UIStackView()
-//    let action: UIAction
     let titleAlert: String
     let messegeAlert: String
-    
+    let onAccept: (String) -> Void
     enum config {
         static let spacing: CGFloat = 20
         static let corRad: CGFloat = 15
         static let topBotConst: CGFloat = 300
         static let leftRightConst: CGFloat = 50
+        static let safeSize: CGFloat = 10
+        
     }
-    init(titleAlert: String, messegeAlert: String) {
+    init(
+        titleAlert: String,
+        messegeAlert: String,
+        onAccept: @escaping (String) -> Void
+    ) {
         self.titleAlert = titleAlert
         self.messegeAlert = messegeAlert
+        self.onAccept = onAccept
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,22 +49,38 @@ class CastomAlert: UIViewController {
     
     private func setupUI(){
         view.backgroundColor = .clear
-        view.addSubview(wrapper)
-        wrapper.addSubview(stackView)
-        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(shadowAlertView)
+        shadowAlertView.addSubview(alertView)
+        alertView.addSubview(stackView)
+        alertView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        shadowAlertView.translatesAutoresizingMaskIntoConstraints = false
+        alertView.addCornerRadius(corRad: config.corRad)
+        shadowAlertView.addShadowView(
+            shadSize: .init(width: 10, height: 10),
+            colorShad: .black,
+            shadOpacity: 1,
+            shadRadius: config.corRad
+        )
+        alertView.addBorder(widthBor: 2, colorBor: .black)
+           
         NSLayoutConstraint.activate([
-            wrapper.topAnchor.constraint(equalTo: view.topAnchor, constant: config.topBotConst),
-            wrapper.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -config.topBotConst),
-            wrapper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: config.leftRightConst),
-            wrapper.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -config.leftRightConst),
+            alertView.topAnchor.constraint(equalTo: view.topAnchor, constant: config.topBotConst),
+            alertView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -config.topBotConst),
+            alertView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: config.leftRightConst),
+            alertView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -config.leftRightConst),
             
-            stackView.topAnchor.constraint(equalTo: wrapper.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: wrapper.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: wrapper.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: wrapper.trailingAnchor)
+            shadowAlertView.topAnchor.constraint(equalTo: view.topAnchor, constant: config.topBotConst),
+            shadowAlertView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -config.topBotConst),
+            shadowAlertView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: config.leftRightConst),
+            shadowAlertView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -config.leftRightConst),
+            
+            stackView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: config.safeSize),
+            stackView.bottomAnchor.constraint(equalTo: alertView.bottomAnchor, constant: -config.safeSize),
+            stackView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: config.safeSize),
+            stackView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -config.safeSize)
         ])
-        stackView.backgroundColor = .white
+        alertView.backgroundColor = .white
         stackView.axis = .vertical
         stackView.spacing = config.spacing
         stackView.distribution = .fillEqually
@@ -76,6 +99,7 @@ class CastomAlert: UIViewController {
         titleLab.textAlignment = .center
         textLab.text = messegeAlert
         textLab.textAlignment = .center
+        textLab.numberOfLines = 0
         
         closeButton.setTitle("Закрыть", for: .normal)
         closeButton.backgroundColor = .systemRed
@@ -89,5 +113,30 @@ class CastomAlert: UIViewController {
         acceptButton.backgroundColor = .green
         acceptButton.titleLabel?.font = .systemFont(ofSize: 22, weight: .heavy)
         acceptButton.layer.cornerRadius = config.corRad
+        acceptButton.addAction(.init(
+            handler: { _ in self.actionAceptButton()}),
+            for: .touchUpInside
+        )
      }
+    private func actionAceptButton(){
+        onAccept("✊😃")
+        self.dismiss(animated: true)
+    }
+}
+
+extension UIView {
+    func addCornerRadius(corRad: CGFloat){
+        layer.cornerRadius = corRad
+        clipsToBounds = true
+    }
+    func addBorder(widthBor: CGFloat, colorBor: UIColor){
+        layer.borderWidth = widthBor
+        layer.borderColor = colorBor.cgColor
+    }
+    func addShadowView(shadSize: CGSize, colorShad: UIColor, shadOpacity: Float, shadRadius: CGFloat){
+        layer.shadowOffset = shadSize
+        layer.shadowColor = colorShad.cgColor
+        layer.shadowOpacity = shadOpacity
+        layer.shadowRadius = shadRadius
+    }
 }

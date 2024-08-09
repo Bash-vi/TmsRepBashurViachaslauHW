@@ -8,17 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-    lazy var Var1Button: UIButton = .init(type: .roundedRect, primaryAction: .init(handler: { _ in
-        self.actionBut1()
-    }))
-    lazy var Var2Button: UIButton = .init(type: .roundedRect, primaryAction: .init(handler: { _ in
+    lazy var label = UILabel()
+    lazy var button: UIButton = .init(type: .roundedRect, primaryAction: .init(handler: { _ in
         self.actionBut2()
     }))
     func actionBut1(){
         
     }
     func actionBut2(){
-        let castomAlert = CastomAlert(titleAlert: "Внимание", messegeAlert: "Тут важная информация")
+        let castomAlert = CastomAlert(
+            titleAlert: "Внимание",
+            messegeAlert: "Тут какая - то \nважная информация",
+            onAccept: {acceptText in
+                self.label.text = acceptText}
+        )
+        castomAlert.modalTransitionStyle = .flipHorizontal
+        castomAlert.modalPresentationStyle = .overCurrentContext
         present(castomAlert, animated: true)
     }
 
@@ -29,19 +34,19 @@ class ViewController: UIViewController {
     }
    
     private func setupButton() {
-        view.addSubview(Var1Button)
-        view.addSubview(Var2Button)
-        Var1Button.translatesAutoresizingMaskIntoConstraints = false
-        Var2Button.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        view.addSubview(button)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            Var1Button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            Var1Button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            Var2Button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            Var2Button.topAnchor.constraint(equalTo: Var1Button.bottomAnchor, constant: 20),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
         ])
-        Var1Button.setTitle("Вариант 1", for: .normal)
-        Var2Button.setTitle("Вариант 2", for: .normal)
+        
+        button.setTitle("Информация", for: .normal)
     }
 }
 
