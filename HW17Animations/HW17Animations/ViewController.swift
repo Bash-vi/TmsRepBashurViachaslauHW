@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         static let cornRadCircle: CGFloat = circleWidthHeight / 2
         static let bordWidth: CGFloat = 2
         static let safeConst: CGFloat = 8
+        static let randomGradY = CGFloat.random(in: 0...1)
+        static let changeConst: CGFloat = 20
     }
     
     override func viewDidLoad() {
@@ -38,12 +40,15 @@ class ViewController: UIViewController {
         view.addSubview(stakViewSV)
         mainView.addSubview(circle)
         circle.frame = .init(
-            x: 160,
-            y: 270,
+            x: 150,
+            y: 260,
             width: config.circleWidthHeight,
             height: config.circleWidthHeight
         )
-        circle.addGradient()
+        circle.addGradient(
+            startPointY: config.randomGradY,
+            endPointY: config.randomGradY
+        )
         stakViewSV.addSubview(stakView)
         stakView.addSubview(stakButton)
         stakButton.addArrangedSubview(leftBut)
@@ -89,11 +94,97 @@ class ViewController: UIViewController {
             
         ])
         leftBut.addAction(.init(handler: { _ in self.actionLeft()}), for: .touchUpInside)
+        rightBut.addAction(.init(handler: { _ in self.actionRight()}), for: .touchUpInside)
+        upBut.addAction(.init(handler: { _ in self.actionUp()}), for: .touchUpInside)
+        downtBut.addAction(.init(handler: { _ in self.actionDown()}), for: .touchUpInside)
 
     }
     
     func actionLeft() {
-        
+        MainView.animate(
+            withDuration: 1.5,
+            animations: { [weak self] in
+            guard let self else { return }
+            let change = circle.frame.origin.x - config.changeConst
+            if change < mainView.bounds.minX {
+                circle.frame = .init(
+                    origin: circle.frame.origin,
+                    size: circle.frame.size
+                )
+            } else {
+                circle.frame = .init(origin: .init(
+                    x: change,
+                    y:circle.frame.origin.y), 
+                    size: circle.frame.size
+                )
+            }
+        })
+    }
+    func actionRight() {
+        MainView.animate(
+            withDuration: 1.5,
+            delay: .zero,
+            options: [.curveEaseOut],
+            animations: { [weak self] in
+            guard let self else { return }
+            let change = circle.frame.origin.x + config.changeConst
+                if change > mainView.bounds.maxX - circle.frame.width {
+                circle.frame = .init(
+                    origin: circle.frame.origin,
+                    size: circle.frame.size
+                )
+            } else {
+                circle.frame = .init(origin: .init(
+                    x: change,
+                    y:circle.frame.origin.y),
+                    size: circle.frame.size
+                )
+            }
+        })
+    }
+    func actionUp() {
+        MainView.animate(
+            withDuration: 1.5,
+            delay: .zero,
+            options: [.curveEaseIn],
+            animations: { [weak self] in
+            guard let self else { return }
+            let change = circle.frame.origin.y - config.changeConst
+                if change < mainView.bounds.minY {
+                circle.frame = .init(
+                    origin: circle.frame.origin,
+                    size: circle.frame.size
+                )
+            } else {
+                circle.frame = .init(origin: .init(
+                    x: circle.frame.origin.x,
+                    y: change),
+                    size: circle.frame.size
+                )
+            }
+        })
+    }
+    func actionDown() {
+        MainView.animate(
+            withDuration: 1.5,
+            delay: .zero,
+            options: [.curveEaseInOut],
+            animations: { [weak self] in
+            guard let self else { return }
+                let change = circle.frame.origin.y + config.changeConst
+                if change > mainView.bounds.maxY - circle.frame.height {
+                circle.frame = .init(
+                    origin: circle.frame.origin,
+                    size: circle.frame.size
+                )
+            } else {
+                circle.frame = .init(origin: .init(
+                    x: circle.frame.origin.x,
+                    y: change),
+                    size: circle.frame.size
+                )
+            }
+        })
     }
 
 }
@@ -113,12 +204,12 @@ extension UIView {
         layer.shadowOpacity = shadOpacity
         layer.shadowRadius = shadRadius
     }
-    func addGradient(){
+    func addGradient(startPointY: CGFloat, endPointY: CGFloat){
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
         gradientLayer.colors = [UIColor.systemGreen.cgColor, UIColor.black.cgColor, UIColor.systemGreen.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.6)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.4)
+        gradientLayer.startPoint = CGPoint(x: 0, y: startPointY)
+        gradientLayer.endPoint = CGPoint(x: 1, y: endPointY)
         self.layer.addSublayer(gradientLayer)
     }
 }
