@@ -90,14 +90,11 @@ class ViewController: UIViewController {
             stakButton.bottomAnchor.constraint(equalTo: stakView.bottomAnchor, constant: -config.safeConst),
             stakButton.trailingAnchor.constraint(equalTo: stakView.trailingAnchor, constant: -config.safeConst),
             stakButton.leadingAnchor.constraint(equalTo: stakView.leadingAnchor, constant: config.safeConst),
-            
-            
         ])
         leftBut.addAction(.init(handler: { _ in self.actionLeft()}), for: .touchUpInside)
         rightBut.addAction(.init(handler: { _ in self.actionRight()}), for: .touchUpInside)
         upBut.addAction(.init(handler: { _ in self.actionUp()}), for: .touchUpInside)
         downtBut.addAction(.init(handler: { _ in self.actionDown()}), for: .touchUpInside)
-
     }
     
     func actionLeft() {
