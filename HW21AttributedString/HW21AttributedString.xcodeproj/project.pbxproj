@@ -14,6 +14,7 @@
 		A83B5D602C78DF340088F168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B5D5F2C78DF340088F168 /* Assets.xcassets */; };
 		A83B5D632C78DF340088F168 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A83B5D622C78DF340088F168 /* Base */; };
 		A83B5D6B2C7950890088F168 /* AttributeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5D6A2C7950890088F168 /* AttributeButton.swift */; };
+		A83B5D6E2C79F7000088F168 /* Nuqun-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A83B5D6D2C79F6B50088F168 /* Nuqun-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A83B5D622C78DF340088F168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83B5D642C78DF340088F168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A83B5D6A2C7950890088F168 /* AttributeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeButton.swift; sourceTree = "<group>"; };
+		A83B5D6D2C79F6B50088F168 /* Nuqun-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nuqun-Regular.otf"; path = "../../../../Downloads/Nuqun-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				A83B5D562C78DF320088F168 /* AppDelegate.swift */,
 				A83B5D582C78DF320088F168 /* SceneDelegate.swift */,
 				A83B5D5A2C78DF320088F168 /* ViewController.swift */,
+				A83B5D6C2C79F6820088F168 /* font */,
 				A83B5D6A2C7950890088F168 /* AttributeButton.swift */,
 				A83B5D5C2C78DF320088F168 /* Main.storyboard */,
 				A83B5D5F2C78DF340088F168 /* Assets.xcassets */,
@@ -68,6 +71,14 @@
 				A83B5D642C78DF340088F168 /* Info.plist */,
 			);
 			path = HW21AttributedString;
+			sourceTree = "<group>";
+		};
+		A83B5D6C2C79F6820088F168 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				A83B5D6D2C79F6B50088F168 /* Nuqun-Regular.otf */,
+			);
+			path = font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +141,7 @@
 			files = (
 				A83B5D602C78DF340088F168 /* Assets.xcassets in Resources */,
 				A83B5D632C78DF340088F168 /* Base in Resources */,
+				A83B5D6E2C79F7000088F168 /* Nuqun-Regular.otf in Resources */,
 				A83B5D5E2C78DF320088F168 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

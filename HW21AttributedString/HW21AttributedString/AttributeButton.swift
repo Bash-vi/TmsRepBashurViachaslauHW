@@ -9,7 +9,7 @@ import UIKit
 
 class AttributeButton: UIButton {
     init(
-        title: String,
+        title: String?,
         icon: UIImage?
     ) {
         super.init(frame: .zero)

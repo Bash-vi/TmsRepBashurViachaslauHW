@@ -10,17 +10,24 @@ import UIKit
 class ViewController: UIViewController {
     enum conf {
         static let spacing: CGFloat = 5
+        static let fontSize: CGFloat = 15
+        static let font = UIFont(name: "Nuqun-Regular", size: 22)
     }
     enum iconBut{
         static let up = UIImage(systemName: "arrowshape.up.fill")
         static let down = UIImage(systemName: "arrowshape.down.fill")
         static let reset = UIImage(systemName: "arrow.circlepath")
-        
+        static let bold = UIImage(systemName: "bold")
+        static let underline = UIImage(systemName: "underline")
+        static let strikethrough = UIImage(systemName: "strikethrough")
+        static let boldUnderline = UIImage(systemName: "bold.underline")
+        static let arrow = UIImage(systemName: "arrowtriangle.right.and.line.vertical.and.arrowtriangle.left.fill")
+        static let changeFont = UIImage(systemName: "textformat")
     }
     lazy var label: UILabel = {
         let lab = UILabel()
         lab.numberOfLines = 0
-        lab.font = .systemFont(ofSize: 15)
+        lab.font = .systemFont(ofSize: conf.fontSize)
         lab.textAlignment = .justified
         return lab
     }()
@@ -74,7 +81,20 @@ class ViewController: UIViewController {
     lazy var fontUpBut = AttributeButton(title: "Font", icon: iconBut.up)
     lazy var fontDownBut = AttributeButton(title: "Font", icon: iconBut.down)
     lazy var resetBut = AttributeButton(title: "Reset", icon: iconBut.reset)
-    
+    lazy var boldBut = AttributeButton(title: nil, icon: iconBut.bold)
+    lazy var underlineBut = AttributeButton(title: nil, icon: iconBut.underline)
+    lazy var boldUnderlineBut = AttributeButton(title: nil, icon: iconBut.boldUnderline)
+    lazy var strikethroughBut = AttributeButton(title: nil, icon: iconBut.strikethrough)
+    lazy var arrowBut = AttributeButton(title: nil, icon: iconBut.arrow)
+    lazy var changeFontBut = AttributeButton(title: nil, icon: iconBut.changeFont)
+    lazy var shadowView: UIView = {
+        let view = UIView(frame: view.bounds)
+        view.backgroundColor = .clear
+        view.layer.shadowOffset = CGSize(width: 6, height: 6)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowColor = UIColor.black.cgColor
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,14 +103,17 @@ class ViewController: UIViewController {
         setupFrame()
     }
     private func addSubviews() {
-        view.addSubview(label)
-        view.addSubview(titleColor)
-        view.addSubview(segmentColor)
-        view.addSubview(titleRange)
-        view.addSubview(segmentRange)
-        view.addSubview(titleSettings)
-        view.addSubview(stackView)
+        view.addSubview(shadowView)
+        shadowView.addSubview(label)
+        shadowView.addSubview(titleColor)
+        shadowView.addSubview(segmentColor)
+        shadowView.addSubview(titleRange)
+        shadowView.addSubview(segmentRange)
+        shadowView.addSubview(titleSettings)
+        shadowView.addSubview(stackView)
         stackView.addArrangedSubview(addHorStack(view1: fontUpBut, view2: fontDownBut, view3: resetBut))
+        stackView.addArrangedSubview(addHorStack(view1: underlineBut, view2: strikethroughBut, view3: boldBut))
+        stackView.addArrangedSubview(addHorStack(view1: boldUnderlineBut, view2: arrowBut, view3: changeFontBut))
     }
     private func setupFrame() {
         let widthView = view.bounds.width
@@ -101,7 +124,7 @@ class ViewController: UIViewController {
         titleRange.frame = .init(x: widthView * 0.05 , y: segmentColor.frame.maxY + conf.spacing, width: widthView * 0.9, height: heightView * 0.05)
         segmentRange.frame = .init(x: widthView * 0.05 , y: titleRange.frame.maxY, width: widthView * 0.9, height: heightView * 0.05)
         titleSettings.frame = .init(x: widthView * 0.05 , y: segmentRange.frame.maxY + conf.spacing, width: widthView * 0.9, height: heightView * 0.05)
-        stackView.frame = .init(x: widthView * 0.05 , y: titleSettings.frame.maxY, width: widthView * 0.9, height: heightView * 0.3)
+        stackView.frame = .init(x: widthView * 0.05 , y: titleSettings.frame.maxY, width: widthView * 0.9, height: heightView * 0.15)
         
     }
     private func setupUI() {
@@ -133,7 +156,7 @@ class ViewController: UIViewController {
         segmentRange.selectedSegmentIndex = 0
         func attributeFont(change: CGFloat, range: NSRange) {
             let atributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: change)
+                .font: UIFont.systemFont(ofSize: change),
             ]
             attrText.addAttributes(atributes, range: range)
             label.attributedText = attrText
@@ -150,9 +173,50 @@ class ViewController: UIViewController {
         func buTactionReset() {
             attrText.removeAttribute(.font, range: rangeFull)
             attrText.removeAttribute(.foregroundColor, range: rangeFull)
+            attrText.removeAttribute(.underlineStyle, range: rangeFull)
+            attrText.removeAttribute(.strikethroughStyle, range: rangeFull)
             label.attributedText = attrText
         }
         resetBut.addAction(.init(handler: { _ in buTactionReset()}), for: .touchUpInside)
+        func butAction(atributes: [NSAttributedString.Key: Any]) {
+            if segmentRange.selectedSegmentIndex == 0 {
+                let atributes = atributes
+                attrText.addAttributes(atributes, range: range1)
+                label.attributedText = attrText
+            } else {
+                attrText.addAttributes(atributes, range: range2)
+                label.attributedText = attrText
+            }
+        }
+        boldBut.addAction(.init(handler: { _ in
+        butAction(atributes: [
+            .font: UIFont.systemFont(ofSize: conf.fontSize, weight: .bold)
+        ])}), for: .touchUpInside)
+        underlineBut.addAction(.init(handler: { _ in
+        butAction(atributes: [
+            .underlineStyle: 1
+        ])}), for: .touchUpInside)
+        strikethroughBut.addAction(.init(handler: { _ in
+        butAction(atributes: [
+            .strikethroughStyle: 1,
+            .strikethroughColor: UIColor.red
+        ])}), for: .touchUpInside)
+        boldUnderlineBut.addAction(.init(handler: { _ in
+        butAction(atributes: [
+            .underlineStyle: 1,
+            .font: UIFont.systemFont(ofSize: conf.fontSize, weight: .bold)
+        ])}), for: .touchUpInside)
+        arrowBut.addAction(.init(handler: { _ in
+        butAction(atributes: [
+            .font: UIFont.systemFont(ofSize: conf.fontSize, weight: .thin, width: .compressed)
+        ])}), for: .touchUpInside)
+        changeFontBut.addAction(.init(handler: { _ in
+            let atributes: [NSAttributedString.Key: Any] = [
+                .font: conf.font ?? UIFont.labelFontSize,
+            ]
+            attrText.addAttributes(atributes, range: rangeFull)
+            self.label.attributedText = attrText
+        }), for: .touchUpInside)
     }
 }
-
+   //
