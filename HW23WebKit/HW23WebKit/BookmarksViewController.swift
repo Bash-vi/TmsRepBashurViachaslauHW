@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class BookmarksViewController: UIViewController {
 
@@ -47,27 +48,35 @@ class BookmarksViewController: UIViewController {
         table.dataSource = self
         return table
     }()
-    var bookmarksList = [String: Any]()
-//    private var bookmarksList: ([String: Any]) -> Void
-//    
-//    init(
-//        bookmarksList: @escaping ([String: Any]) -> Void
-//    ) {
-//        self.bookmarksList = bookmarksList
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
+    private let bookmarksList: [String: URL]
+    private let  googleView: WKWebView
+    init(
+        bookmarksList: [String: URL],
+        googleView: WKWebView
+    ) {
+        self.googleView = googleView
+        self.bookmarksList = bookmarksList
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        view.addSubview(blurEffectView)
         view.addSubview(buttonStack)
         view.addSubview(bookmarksTableView)
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
         bookmarksTableView.translatesAutoresizingMaskIntoConstraints = false
-        
+       
         NSLayoutConstraint.activate([
             buttonStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             buttonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -84,22 +93,20 @@ class BookmarksViewController: UIViewController {
 
 extension BookmarksViewController: UITableViewDelegate & UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let keys = [String](bookmarksList().keys)
-//        return keys.count
-          let keys = [String](bookmarksList.keys)
+        let keys = [String](bookmarksList.keys)
           return keys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-//        let keys = [String](bookmarksList().keys)
-//        cell.textLabel?.text = keys[indexPath.row]
-//        return cell
-        
         let keys = [String](bookmarksList.keys)
             cell.textLabel?.text = keys[indexPath.row]
             return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let value = [URL](bookmarksList.values)
+        googleView.load(URLRequest(url: value[indexPath.row]))
+        dismiss(animated: true)
+    }
 }

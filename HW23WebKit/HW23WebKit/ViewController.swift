@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         return webView
     }()
     
-    private var bookmarksList = [String: Any]()
+    var bookmarksList = [String: URL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +118,6 @@ class ViewController: UIViewController {
     }
     
     private func setupConstraint() {
-        
         webTFViewHeightConstr = webTextFieldView.heightAnchor.constraint(equalToConstant: Constant.labelHeight)
         
         NSLayoutConstraint.activate([
@@ -169,14 +168,23 @@ class ViewController: UIViewController {
     }
     
     private func bookmarksButtonAction() {
-        let tableView = BookmarksViewController()
+        let tableView = BookmarksViewController(
+            bookmarksList: bookmarksList,
+            googleView: googleView
+        )
+        tableView.modalPresentationStyle = .overFullScreen
+        tableView.modalTransitionStyle = .coverVertical
         present(tableView, animated: true)
     }
     
     private func addBookmarkButtonAction() {
         let controller = AddBookmarkViewController(
-            acceptAction: {
-                
+            acceptAction: { bookmarksKey in
+                self.bookmarksList.updateValue(
+                    self.googleView.url!,
+                    forKey: bookmarksKey
+                )
+                self.dismiss(animated: true)
             }
         )
         controller.modalPresentationStyle = .overFullScreen

@@ -9,10 +9,10 @@ import UIKit
 
 class AddBookmarkViewController: UIViewController {
    
-    private var acceptAction: () -> Void
+    private var acceptAction: (String) -> Void
    
     init(
-        acceptAction: @escaping () -> Void
+        acceptAction: @escaping (String) -> Void
     ){
         self.acceptAction = acceptAction
         super.init(nibName: nil, bundle: nil)
@@ -45,7 +45,7 @@ class AddBookmarkViewController: UIViewController {
     
     lazy var acceptButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: .init(handler: { _ in
-            self.acceptAction()
+            self.acceptAction(self.textField.text ?? "")
         }))
         button.setTitle("Готово", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
