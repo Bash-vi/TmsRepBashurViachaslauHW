@@ -14,7 +14,8 @@
 		A83B5DAC2C7DED2E0088F168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B5DAB2C7DED2E0088F168 /* Assets.xcassets */; };
 		A83B5DAF2C7DED2E0088F168 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A83B5DAE2C7DED2E0088F168 /* Base */; };
 		A83B5DB72C7DEE0C0088F168 /* WebButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DB62C7DEE0C0088F168 /* WebButton.swift */; };
-		A83B5DB92C7E36A40088F168 /* addBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DB82C7E36A40088F168 /* addBookmarkViewController.swift */; };
+		A83B5DB92C7E36A40088F168 /* AddBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DB82C7E36A40088F168 /* AddBookmarkViewController.swift */; };
+		A83B5DBB2C7E91F40088F168 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DBA2C7E91F40088F168 /* BookmarksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		A83B5DAE2C7DED2E0088F168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83B5DB02C7DED2E0088F168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A83B5DB62C7DEE0C0088F168 /* WebButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebButton.swift; sourceTree = "<group>"; };
-		A83B5DB82C7E36A40088F168 /* addBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBookmarkViewController.swift; sourceTree = "<group>"; };
+		A83B5DB82C7E36A40088F168 /* AddBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkViewController.swift; sourceTree = "<group>"; };
+		A83B5DBA2C7E91F40088F168 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,8 @@
 				A83B5DA22C7DED2D0088F168 /* AppDelegate.swift */,
 				A83B5DA42C7DED2D0088F168 /* SceneDelegate.swift */,
 				A83B5DA62C7DED2D0088F168 /* ViewController.swift */,
-				A83B5DB82C7E36A40088F168 /* addBookmarkViewController.swift */,
+				A83B5DBA2C7E91F40088F168 /* BookmarksViewController.swift */,
+				A83B5DB82C7E36A40088F168 /* AddBookmarkViewController.swift */,
 				A83B5DB62C7DEE0C0088F168 /* WebButton.swift */,
 				A83B5DA82C7DED2D0088F168 /* Main.storyboard */,
 				A83B5DAB2C7DED2E0088F168 /* Assets.xcassets */,
@@ -144,8 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A83B5DBB2C7E91F40088F168 /* BookmarksViewController.swift in Sources */,
 				A83B5DB72C7DEE0C0088F168 /* WebButton.swift in Sources */,
-				A83B5DB92C7E36A40088F168 /* addBookmarkViewController.swift in Sources */,
+				A83B5DB92C7E36A40088F168 /* AddBookmarkViewController.swift in Sources */,
 				A83B5DA72C7DED2D0088F168 /* ViewController.swift in Sources */,
 				A83B5DA32C7DED2D0088F168 /* AppDelegate.swift in Sources */,
 				A83B5DA52C7DED2D0088F168 /* SceneDelegate.swift in Sources */,

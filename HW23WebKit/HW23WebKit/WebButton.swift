@@ -17,7 +17,7 @@ class WebButton: UIButton {
         case reset
     }
     
-    enum Icon {
+    enum Icons {
         static let back = UIImage(systemName: "chevron.backward")
         static let next = UIImage(systemName: "chevron.forward")
         static let bookmarks = UIImage(systemName: "book")
@@ -35,15 +35,15 @@ class WebButton: UIButton {
         super.init(frame: .zero)
         switch style {
         case.back:
-            self.setImage(Icon.back, for: .normal)
+            self.setImage(Icons.back, for: .normal)
         case.next:
-            self.setImage(Icon.next, for: .normal)
+            self.setImage(Icons.next, for: .normal)
         case.bookmarks:
-            self.setImage(Icon.bookmarks, for: .normal)
+            self.setImage(Icons.bookmarks, for: .normal)
         case.addBookmark:
-            self.setImage(Icon.addBookmark, for: .normal)
+            self.setImage(Icons.addBookmark, for: .normal)
         case.reset:
-            self.setImage(Icon.reset, for: .normal)
+            self.setImage(Icons.reset, for: .normal)
         }
         self.addAction(.init(handler: { _ in
             self.action()
