@@ -126,7 +126,8 @@ class ViewController: UIViewController {
             dateLabel.widthAnchor.constraint(equalToConstant: Size.dateLabelWidth),
             dateLabel.heightAnchor.constraint(equalToConstant: Size.dateLabelHeight),
             
-            chooseButton.bottomAnchor.constraint(equalTo: whiteShadowView.safeAreaLayoutGuide.bottomAnchor, constant: -Constant.spacing),
+            chooseButton.bottomAnchor.constraint(
+                equalTo: whiteShadowView.safeAreaLayoutGuide.bottomAnchor, constant: -Constant.spacing),
             chooseButton.centerXAnchor.constraint(equalTo: whiteShadowView.centerXAnchor),
             chooseButton.widthAnchor.constraint(equalToConstant: Size.buttonWidth),
             chooseButton.heightAnchor.constraint(equalToConstant: Size.buttonHeight),
@@ -146,12 +147,10 @@ class ViewController: UIViewController {
     }
     
     private func timeZoneDate(timeZoneId: String) -> String {
-        var dateComponent = DateComponents()
         let dateFormatter = DateFormatter()
-        dateComponent.timeZone = TimeZone(identifier: timeZoneId)
+        dateFormatter.timeZone = TimeZone(identifier: timeZoneId)
         dateFormatter.dateFormat = "HH:mm:ss"
-        let timeZoneDate = Calendar.current.date(byAdding: dateComponent, to: Date.now)
-        let formatedattedDate = dateFormatter.string(from: timeZoneDate!)
+        let formatedattedDate = dateFormatter.string(from: Date.now)
         return formatedattedDate
     }
     

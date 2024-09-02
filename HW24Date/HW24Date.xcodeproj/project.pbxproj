@@ -13,9 +13,9 @@
 		A83B5DD02C847ECC0088F168 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A83B5DCF2C847ECC0088F168 /* Base */; };
 		A83B5DD22C847ED20088F168 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B5DD12C847ED20088F168 /* Assets.xcassets */; };
 		A83B5DD52C847ED20088F168 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A83B5DD42C847ED20088F168 /* Base */; };
-		A83B5DDD2C84960D0088F168 /* extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DDC2C84960D0088F168 /* extansion.swift */; };
+		A83B5DDD2C84960D0088F168 /* View+extenzion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DDC2C84960D0088F168 /* View+extenzion.swift */; };
 		A83B5E012C8518510088F168 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5E002C8518510088F168 /* City.swift */; };
-		A83B5E032C85198C0088F168 /* storageCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5E022C85198C0088F168 /* storageCity.swift */; };
+		A83B5E032C85198C0088F168 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5E022C85198C0088F168 /* Storage.swift */; };
 		A83B5E052C851E840088F168 /* cityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5E042C851E840088F168 /* cityListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +28,9 @@
 		A83B5DD12C847ED20088F168 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83B5DD42C847ED20088F168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83B5DD62C847ED20088F168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A83B5DDC2C84960D0088F168 /* extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extansion.swift; sourceTree = "<group>"; };
+		A83B5DDC2C84960D0088F168 /* View+extenzion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extenzion.swift"; sourceTree = "<group>"; };
 		A83B5E002C8518510088F168 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		A83B5E022C85198C0088F168 /* storageCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storageCity.swift; sourceTree = "<group>"; };
+		A83B5E022C85198C0088F168 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A83B5E042C851E840088F168 /* cityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,8 +69,8 @@
 				A83B5DCC2C847ECC0088F168 /* ViewController.swift */,
 				A83B5E042C851E840088F168 /* cityListViewController.swift */,
 				A83B5E002C8518510088F168 /* City.swift */,
-				A83B5E022C85198C0088F168 /* storageCity.swift */,
-				A83B5DDC2C84960D0088F168 /* extansion.swift */,
+				A83B5E022C85198C0088F168 /* Storage.swift */,
+				A83B5DDC2C84960D0088F168 /* View+extenzion.swift */,
 				A83B5DCE2C847ECC0088F168 /* Main.storyboard */,
 				A83B5DD12C847ED20088F168 /* Assets.xcassets */,
 				A83B5DD32C847ED20088F168 /* LaunchScreen.storyboard */,
@@ -153,9 +153,9 @@
 				A83B5DCD2C847ECC0088F168 /* ViewController.swift in Sources */,
 				A83B5E012C8518510088F168 /* City.swift in Sources */,
 				A83B5DC92C847ECC0088F168 /* AppDelegate.swift in Sources */,
-				A83B5E032C85198C0088F168 /* storageCity.swift in Sources */,
+				A83B5E032C85198C0088F168 /* Storage.swift in Sources */,
 				A83B5DCB2C847ECC0088F168 /* SceneDelegate.swift in Sources */,
-				A83B5DDD2C84960D0088F168 /* extansion.swift in Sources */,
+				A83B5DDD2C84960D0088F168 /* View+extenzion.swift in Sources */,
 				A83B5E052C851E840088F168 /* cityListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,6 @@
 import Foundation
 
 class StorageCity {
-
     let cityList:[City] = [
         .init(name: "Hong-Kong", timeZone: "Asia/Hong_Kong"),
         .init(name: "Accra", timeZone: "Africa/Accra"),

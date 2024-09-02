@@ -76,6 +76,7 @@ class cityListViewController: UIViewController {
     let cellReuseIdentifire = "cityCell"
     
     let selectedCity: (String) -> Void
+    
     let selectedTimeZone: (String) -> Void
     
     init(
@@ -164,5 +165,4 @@ extension cityListViewController: UITableViewDelegate & UITableViewDataSource {
         selectedTimeZone(storageCity.cityList[indexPath.row].timeZone)
         dismiss(animated: true)
     }
-    
 }
