@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A815AEAE2C88B7DF00FBF9D8 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815AEAD2C88B7DF00FBF9D8 /* PersonViewController.swift */; };
+		A815AEB02C88B80500FBF9D8 /* HobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815AEAF2C88B80500FBF9D8 /* HobbiesViewController.swift */; };
+		A815AEB22C88B83300FBF9D8 /* TextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815AEB12C88B83300FBF9D8 /* TextFieldViewController.swift */; };
+		A815AEB42C88B86100FBF9D8 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815AEB32C88B86100FBF9D8 /* View+Extension.swift */; };
 		A8958FF32C3DB3BC00612691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF22C3DB3BC00612691 /* AppDelegate.swift */; };
 		A8958FF52C3DB3BC00612691 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF42C3DB3BC00612691 /* SceneDelegate.swift */; };
 		A8958FF72C3DB3BC00612691 /* Screen1vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF62C3DB3BC00612691 /* Screen1vc.swift */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A815AEAD2C88B7DF00FBF9D8 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		A815AEAF2C88B80500FBF9D8 /* HobbiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesViewController.swift; sourceTree = "<group>"; };
+		A815AEB12C88B83300FBF9D8 /* TextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldViewController.swift; sourceTree = "<group>"; };
+		A815AEB32C88B86100FBF9D8 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		A8958FEF2C3DB3BB00612691 /* HW12delegatsAndCollback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW12delegatsAndCollback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8958FF22C3DB3BC00612691 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8958FF42C3DB3BC00612691 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A815AEAC2C88B7A800FBF9D8 /* Task2 Person  */ = {
+			isa = PBXGroup;
+			children = (
+				A815AEAD2C88B7DF00FBF9D8 /* PersonViewController.swift */,
+				A815AEAF2C88B80500FBF9D8 /* HobbiesViewController.swift */,
+				A815AEB12C88B83300FBF9D8 /* TextFieldViewController.swift */,
+				A815AEB32C88B86100FBF9D8 /* View+Extension.swift */,
+			);
+			path = "Task2 Person ";
+			sourceTree = "<group>";
+		};
 		A8958FE62C3DB3BB00612691 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +91,7 @@
 			children = (
 				A8958FF22C3DB3BC00612691 /* AppDelegate.swift */,
 				A8958FF42C3DB3BC00612691 /* SceneDelegate.swift */,
+				A815AEAC2C88B7A800FBF9D8 /* Task2 Person  */,
 				A89590102C402B7D00612691 /* Task 2.User */,
 				A895900D2C40111D00612691 /* Task 1.Delegate */,
 				A895900A2C3DB7A300612691 /* Task 1.Callback */,
@@ -186,12 +206,16 @@
 				A89590072C3DB76C00612691 /* ScreenOne.swift in Sources */,
 				A8958FF72C3DB3BC00612691 /* Screen1vc.swift in Sources */,
 				A8958FF32C3DB3BC00612691 /* AppDelegate.swift in Sources */,
+				A815AEB22C88B83300FBF9D8 /* TextFieldViewController.swift in Sources */,
 				A89590162C44794500612691 /* ScrollHobbiList.swift in Sources */,
 				A89590092C3DB79500612691 /* ScreenTwo.swift in Sources */,
 				A89590122C41A87800612691 /* EditUserScreen.swift in Sources */,
 				A895900F2C402B1900612691 /* UserScreen.swift in Sources */,
+				A815AEAE2C88B7DF00FBF9D8 /* PersonViewController.swift in Sources */,
 				A8958FF52C3DB3BC00612691 /* SceneDelegate.swift in Sources */,
+				A815AEB02C88B80500FBF9D8 /* HobbiesViewController.swift in Sources */,
 				A895900C2C4010DD00612691 /* Screen2vc.swift in Sources */,
+				A815AEB42C88B86100FBF9D8 /* View+Extension.swift in Sources */,
 				A89590182C4491FA00612691 /* EditScrollHobbiList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

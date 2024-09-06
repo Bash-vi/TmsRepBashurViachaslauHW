@@ -61,8 +61,6 @@ class UserScreen: UIViewController, EditUserScreenDelegate {
         static let keyMale = "male"
     }
     
-    
-    
     lazy var stackUser = UIStackView()
     lazy var userIicon = UIImageView(image: .init(systemName: "person.circle"))
     lazy var welcom = UILabel()
@@ -97,6 +95,7 @@ class UserScreen: UIViewController, EditUserScreenDelegate {
         stack.addArrangedSubview(buttonEdit)
         return stack
     }
+    
     func userSureNameHorStak(
         titleShow: String,
         sureNameLab: UILabel,

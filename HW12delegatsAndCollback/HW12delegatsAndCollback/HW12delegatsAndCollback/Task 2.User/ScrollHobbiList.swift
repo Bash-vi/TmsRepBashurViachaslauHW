@@ -13,13 +13,14 @@ class ScrollHobbiList: UIViewController {
     lazy var hobbiesScroll = UIScrollView()
     lazy var hobbyLab = UILabel()
     lazy var addHobbieButton = UIButton(primaryAction: .init(handler: { _ in
-        let editScrollHobbiList = EditScrollHobbiList(
-            hobbyName: self.hobbyLab.text,
-            onSave: { hobbyName in self.hobbyLab.text = hobbyName
-            })
-        self.addNewHobby()
-        self.navigationController?.pushViewController(editScrollHobbiList, animated: true)
-        editScrollHobbiList.title = "Добавить увлечение"
+//        let editScrollHobbiList = EditScrollHobbiList(
+//            hobbyName: self.hobbyLab.text,
+//            onSave: { hobbyName in self.hobbyLab.text = hobbyName
+//            })
+//        self.addNewHobby()
+//        self.navigationController?.pushViewController(editScrollHobbiList, animated: true)
+//        editScrollHobbiList.title = "Добавить увлечение"
+        self.hobbyLab.removeFromSuperview()
     }))
     
     func hobbieHorStak(
@@ -30,6 +31,8 @@ class ScrollHobbiList: UIViewController {
         let buttonEdit = UIButton(primaryAction: editAction)
         buttonEdit.setImage(UIImage.init(systemName: "pencil.circle"), for: .normal)
         let buttonDelete = UIButton(primaryAction: editAction)
+        buttonDelete.addAction(.init(handler: { _ in
+        }), for: .touchUpInside)
         buttonDelete.setImage(UIImage.init(systemName: "trash.circle"), for: .normal)
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -49,7 +52,9 @@ class ScrollHobbiList: UIViewController {
         view.backgroundColor = .white
         view.addSubview(hobbiesScroll)
         view.addSubview(addHobbieButton)
-        
+        hobbiesStack.addSubview(hobbyLab)
+        hobbyLab.text = "dsfgs"
+        hobbyLab.translatesAutoresizingMaskIntoConstraints = false
         hobbiesScroll.translatesAutoresizingMaskIntoConstraints = false
         hobbiesScroll.addSubview(hobbiesStack)
         hobbiesStack.translatesAutoresizingMaskIntoConstraints = false
