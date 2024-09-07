@@ -10,7 +10,7 @@ import UIKit
 extension UIView {
     
     func layerSetup() {
-        layer.cornerRadius = 25
+        layer.cornerRadius = 40
         layer.cornerCurve = .circular
         layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1
