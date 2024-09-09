@@ -68,6 +68,7 @@ class ScrollHobbiList: UIViewController {
             hobbiesScroll.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             hobbiesScroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             hobbiesScroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            hobbiesScroll.widthAnchor.constraint(equalTo: hobbiesStack.widthAnchor),
             
             hobbiesStack.topAnchor.constraint(equalTo: hobbiesScroll.topAnchor),
             hobbiesStack.bottomAnchor.constraint(equalTo: hobbiesScroll.bottomAnchor),

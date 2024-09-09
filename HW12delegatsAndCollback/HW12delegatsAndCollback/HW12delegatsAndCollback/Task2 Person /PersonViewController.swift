@@ -8,6 +8,7 @@
 import UIKit
 
 class PersonViewController: UIViewController {
+    
     lazy var personStack = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -77,10 +78,55 @@ class PersonViewController: UIViewController {
         return label
     }()
     
-    lazy var editButton = PersonButton(
+    lazy var nameEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: {_ in
-            self.editButtonAction()
+        action: .init(handler: { _ in
+            self.editButtonAction(
+                userDefaultKeys: KeysDefaults.name,
+                title: Title.name
+            )
+        }))
+    
+    lazy var surenameEditButton = PersonButton(
+        style: .edit,
+        action: .init(handler: { _ in
+            self.editButtonAction(
+                userDefaultKeys: KeysDefaults.surename,
+                title: Title.surename
+            )
+        }))
+    
+    lazy var ageEditButton = PersonButton(
+        style: .edit,
+        action: .init(handler: { _ in
+            self.editButtonAction(
+                userDefaultKeys: KeysDefaults.age,
+                title: Title.age
+            )
+        }))
+    
+    lazy var maleEditButton = PersonButton(
+        style: .edit,
+        action: .init(handler: { _ in
+            self.editButtonAction(
+                userDefaultKeys: KeysDefaults.male,
+                title: Title.male
+            )
+        }))
+    
+    lazy var birthdayEditButton = PersonButton(
+        style: .edit,
+        action: .init(handler: { _ in
+            self.editButtonAction(
+                userDefaultKeys: KeysDefaults.birthday,
+                title: Title.birthday
+            )
+        }))
+    
+    lazy var hobbiesEditButton = PersonButton(
+        style: .edit,
+        action: .init(handler: { _ in
+            self.hobbiesActionButton()
         }))
     
     lazy var fullnameLabel = createValueLabel()
@@ -97,18 +143,24 @@ class PersonViewController: UIViewController {
         setupConstraints()
     }
     
-    private func addUserDefaults(value: Any, key: String) {
+    private func addUserDefaults(value: String, key: String) {
         defaults.set(value, forKey: key)
         loadUserDefaults()
     }
+    //MARK: Action Button
+    private func hobbiesActionButton() {
+        let vc = HobbiesViewController()
+        
+        present(vc, animated: true)
+    }
     
-    private func editButtonAction() {
+    private func editButtonAction(userDefaultKeys: String, title: String) {
         let vc = TextFieldViewController(
-            titleText: DataPerson.Title.name,
+            titleText: title,
             replace: { newName in
                 self.addUserDefaults(
                     value: newName,
-                    key: DataPerson.KeysDefaults.name
+                    key: userDefaultKeys
                 )
                 self.dismiss(animated: true)
             })
@@ -117,22 +169,22 @@ class PersonViewController: UIViewController {
     
     func loadUserDefaults() {
         nameLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.name
+            forKey: KeysDefaults.name
         ) ?? "Введите"
         surenameLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.surename
+            forKey: KeysDefaults.surename
         ) ?? "Введите"
         ageLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.age
+            forKey: KeysDefaults.age
         ) ?? "Введите"
         birthdayLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.birthday
+            forKey: KeysDefaults.birthday
         ) ?? "Введите"
         maleLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.male
+            forKey: KeysDefaults.male
         ) ?? "Введите"
         hobbiesLabel.text = defaults.string(
-            forKey: DataPerson.KeysDefaults.hobbie
+            forKey: KeysDefaults.hobbie
         ) ?? "Введите"
         fullnameLabel.text = fullName()
     }
@@ -155,7 +207,7 @@ class PersonViewController: UIViewController {
     
     private func createValueLabel() -> UILabel {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textColor = .white
         return label
     }
@@ -191,29 +243,33 @@ class PersonViewController: UIViewController {
     
     private func createinfoStack() {
         let nameStack = createHorizontInfoStack([
-            createTitleLabel(title: DataPerson.Title.name),
+            createTitleLabel(title: Title.name),
             nameLabel,
-            editButton
+            nameEditButton
         ])
         
         let surenameStack = createHorizontInfoStack([
-            createTitleLabel(title: DataPerson.Title.surename),
-            surenameLabel
+            createTitleLabel(title: Title.surename),
+            surenameLabel,
+            surenameEditButton
         ])
         
         let ageStack = createHorizontInfoStack([
-            createTitleLabel(title: DataPerson.Title.age),
-            ageLabel
+            createTitleLabel(title: Title.age),
+            ageLabel,
+            ageEditButton
         ])
         
         let maleStack = createHorizontInfoStack([
-            createTitleLabel(title: DataPerson.Title.male),
-            maleLabel
+            createTitleLabel(title: Title.male),
+            maleLabel,
+            maleEditButton
         ])
         
         let birthdayStack = createHorizontInfoStack([
-            createTitleLabel(title: DataPerson.Title.birthday),
+            createTitleLabel(title: Title.birthday),
             birthdayLabel,
+            birthdayEditButton
         ])
         
         infoStack.addArrangedSubview(nameStack)
@@ -256,11 +312,13 @@ class PersonViewController: UIViewController {
         let hobbieLabel = createValueLabel()
         hobbieLabel.text = "есть, спать, есть"
         
-        hobbiesStackText.addArrangedSubview(createTitleLabel(title: DataPerson.Title.hobbie))
+        hobbiesStackText.addArrangedSubview(
+            createTitleLabel(title: Title.hobbie))
         hobbiesStackText.addArrangedSubview(hobbieLabel)
         
         hobbiesStack.addArrangedSubview(icon)
         hobbiesStack.addArrangedSubview(hobbiesStackText)
+        hobbiesStack.addArrangedSubview(hobbiesEditButton)
         view.addSubview(hobbiesStackView)
         hobbiesStackView.addSubview(hobbiesStack)
     }
@@ -268,59 +326,83 @@ class PersonViewController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             greetinglabel.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,constant: Constant.beetwenViews),
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: Constant.beetwenViews),
             greetinglabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,constant: Constant.left),
+                equalTo: view.leadingAnchor,
+                constant: Constant.left),
             greetinglabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,constant: Constant.right),
+                equalTo: view.trailingAnchor,
+                constant: Constant.right),
             
             personStackView.topAnchor.constraint(
-                equalTo: greetinglabel.bottomAnchor,constant: Constant.beetwenViews),
+                equalTo: greetinglabel.bottomAnchor,
+                constant: Constant.beetwenViews),
             personStackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,constant: Constant.left),
+                equalTo: view.leadingAnchor,
+                constant: Constant.left),
             personStackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,constant: Constant.right),
+                equalTo: view.trailingAnchor,
+                constant: Constant.right),
             
             personStack.topAnchor.constraint(
-                equalTo: personStackView.topAnchor,constant: Constant.view),
+                equalTo: personStackView.topAnchor,
+                constant: Constant.view),
             personStack.trailingAnchor.constraint(
-                equalTo: personStackView.trailingAnchor,constant: Constant.minusView),
+                equalTo: personStackView.trailingAnchor,
+                constant: Constant.minusView),
             personStack.leadingAnchor.constraint(
-                equalTo: personStackView.leadingAnchor,constant: Constant.view),
+                equalTo: personStackView.leadingAnchor,
+                constant: Constant.view),
             personStack.bottomAnchor.constraint(
-                equalTo: personStackView.bottomAnchor,constant: Constant.minusView),
+                equalTo: personStackView.bottomAnchor,
+                constant: Constant.minusView),
             
             infoStackView.topAnchor.constraint(
-                equalTo: personStackView.bottomAnchor,constant: Constant.beetwenViews),
+                equalTo: personStackView.bottomAnchor,
+                constant: Constant.beetwenViews),
             infoStackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,constant: Constant.left),
+                equalTo: view.leadingAnchor,
+                constant: Constant.left),
             infoStackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,constant: Constant.right),
+                equalTo: view.trailingAnchor,
+                constant: Constant.right),
             
             infoStack.topAnchor.constraint(
-                equalTo: infoStackView.topAnchor,constant: Constant.stack),
+                equalTo: infoStackView.topAnchor,
+                constant: Constant.stack),
             infoStack.trailingAnchor.constraint(
-                equalTo: infoStackView.trailingAnchor,constant: Constant.minusStack),
+                equalTo: infoStackView.trailingAnchor,
+                constant: Constant.minusStack),
             infoStack.leadingAnchor.constraint(
-                equalTo: infoStackView.leadingAnchor,constant: Constant.stack),
+                equalTo: infoStackView.leadingAnchor,
+                constant: Constant.stack),
             infoStack.bottomAnchor.constraint(
-                equalTo: infoStackView.bottomAnchor,constant: Constant.minusStack),
+                equalTo: infoStackView.bottomAnchor,
+                constant: Constant.minusStack),
             
             hobbiesStackView.topAnchor.constraint(
-                equalTo: infoStackView.bottomAnchor,constant: Constant.beetwenViews),
+                equalTo: infoStackView.bottomAnchor,
+                constant: Constant.beetwenViews),
             hobbiesStackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,constant: Constant.left),
+                equalTo: view.leadingAnchor,
+                constant: Constant.left),
             hobbiesStackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,constant: Constant.right),
+                equalTo: view.trailingAnchor,
+                constant: Constant.right),
             
             hobbiesStack.topAnchor.constraint(
-                equalTo: hobbiesStackView.topAnchor,constant: Constant.view),
+                equalTo: hobbiesStackView.topAnchor,
+                constant: Constant.view),
             hobbiesStack.trailingAnchor.constraint(
-                equalTo: hobbiesStackView.trailingAnchor,constant: Constant.minusView),
+                equalTo: hobbiesStackView.trailingAnchor,
+                constant: Constant.minusView),
             hobbiesStack.leadingAnchor.constraint(
-                equalTo: hobbiesStackView.leadingAnchor,constant: Constant.view),
+                equalTo: hobbiesStackView.leadingAnchor,
+                constant: Constant.view),
             hobbiesStack.bottomAnchor.constraint(
-                equalTo: hobbiesStackView.bottomAnchor,constant: Constant.minusView),
+                equalTo: hobbiesStackView.bottomAnchor,
+                constant: Constant.minusView),
         ])
     }
     
