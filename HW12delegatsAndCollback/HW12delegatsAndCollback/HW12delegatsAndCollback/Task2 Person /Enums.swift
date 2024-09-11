@@ -37,4 +37,5 @@ enum Title {
     static let birthday = "Дата Рождения"
     static let male = "Пол"
     static let hobbie = "Увлечения"
+    static let changeHobbie = "Измени увлечение"
 }

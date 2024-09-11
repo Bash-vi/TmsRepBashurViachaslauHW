@@ -7,14 +7,27 @@
 
 import UIKit
 
+protocol HobbiesViewControllerDelegate: AnyObject {
+    func addHobbieList(hobbielist: String)
+}
+
 class HobbiesViewController: UIViewController {
+    
+    var hobbiesList: [String] = []
+    
+    weak var delegate: HobbiesViewControllerDelegate?
     
     lazy var scrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.alwaysBounceVertical = true
-        
         return scroll
+    }()
+    
+    lazy var contentScroll = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     lazy var tittleLabel = {
@@ -38,9 +51,14 @@ class HobbiesViewController: UIViewController {
             self?.addHobbieAction()
         }))
     
-    
-    
     lazy var titleStackView = {
+        let stack = UIView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.layerSetup()
+        return stack
+    }()
+    
+    lazy var scrollStackView = {
         let stack = UIView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.layerSetup()
@@ -64,31 +82,26 @@ class HobbiesViewController: UIViewController {
     lazy var scrollStack = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.layerSetup()
+        stack.distribution = .fillProportionally
         stack.spacing = Constant.spacing
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(scrollView)
-        scrollView.addSubview(scrollStack)
         view.addSubview(titleStackView)
         titleStackView.addSubview(titleStack)
         
-        
-        
+        view.addSubview(scrollStackView)
+        scrollStackView.addSubview(scrollView)
+        scrollView.addSubview(contentScroll)
+        contentScroll.addSubview(scrollStack)
         
         NSLayoutConstraint.activate([
             titleStackView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Constant.beetwenViews * 3),
+                equalTo: view.topAnchor,
+                constant: Constant.beetwenViews * 5),
             titleStackView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Constant.left),
@@ -109,38 +122,51 @@ class HobbiesViewController: UIViewController {
                 equalTo: titleStackView.bottomAnchor,
                 constant: Constant.minusStack),
             
-//            scrollView.topAnchor.constraint(
-//                equalTo: titleStackView.bottomAnchor,
-//                constant: Constant.beetwenViews),
-//            scrollView.leadingAnchor.constraint(
-//                equalTo: view.leadingAnchor,
-//                constant: Constant.left),
-//            scrollView.trailingAnchor.constraint(
-//                equalTo: view.trailingAnchor,
-//                constant: Constant.right),
-//            scrollView.heightAnchor.constraint(
-//                equalToConstant: view.bounds.height / 2),
+            scrollStackView.topAnchor.constraint(
+                equalTo: titleStackView.bottomAnchor,
+                constant: Constant.beetwenViews),
+            scrollStackView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constant.left),
+            scrollStackView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constant.right),
+            scrollStackView.heightAnchor.constraint(
+                equalToConstant: view.bounds.height / 2),
             
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.topAnchor.constraint(
+                equalTo: scrollStackView.topAnchor),
+            scrollView.trailingAnchor.constraint(
+                equalTo: scrollStackView.trailingAnchor),
+            scrollView.leadingAnchor.constraint(
+                equalTo: scrollStackView.leadingAnchor),
+            scrollView.bottomAnchor.constraint(
+                equalTo: scrollStackView.bottomAnchor),
+     
+            contentScroll.topAnchor.constraint(
+                equalTo: scrollView.topAnchor),
+            contentScroll.trailingAnchor.constraint(
+                equalTo: scrollView.trailingAnchor),
+            contentScroll.leadingAnchor.constraint(
+                equalTo: scrollView.leadingAnchor),
+            contentScroll.bottomAnchor.constraint(
+                equalTo: scrollView.bottomAnchor),
+            contentScroll.widthAnchor.constraint(
+                equalTo: scrollView.widthAnchor),
             
             scrollStack.topAnchor.constraint(
-                equalTo: titleStackView.bottomAnchor,
+                equalTo: contentScroll.topAnchor,
                 constant: Constant.stack),
             scrollStack.trailingAnchor.constraint(
-                equalTo: scrollView.trailingAnchor,
+                equalTo: contentScroll.trailingAnchor,
                 constant: Constant.minusStack),
             scrollStack.leadingAnchor.constraint(
-                equalTo: scrollView.leadingAnchor,
+                equalTo: contentScroll.leadingAnchor,
                 constant: Constant.stack),
             scrollStack.bottomAnchor.constraint(
-                equalTo: scrollView.bottomAnchor,
+                equalTo: contentScroll.bottomAnchor,
                 constant: Constant.minusStack),
-            scrollStack.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        
         self.modalPresentationStyle = .overFullScreen
     }
     
@@ -148,12 +174,15 @@ class HobbiesViewController: UIViewController {
         let vc = TextFieldViewController(
             titleText: Title.hobbie,
             replace: { hobbie in
-                self.addHobbie(hobbie: hobbie)
+                self.hobbiesList.append(hobbie)
+                self.scrollStack.addArrangedSubview(self.addHobbie(hobbie: hobbie))
+                self.dismiss(animated: true)
+                self.delegate?.addHobbieList(hobbielist: hobbie)
             })
         present(vc, animated: true)
     }
     
-    private func addHobbie(hobbie: String) {
+     func addHobbie(hobbie: String) -> UIView {
         lazy var icon = {
             let icon = UIImageView(image: .init(systemName: "list.bullet.circle.fill"))
             icon.contentMode = .scaleAspectFill
@@ -173,29 +202,43 @@ class HobbiesViewController: UIViewController {
             let label = UILabel()
             label.font = .systemFont(ofSize: 22, weight: .bold)
             label.textColor = .white
-            label.textAlignment = .center
+            label.textAlignment = .left
             return label
         }()
         
         lazy var editButton = PersonButton(
             style: .edit,
             action: .init(handler: { _ in
-                self.dismiss(animated: true )
+                edidStack()
             }))
         
         lazy var deleteButton = PersonButton(
             style: .delete,
             action: .init(handler: { _ in
-                self.dismiss(animated: true )
+                deleteStack()
             }))
         
+        func deleteStack() {
+             hobbieStack.removeFromSuperview()
+         }
+         
+         func edidStack() {
+            let vc = TextFieldViewController(
+                titleText: Title.changeHobbie,
+                replace: { newhobbi in
+                    hobbieLabel.text = newhobbi
+                    self.dismiss(animated: true)
+                })
+             present(vc, animated: true)
+         }
+         
         let hobbieStack = {
-            let stack = UIStackView()
-            stack.axis = .horizontal
-            stack.spacing = Constant.spacing
-            //stack.distribution = .fillEqual
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            return stack
+             let stack = UIStackView()
+             stack.axis = .horizontal
+             stack.spacing = Constant.spacing
+             stack.distribution = .fillProportionally
+             stack.translatesAutoresizingMaskIntoConstraints = false
+             return stack
         }()
         
         hobbieStack.addArrangedSubview(icon)
@@ -204,6 +247,7 @@ class HobbiesViewController: UIViewController {
         hobbieStack.addArrangedSubview(deleteButton)
         
         hobbieLabel.text = hobbie
-        return scrollStack.addArrangedSubview(hobbieStack)
+        return hobbieStack
     }
 }
+

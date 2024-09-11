@@ -7,7 +7,14 @@
 
 import UIKit
 
-class PersonViewController: UIViewController {
+class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
+    func addHobbieList(hobbielist: String) {
+        var array = [String]()
+        array.append(hobbielist)
+        addUserDefaults(value: array, key: KeysDefaults.hobbie)
+        hobbiesLabel.text = "dsf"
+    }
+    
     
     lazy var personStack = {
         let stack = UIStackView()
@@ -80,8 +87,8 @@ class PersonViewController: UIViewController {
     
     lazy var nameEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.editButtonAction(
+        action: .init(handler: { [weak self] _ in
+            self?.editButtonAction(
                 userDefaultKeys: KeysDefaults.name,
                 title: Title.name
             )
@@ -143,7 +150,7 @@ class PersonViewController: UIViewController {
         setupConstraints()
     }
     
-    private func addUserDefaults(value: String, key: String) {
+    private func addUserDefaults(value: Any, key: String) {
         defaults.set(value, forKey: key)
         loadUserDefaults()
     }
@@ -183,9 +190,10 @@ class PersonViewController: UIViewController {
         maleLabel.text = defaults.string(
             forKey: KeysDefaults.male
         ) ?? "Введите"
-        hobbiesLabel.text = defaults.string(
+       let hobbiesArray = defaults.stringArray(
             forKey: KeysDefaults.hobbie
-        ) ?? "Введите"
+        ) ?? []
+        hobbiesLabel.text = hobbiesArray.joined(separator: ",")
         fullnameLabel.text = fullName()
     }
     
@@ -309,12 +317,11 @@ class PersonViewController: UIViewController {
             return stack
         }()
         
-        let hobbieLabel = createValueLabel()
-        hobbieLabel.text = "есть, спать, есть"
+        
         
         hobbiesStackText.addArrangedSubview(
             createTitleLabel(title: Title.hobbie))
-        hobbiesStackText.addArrangedSubview(hobbieLabel)
+        hobbiesStackText.addArrangedSubview(hobbiesLabel)
         
         hobbiesStack.addArrangedSubview(icon)
         hobbiesStack.addArrangedSubview(hobbiesStackText)

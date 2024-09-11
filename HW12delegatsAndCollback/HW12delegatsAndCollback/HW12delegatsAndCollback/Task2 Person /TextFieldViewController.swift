@@ -46,8 +46,8 @@ class TextFieldViewController: UIViewController {
     
     lazy var backButton = PersonButton(
         style: .back,
-        action: .init(handler: { _ in
-            self.dismiss(animated: true )
+        action: .init(handler: { [weak self] _ in
+            self?.dismiss(animated: true )
         }))
     
     lazy var replaceButton = PersonButton(
