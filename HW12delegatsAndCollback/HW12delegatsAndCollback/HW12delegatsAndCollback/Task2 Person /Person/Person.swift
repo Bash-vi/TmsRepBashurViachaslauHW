@@ -7,7 +7,11 @@
 
 import UIKit
 
-struct Hobbie {
+struct Person {
     let name: String
-    let stack: UIView
+    let surename: String
+    let age: String
+    let birthday: String
+    let male: String
+    let hobbie: [String]
 }

@@ -7,14 +7,7 @@
 
 import UIKit
 
-class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
-    func addHobbieList(hobbielist: String) {
-        var array = [String]()
-        array.append(hobbielist)
-        addUserDefaults(value: array, key: KeysDefaults.hobbie)
-        hobbiesLabel.text = "dsf"
-    }
-    
+class PersonViewController: UIViewController {
     
     lazy var personStack = {
         let stack = UIStackView()
@@ -138,6 +131,9 @@ class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
     
     lazy var fullnameLabel = createValueLabel()
     
+    let serviceDefault = serviceUserDefault.sharid
+    
+    let serviceHobbies = HobbiesService.sharid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,14 +146,16 @@ class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
         setupConstraints()
     }
     
-    private func addUserDefaults(value: Any, key: String) {
-        defaults.set(value, forKey: key)
-        loadUserDefaults()
-    }
     //MARK: Action Button
     private func hobbiesActionButton() {
-        let vc = HobbiesViewController()
-        
+        let vc = HobbiesViewController(backAction: { [weak self] in
+            self?.serviceDefault.addUserDefaults(
+                key: KeysDefaults.hobbie,
+                value: self?.serviceHobbies.hobbies ?? []
+            )
+            self?.loadUserDefaults()
+            self?.dismiss(animated: true)
+        })
         present(vc, animated: true)
     }
     
@@ -165,35 +163,20 @@ class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
         let vc = TextFieldViewController(
             titleText: title,
             replace: { newName in
-                self.addUserDefaults(
-                    value: newName,
-                    key: userDefaultKeys
-                )
+                self.serviceDefault.addUserDefaults(key: userDefaultKeys, value: newName)
                 self.dismiss(animated: true)
+                self.loadUserDefaults()
             })
         present(vc, animated: true)
     }
     
     func loadUserDefaults() {
-        nameLabel.text = defaults.string(
-            forKey: KeysDefaults.name
-        ) ?? "Введите"
-        surenameLabel.text = defaults.string(
-            forKey: KeysDefaults.surename
-        ) ?? "Введите"
-        ageLabel.text = defaults.string(
-            forKey: KeysDefaults.age
-        ) ?? "Введите"
-        birthdayLabel.text = defaults.string(
-            forKey: KeysDefaults.birthday
-        ) ?? "Введите"
-        maleLabel.text = defaults.string(
-            forKey: KeysDefaults.male
-        ) ?? "Введите"
-       let hobbiesArray = defaults.stringArray(
-            forKey: KeysDefaults.hobbie
-        ) ?? []
-        hobbiesLabel.text = hobbiesArray.joined(separator: ",")
+        nameLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.name)
+        surenameLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.surename)
+        ageLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.age)
+        birthdayLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.birthday)
+        maleLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.male)
+        hobbiesLabel.text = serviceDefault.showHobbie()
         fullnameLabel.text = fullName()
     }
     
@@ -217,6 +200,7 @@ class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textColor = .white
+        label.numberOfLines = 0
         return label
     }
     
@@ -316,8 +300,6 @@ class PersonViewController: UIViewController, HobbiesViewControllerDelegate {
             stack.spacing = Constant.spacing
             return stack
         }()
-        
-        
         
         hobbiesStackText.addArrangedSubview(
             createTitleLabel(title: Title.hobbie))

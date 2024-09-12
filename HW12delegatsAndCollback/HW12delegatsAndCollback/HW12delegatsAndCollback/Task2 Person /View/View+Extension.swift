@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-    
     func layerSetup() {
         layer.cornerRadius = 40
         layer.cornerCurve = .circular

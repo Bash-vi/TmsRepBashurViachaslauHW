@@ -7,15 +7,26 @@
 
 import UIKit
 
-protocol HobbiesViewControllerDelegate: AnyObject {
-    func addHobbieList(hobbielist: String)
-}
-
 class HobbiesViewController: UIViewController {
     
-    var hobbiesList: [String] = []
+    let personVC = PersonViewController()
     
-    weak var delegate: HobbiesViewControllerDelegate?
+    let serviceDefault = serviceUserDefault.sharid
+    
+    let serviceHobbies = HobbiesService.sharid
+    
+    let backAction: () -> Void
+    
+    init(
+        backAction: @escaping () -> Void
+    ) {
+        self.backAction = backAction
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var scrollView = {
         let scroll = UIScrollView()
@@ -42,7 +53,7 @@ class HobbiesViewController: UIViewController {
     lazy var backButton = PersonButton(
         style: .back,
         action: .init(handler: { _ in
-            self.dismiss(animated: true )
+            self.backAction()
         }))
     
     lazy var addButton = PersonButton(
@@ -80,13 +91,21 @@ class HobbiesViewController: UIViewController {
     }()
     
     lazy var scrollStack = {
-        let stack = UIStackView()
+        let stack = UIStackView(arrangedSubviews: loadStack())
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = Constant.spacing
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
+    func loadStack() -> [UIView] {
+        var stacks: [UIView] = []
+        for hobbies in serviceDefault.returnHobbie() {
+            stacks.append(addHobbie(hobbie: .init(hobbies)))
+        }
+        return stacks
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,10 +193,9 @@ class HobbiesViewController: UIViewController {
         let vc = TextFieldViewController(
             titleText: Title.hobbie,
             replace: { hobbie in
-                self.hobbiesList.append(hobbie)
+                self.serviceHobbies.hobbies.append(hobbie)
                 self.scrollStack.addArrangedSubview(self.addHobbie(hobbie: hobbie))
                 self.dismiss(animated: true)
-                self.delegate?.addHobbieList(hobbielist: hobbie)
             })
         present(vc, animated: true)
     }
@@ -203,6 +221,7 @@ class HobbiesViewController: UIViewController {
             label.font = .systemFont(ofSize: 22, weight: .bold)
             label.textColor = .white
             label.textAlignment = .left
+            label.numberOfLines = 0
             return label
         }()
         
@@ -219,7 +238,9 @@ class HobbiesViewController: UIViewController {
             }))
         
         func deleteStack() {
-             hobbieStack.removeFromSuperview()
+            hobbieStack.removeFromSuperview()
+            var aray = serviceDefault.returnHobbie()
+            
          }
          
          func edidStack() {
@@ -245,7 +266,6 @@ class HobbiesViewController: UIViewController {
         hobbieStack.addArrangedSubview(hobbieLabel)
         hobbieStack.addArrangedSubview(editButton)
         hobbieStack.addArrangedSubview(deleteButton)
-        
         hobbieLabel.text = hobbie
         return hobbieStack
     }
