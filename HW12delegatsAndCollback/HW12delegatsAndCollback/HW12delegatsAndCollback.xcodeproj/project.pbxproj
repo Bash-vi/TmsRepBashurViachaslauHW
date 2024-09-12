@@ -14,17 +14,9 @@
 		A856296F2C8CBE140061245D /* PersonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856296E2C8CBE140061245D /* PersonButton.swift */; };
 		A8958FF32C3DB3BC00612691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF22C3DB3BC00612691 /* AppDelegate.swift */; };
 		A8958FF52C3DB3BC00612691 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF42C3DB3BC00612691 /* SceneDelegate.swift */; };
-		A8958FF72C3DB3BC00612691 /* Screen1vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8958FF62C3DB3BC00612691 /* Screen1vc.swift */; };
 		A8958FFA2C3DB3BC00612691 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A8958FF92C3DB3BC00612691 /* Base */; };
 		A8958FFC2C3DB3BD00612691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8958FFB2C3DB3BD00612691 /* Assets.xcassets */; };
 		A8958FFF2C3DB3BD00612691 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A8958FFE2C3DB3BD00612691 /* Base */; };
-		A89590072C3DB76C00612691 /* ScreenOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89590062C3DB76C00612691 /* ScreenOne.swift */; };
-		A89590092C3DB79500612691 /* ScreenTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89590082C3DB79500612691 /* ScreenTwo.swift */; };
-		A895900C2C4010DD00612691 /* Screen2vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895900B2C4010DD00612691 /* Screen2vc.swift */; };
-		A895900F2C402B1900612691 /* UserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895900E2C402B1900612691 /* UserScreen.swift */; };
-		A89590122C41A87800612691 /* EditUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89590112C41A87800612691 /* EditUserScreen.swift */; };
-		A89590162C44794500612691 /* ScrollHobbiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89590152C44794500612691 /* ScrollHobbiList.swift */; };
-		A89590182C4491FA00612691 /* EditScrollHobbiList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89590172C4491FA00612691 /* EditScrollHobbiList.swift */; };
 		A89878212C9098DB001F5D3B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89878202C9098DB001F5D3B /* Person.swift */; };
 		A89878282C9238CC001F5D3B /* StoragePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89878272C9238CC001F5D3B /* StoragePerson.swift */; };
 		A898782A2C9238E8001F5D3B /* HobbiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89878292C9238E8001F5D3B /* HobbiesService.swift */; };
@@ -43,18 +35,10 @@
 		A8958FEF2C3DB3BB00612691 /* HW12delegatsAndCollback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW12delegatsAndCollback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8958FF22C3DB3BC00612691 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8958FF42C3DB3BC00612691 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A8958FF62C3DB3BC00612691 /* Screen1vc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen1vc.swift; sourceTree = "<group>"; };
 		A8958FF92C3DB3BC00612691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8958FFB2C3DB3BD00612691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8958FFE2C3DB3BD00612691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A89590002C3DB3BD00612691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A89590062C3DB76C00612691 /* ScreenOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenOne.swift; sourceTree = "<group>"; };
-		A89590082C3DB79500612691 /* ScreenTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTwo.swift; sourceTree = "<group>"; };
-		A895900B2C4010DD00612691 /* Screen2vc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen2vc.swift; sourceTree = "<group>"; };
-		A895900E2C402B1900612691 /* UserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreen.swift; sourceTree = "<group>"; };
-		A89590112C41A87800612691 /* EditUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserScreen.swift; sourceTree = "<group>"; };
-		A89590152C44794500612691 /* ScrollHobbiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollHobbiList.swift; sourceTree = "<group>"; };
-		A89590172C4491FA00612691 /* EditScrollHobbiList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScrollHobbiList.swift; sourceTree = "<group>"; };
 		A89878202C9098DB001F5D3B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A89878272C9238CC001F5D3B /* StoragePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragePerson.swift; sourceTree = "<group>"; };
 		A89878292C9238E8001F5D3B /* HobbiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesService.swift; sourceTree = "<group>"; };
@@ -75,7 +59,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A815AEAC2C88B7A800FBF9D8 /* Task2 Person  */ = {
+		A815AEAC2C88B7A800FBF9D8 /* Person */ = {
 			isa = PBXGroup;
 			children = (
 				A89878222C923745001F5D3B /* Person */,
@@ -83,7 +67,7 @@
 				A89878232C92375B001F5D3B /* ViewControllers */,
 				A898782B2C923A6A001F5D3B /* Enum */,
 			);
-			path = "Task2 Person ";
+			path = Person;
 			sourceTree = "<group>";
 		};
 		A8958FE62C3DB3BB00612691 = {
@@ -106,45 +90,13 @@
 			isa = PBXGroup;
 			children = (
 				A89878252C92382F001F5D3B /* App */,
-				A815AEAC2C88B7A800FBF9D8 /* Task2 Person  */,
-				A89590102C402B7D00612691 /* Task 2.User */,
-				A895900D2C40111D00612691 /* Task 1.Delegate */,
-				A895900A2C3DB7A300612691 /* Task 1.Callback */,
+				A815AEAC2C88B7A800FBF9D8 /* Person */,
 				A8958FF82C3DB3BC00612691 /* Main.storyboard */,
 				A8958FFB2C3DB3BD00612691 /* Assets.xcassets */,
 				A8958FFD2C3DB3BD00612691 /* LaunchScreen.storyboard */,
 				A89590002C3DB3BD00612691 /* Info.plist */,
 			);
 			path = HW12delegatsAndCollback;
-			sourceTree = "<group>";
-		};
-		A895900A2C3DB7A300612691 /* Task 1.Callback */ = {
-			isa = PBXGroup;
-			children = (
-				A89590062C3DB76C00612691 /* ScreenOne.swift */,
-				A89590082C3DB79500612691 /* ScreenTwo.swift */,
-			);
-			path = "Task 1.Callback";
-			sourceTree = "<group>";
-		};
-		A895900D2C40111D00612691 /* Task 1.Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				A8958FF62C3DB3BC00612691 /* Screen1vc.swift */,
-				A895900B2C4010DD00612691 /* Screen2vc.swift */,
-			);
-			path = "Task 1.Delegate";
-			sourceTree = "<group>";
-		};
-		A89590102C402B7D00612691 /* Task 2.User */ = {
-			isa = PBXGroup;
-			children = (
-				A895900E2C402B1900612691 /* UserScreen.swift */,
-				A89590112C41A87800612691 /* EditUserScreen.swift */,
-				A89590152C44794500612691 /* ScrollHobbiList.swift */,
-				A89590172C4491FA00612691 /* EditScrollHobbiList.swift */,
-			);
-			path = "Task 2.User";
 			sourceTree = "<group>";
 		};
 		A89878222C923745001F5D3B /* Person */ = {
@@ -270,15 +222,9 @@
 				A89878282C9238CC001F5D3B /* StoragePerson.swift in Sources */,
 				A856296F2C8CBE140061245D /* PersonButton.swift in Sources */,
 				A89878312C923B7D001F5D3B /* Title.swift in Sources */,
-				A89590072C3DB76C00612691 /* ScreenOne.swift in Sources */,
-				A8958FF72C3DB3BC00612691 /* Screen1vc.swift in Sources */,
 				A8958FF32C3DB3BC00612691 /* AppDelegate.swift in Sources */,
 				A815AEB22C88B83300FBF9D8 /* TextFieldViewController.swift in Sources */,
-				A89590162C44794500612691 /* ScrollHobbiList.swift in Sources */,
-				A89590092C3DB79500612691 /* ScreenTwo.swift in Sources */,
 				A89878212C9098DB001F5D3B /* Person.swift in Sources */,
-				A89590122C41A87800612691 /* EditUserScreen.swift in Sources */,
-				A895900F2C402B1900612691 /* UserScreen.swift in Sources */,
 				A89878332C924597001F5D3B /* serviceUserDefault.swift in Sources */,
 				A815AEAE2C88B7DF00FBF9D8 /* PersonViewController.swift in Sources */,
 				A8958FF52C3DB3BC00612691 /* SceneDelegate.swift in Sources */,
@@ -286,9 +232,7 @@
 				A898782A2C9238E8001F5D3B /* HobbiesService.swift in Sources */,
 				A815AEB02C88B80500FBF9D8 /* HobbiesViewController.swift in Sources */,
 				A898782D2C923B44001F5D3B /* KeysUserDefaults.swift in Sources */,
-				A895900C2C4010DD00612691 /* Screen2vc.swift in Sources */,
 				A815AEB42C88B86100FBF9D8 /* View+Extension.swift in Sources */,
-				A89590182C4491FA00612691 /* EditScrollHobbiList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// названия переменных, помню)
 enum Constant {
     static let spacing: CGFloat = 5
     static let beetwenViews: CGFloat = 20

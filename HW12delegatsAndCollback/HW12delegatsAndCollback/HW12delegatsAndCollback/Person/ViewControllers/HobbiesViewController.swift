@@ -9,8 +9,6 @@ import UIKit
 
 class HobbiesViewController: UIViewController {
     
-    let personVC = PersonViewController()
-    
     let serviceDefault = serviceUserDefault.sharid
     
     let serviceHobbies = HobbiesService.sharid
@@ -52,8 +50,8 @@ class HobbiesViewController: UIViewController {
     
     lazy var backButton = PersonButton(
         style: .back,
-        action: .init(handler: { _ in
-            self.backAction()
+        action: .init(handler: { [weak self] _ in
+            self?.backAction()
         }))
     
     lazy var addButton = PersonButton(
@@ -99,19 +97,10 @@ class HobbiesViewController: UIViewController {
         return stack
     }()
     
-    func loadStack() -> [UIView] {
-        var stacks: [UIView] = []
-        for hobbies in serviceDefault.returnHobbie() {
-            stacks.append(addHobbie(hobbie: .init(hobbies)))
-        }
-        return stacks
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(titleStackView)
         titleStackView.addSubview(titleStack)
-        
         view.addSubview(scrollStackView)
         scrollStackView.addSubview(scrollView)
         scrollView.addSubview(contentScroll)
@@ -189,19 +178,27 @@ class HobbiesViewController: UIViewController {
         self.modalPresentationStyle = .overFullScreen
     }
     
+    func loadStack() -> [UIView] {
+        var stacks: [UIView] = []
+        for hobbies in serviceDefault.returnHobbie() {
+            stacks.append(addHobbie(hobbie: .init(hobbies)))
+        }
+        return stacks
+    }
+    
     private func addHobbieAction() {
         let vc = TextFieldViewController(
             titleText: Title.hobbie,
-            replace: { hobbie in
-                self.serviceHobbies.hobbies.append(hobbie)
-                self.scrollStack.addArrangedSubview(self.addHobbie(hobbie: hobbie))
-                self.dismiss(animated: true)
+            replace: { [weak self] hobbie in
+                self?.serviceHobbies.hobbies.append(hobbie)
+                self?.scrollStack.addArrangedSubview(self?.addHobbie(hobbie: hobbie) ?? UIView())
+                self?.dismiss(animated: true)
             })
         present(vc, animated: true)
     }
     
      func addHobbie(hobbie: String) -> UIView {
-        lazy var icon = {
+        let icon = {
             let icon = UIImageView(image: .init(systemName: "list.bullet.circle.fill"))
             icon.contentMode = .scaleAspectFill
             icon.tintColor = .systemGray3
@@ -216,7 +213,7 @@ class HobbiesViewController: UIViewController {
             return icon
         }()
         
-        lazy var hobbieLabel = {
+        let hobbieLabel = {
             let label = UILabel()
             label.font = .systemFont(ofSize: 22, weight: .bold)
             label.textColor = .white
@@ -239,17 +236,17 @@ class HobbiesViewController: UIViewController {
         
         func deleteStack() {
             hobbieStack.removeFromSuperview()
-            var aray = serviceDefault.returnHobbie()
-            
+            var array = serviceDefault.returnHobbie()
+            array.removeLast()
          }
          
-         func edidStack() {
+        func edidStack() {
             let vc = TextFieldViewController(
                 titleText: Title.changeHobbie,
-                replace: { newhobbi in
+                replace: { [weak self] newhobbi in
                     hobbieLabel.text = newhobbi
-                    self.dismiss(animated: true)
-                })
+                    self?.dismiss(animated: true)
+            })
              present(vc, animated: true)
          }
          

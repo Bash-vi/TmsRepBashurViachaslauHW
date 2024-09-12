@@ -52,8 +52,8 @@ class TextFieldViewController: UIViewController {
     
     lazy var replaceButton = PersonButton(
         style: .replace,
-        action: .init(handler: { _ in
-            self.replace(self.textField.text ?? "")
+        action: .init(handler: { [weak self] _ in
+            self?.replace(self?.textField.text ?? "")
         }))
     
     lazy var stack = {
@@ -114,7 +114,6 @@ class TextFieldViewController: UIViewController {
                 equalTo: stackView.bottomAnchor,
                 constant: Constant.minusStack),
         ])
-        
         self.modalPresentationStyle = .overFullScreen
     }
 }

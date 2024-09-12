@@ -15,6 +15,4 @@ class HobbiesService {
     func addHobbie(hobbie: String) {
         hobbies.append(hobbie)
     }
-    
-    
 }

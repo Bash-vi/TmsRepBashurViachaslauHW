@@ -89,8 +89,8 @@ class PersonViewController: UIViewController {
     
     lazy var surenameEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.editButtonAction(
+        action: .init(handler: { [weak self] _ in
+            self?.editButtonAction(
                 userDefaultKeys: KeysDefaults.surename,
                 title: Title.surename
             )
@@ -98,8 +98,8 @@ class PersonViewController: UIViewController {
     
     lazy var ageEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.editButtonAction(
+        action: .init(handler: { [weak self] _ in
+            self?.editButtonAction(
                 userDefaultKeys: KeysDefaults.age,
                 title: Title.age
             )
@@ -107,8 +107,8 @@ class PersonViewController: UIViewController {
     
     lazy var maleEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.editButtonAction(
+        action: .init(handler: { [weak self] _ in
+            self?.editButtonAction(
                 userDefaultKeys: KeysDefaults.male,
                 title: Title.male
             )
@@ -116,8 +116,8 @@ class PersonViewController: UIViewController {
     
     lazy var birthdayEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.editButtonAction(
+        action: .init(handler: { [weak self] _ in
+            self?.editButtonAction(
                 userDefaultKeys: KeysDefaults.birthday,
                 title: Title.birthday
             )
@@ -125,8 +125,8 @@ class PersonViewController: UIViewController {
     
     lazy var hobbiesEditButton = PersonButton(
         style: .edit,
-        action: .init(handler: { _ in
-            self.hobbiesActionButton()
+        action: .init(handler: { [weak self] _ in
+            self?.hobbiesActionButton()
         }))
     
     lazy var fullnameLabel = createValueLabel()
@@ -162,10 +162,10 @@ class PersonViewController: UIViewController {
     private func editButtonAction(userDefaultKeys: String, title: String) {
         let vc = TextFieldViewController(
             titleText: title,
-            replace: { newName in
-                self.serviceDefault.addUserDefaults(key: userDefaultKeys, value: newName)
-                self.dismiss(animated: true)
-                self.loadUserDefaults()
+            replace: { [weak self] newName in
+                self?.serviceDefault.addUserDefaults(key: userDefaultKeys, value: newName)
+                self?.dismiss(animated: true)
+                self?.loadUserDefaults()
             })
         present(vc, animated: true)
     }
@@ -183,6 +183,13 @@ class PersonViewController: UIViewController {
     private func fullName() -> String {
         let fullName = "\(String(describing: nameLabel.text!)) \(String(describing: surenameLabel.text!))"
         return fullName
+    }
+    // MARK: Create Components
+    private func createHorizontInfoStack(_ views: [UIView]) -> UIStackView {
+        let horizontStack = UIStackView(arrangedSubviews: views)
+        horizontStack.axis = .horizontal
+        horizontStack.spacing = Constant.spacing
+        return horizontStack
     }
     
     private func createTitleLabel(title: String ) -> UILabel {
@@ -203,7 +210,7 @@ class PersonViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }
-    
+    //MARK: Create Staks
     private func createPersonStack() {
         let icon = UIImageView(image: .init(systemName: "person.crop.circle.fill"))
         icon.contentMode = .scaleAspectFill
@@ -274,13 +281,6 @@ class PersonViewController: UIViewController {
         infoStackView.addSubview(infoStack)
     }
     
-    private func createHorizontInfoStack(_ views: [UIView]) -> UIStackView {
-        let horizontStack = UIStackView(arrangedSubviews: views)
-        horizontStack.axis = .horizontal
-        horizontStack.spacing = Constant.spacing
-        return horizontStack
-    }
-    
     private func createHobbiesStack() {
         let icon = UIImageView(image: .init(systemName: "list.bullet.circle.fill"))
         icon.contentMode = .scaleAspectFill
@@ -301,8 +301,7 @@ class PersonViewController: UIViewController {
             return stack
         }()
         
-        hobbiesStackText.addArrangedSubview(
-            createTitleLabel(title: Title.hobbie))
+        hobbiesStackText.addArrangedSubview(createTitleLabel(title: Title.hobbie))
         hobbiesStackText.addArrangedSubview(hobbiesLabel)
         
         hobbiesStack.addArrangedSubview(icon)
@@ -394,5 +393,4 @@ class PersonViewController: UIViewController {
                 constant: Constant.minusView),
         ])
     }
-    
 }

@@ -19,3 +19,5 @@ class StoragePerson {
         hobbie: defaults.stringArray(forKey: KeysDefaults.hobbie) ?? []
     )
 }
+// хотел так попробовать, но отображает данные после перезапуска только
+// что-то вроде Label.text = sharid.person.name
