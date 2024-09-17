@@ -135,10 +135,17 @@ class PersonViewController: UIViewController {
     
     let serviceHobbies = HobbiesService.sharid
     
+    let servicePerson = ServicePerson()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadUserDefaults()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        loadUserDefaults()
+//        loadUserDefaults()
         view.addSubview(greetinglabel)
         createPersonStack()
         createinfoStack()
@@ -149,11 +156,13 @@ class PersonViewController: UIViewController {
     //MARK: Action Button
     private func hobbiesActionButton() {
         let vc = HobbiesViewController(backAction: { [weak self] in
-            self?.serviceDefault.addUserDefaults(
-                key: KeysDefaults.hobbie,
-                value: self?.serviceHobbies.hobbies ?? []
-            )
+//            self?.serviceDefault.addUserDefaults(
+//                key: KeysDefaults.hobbie,
+//                value: self?.serviceHobbies.hobbies ?? []
+//            )
             self?.loadUserDefaults()
+            
+            
             self?.dismiss(animated: true)
         })
         present(vc, animated: true)
@@ -163,7 +172,7 @@ class PersonViewController: UIViewController {
         let vc = TextFieldViewController(
             titleText: title,
             replace: { [weak self] newName in
-                self?.serviceDefault.addUserDefaults(key: userDefaultKeys, value: newName)
+                self?.servicePerson.saveData(key: userDefaultKeys, value: newName)
                 self?.dismiss(animated: true)
                 self?.loadUserDefaults()
             })
@@ -171,12 +180,12 @@ class PersonViewController: UIViewController {
     }
     
     func loadUserDefaults() {
-        nameLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.name)
+        nameLabel.text = servicePerson.person.name
         surenameLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.surename)
         ageLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.age)
         birthdayLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.birthday)
         maleLabel.text = serviceDefault.showUserDefaults(key: KeysDefaults.male)
-        hobbiesLabel.text = serviceDefault.showHobbie()
+        hobbiesLabel.text = servicePerson.showHobbie()
         fullnameLabel.text = fullName()
     }
     

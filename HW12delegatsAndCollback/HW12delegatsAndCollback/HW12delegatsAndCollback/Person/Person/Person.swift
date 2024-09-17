@@ -13,5 +13,5 @@ struct Person {
     let age: String
     let birthday: String
     let male: String
-    let hobbie: [String]
+    var hobbies: [String]
 }

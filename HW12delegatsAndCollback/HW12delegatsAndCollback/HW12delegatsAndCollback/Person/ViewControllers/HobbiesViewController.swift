@@ -13,6 +13,8 @@ class HobbiesViewController: UIViewController {
     
     let serviceHobbies = HobbiesService.sharid
     
+    let servicePerson = ServicePerson()
+    
     let backAction: () -> Void
     
     init(
@@ -180,7 +182,7 @@ class HobbiesViewController: UIViewController {
     
     func loadStack() -> [UIView] {
         var stacks: [UIView] = []
-        for hobbies in serviceDefault.returnHobbie() {
+        for hobbies in servicePerson.person.hobbies {
             stacks.append(addHobbie(hobbie: .init(hobbies)))
         }
         return stacks
@@ -190,7 +192,11 @@ class HobbiesViewController: UIViewController {
         let vc = TextFieldViewController(
             titleText: Title.hobbie,
             replace: { [weak self] hobbie in
-                self?.serviceHobbies.hobbies.append(hobbie)
+                var hobbies = [String]()
+                hobbies.append(hobbie)
+//                self?.serviceHobbies.addHobbie(hobbie: hobbie)
+//                self?.servicePerson.hobbies.append(hobbie)
+                self?.servicePerson.saveData(key: KeysDefaults.hobbie, value: hobbies)
                 self?.scrollStack.addArrangedSubview(self?.addHobbie(hobbie: hobbie) ?? UIView())
                 self?.dismiss(animated: true)
             })
@@ -236,8 +242,7 @@ class HobbiesViewController: UIViewController {
         
         func deleteStack() {
             hobbieStack.removeFromSuperview()
-            var array = serviceDefault.returnHobbie()
-            array.removeLast()
+            servicePerson.removeHobbie(hobbie: hobbieLabel.text!)
          }
          
         func edidStack() {
