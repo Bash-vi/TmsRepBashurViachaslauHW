@@ -8,7 +8,6 @@
 import UIKit
 
 class PostsViewController: UIViewController {
-    
     var posts: [Post] = [] {
         didSet {
             tableView.reloadData()
@@ -44,7 +43,6 @@ class PostsViewController: UIViewController {
         })
     }
 }
-
 
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

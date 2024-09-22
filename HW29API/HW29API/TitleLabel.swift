@@ -9,6 +9,7 @@ import Foundation
 
 enum TitleUser {
     static let user = "User"
+    static let name = "name"
     static let email = "email"
     static let phone = "phone"
     static let website = "website"
@@ -16,7 +17,7 @@ enum TitleUser {
 
 enum TitleCompany {
     static let company = "Company"
-    static let name = "name"
+    static let companyName = "name"
     static let catchPhrase = "catchPhrase"
     static let bs = "bs"
 }

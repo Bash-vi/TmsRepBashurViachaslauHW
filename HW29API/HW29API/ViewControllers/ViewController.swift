@@ -8,24 +8,61 @@
 import UIKit
 
 class ViewController: UIViewController {
-    lazy var but = {
-        let but = UIButton(frame: .init(x: 100, y: 100, width: 100, height: 100), primaryAction: UIAction(handler: {_ in self.psert()}))
-        but.setTitle("2222", for: .normal)
-        return but
+    lazy var buttonUsers = {
+        let button = UIButton(primaryAction: .init(handler: { [weak self] _ in self?.presentUsers()}))
+        button.setImage(UIImage(systemName: "person.crop.square.fill"), for: .normal)
+        button.tintColor = .blue
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.widthAnchor.constraint(equalToConstant: Constant.buttonSize).isActive = true
+        button.heightAnchor.constraint(equalToConstant: Constant.buttonSize).isActive = true
+        return button
+    }()
+    
+    lazy var buttonPosts = {
+        let button = UIButton(primaryAction: .init(handler: { [weak self] _ in self?.presentPosts()}))
+        button.setImage(UIImage(systemName: "list.bullet.rectangle.portrait"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.widthAnchor.constraint(equalToConstant: Constant.buttonSize).isActive = true
+        button.heightAnchor.constraint(equalToConstant: Constant.buttonSize).isActive = true
+        return button
+    }()
+    
+    lazy var buttonStack = {
+        let stack = UIStackView(arrangedSubviews: [
+            buttonUsers, buttonPosts
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.backgroundColor = .systemGray6
+        stack.layer.borderWidth = Constant.borderWidth
+        stack.layer.borderColor = UIColor.black.cgColor
+        stack.layer.cornerRadius = Constant.corRad
+        stack.axis = .horizontal
+        stack.spacing = Constant.minSpasing
+        return stack
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        psert()
         view.backgroundColor = .darkGray
-        view.addSubview(but)
+        view.addSubview(buttonStack)
+        NSLayoutConstraint.activate([
+            buttonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
+    private func presentUsers() {
+        let vc = UsersViewController()
+        modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
     
-    
-    func psert() {
+    private func presentPosts() {
         let vc = PostsViewController()
-  present(vc, animated: true)    }
-    
+        modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
 }
 
