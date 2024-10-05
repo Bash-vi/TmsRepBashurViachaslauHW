@@ -9,9 +9,11 @@ import UIKit
 
 class GuessTheNumberVC: UIViewController {
     
-    var name: String = "name"
+    let service = StorageService(storage: Storage())
+    
+    
     var count: String = "0"
-    var answers: [String] = ["1","2","3"]
+   
 
     private lazy var builder = {
         return ViewBuilder(controller: self)
@@ -21,7 +23,7 @@ class GuessTheNumberVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         builder.setPageTitle(title: "Угадай")
-        builder.setInfoStack(name: name, count: count)
+        builder.setInfoStack(name: service.currentName(), count: count)
         builder.setTextFieldStack()
         builder.setAnswersTable(dataSourse: self)
     }
@@ -29,12 +31,14 @@ class GuessTheNumberVC: UIViewController {
 
 extension GuessTheNumberVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        answers.count
+        service.currentAnswers().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { return UITableViewCell() }
+        let answers = service.currentAnswers()
         cell.textLabel?.text = answers[indexPath.row]
+        tableView.reloadData()
         return cell
     }
     

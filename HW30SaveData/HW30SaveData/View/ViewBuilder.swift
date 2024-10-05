@@ -9,6 +9,7 @@ import UIKit
 
 final class ViewBuilder {
     
+    let service = StorageService(storage: Storage())
     private let manager = ViewManager.shared
     private var controller: UIViewController
     private var view: UIView
@@ -112,6 +113,6 @@ final class ViewBuilder {
     }
     
     private func checkAction() {
-      
+        service.guessTheNumber(userNumber: textField.text ?? "")
     }
 }
