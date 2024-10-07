@@ -10,6 +10,9 @@ import UIKit
 class AppButton: UIButton {
     enum Style {
         case check
+        case info
+        case save
+        case back
     }
     
     let actionButton: () -> Void
@@ -23,9 +26,20 @@ class AppButton: UIButton {
         switch style {
         case .check:
             self.setTitle("Ввод", for: .normal)
-            self.backgroundColor = .green.withAlphaComponent(0.6)
+            self.backgroundColor = .green.withAlphaComponent(0.5)
+        case .save:
+            self.setTitle("Сохранить", for: .normal)
+            self.backgroundColor = .green.withAlphaComponent(0.5)
+        case .info:
+            self.setTitle("Инфо", for: .normal)
+            self.backgroundColor = .systemBlue.withAlphaComponent(0.5)
+        case .back:
+            self.setTitle("Назад", for: .normal)
+            self.backgroundColor = .red.withAlphaComponent(0.5)
         }
         self.addAction(.init(handler: { _ in self.actionButton() }), for: .touchUpInside)
+        self.layer.cornerRadius = 5
+        self.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     required init?(coder: NSCoder) {

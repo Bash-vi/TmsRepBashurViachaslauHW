@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewBuilder {
+final class ViewBuilder: NSObject {
     
     let service = StorageService(storage: Storage())
     private let manager = ViewManager.shared
@@ -18,9 +18,16 @@ final class ViewBuilder {
         self.controller = controller
         self.view = controller.view
     }
-  
-    private lazy var pageTitle = AppLabel(style: .pageTitle)
     
+    private lazy var titleStack = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
+        stack.spacing = Constant.spacing
+        return stack
+    }()
+
     private lazy var infoStack = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -48,32 +55,41 @@ final class ViewBuilder {
         return stack
     }()
     
+    private lazy var countLabel = AppLabel(style: .value)
+    private lazy var nameLabel = AppLabel(style: .value)
+    
     private lazy var answersTable = UITableView()
     
+    private var answers: [String] {service.currentAnswers()}
+    private var currentCount: String {service.currentCount()}
+    private var currentName: String {service.currentName()}
+    
     func setPageTitle(title: String) {
+        let pageTitle = AppLabel(style: .pageTitle)
         pageTitle.text = title
-        view.addSubview(pageTitle)
+        let InfoButton = AppButton(actionButton: self.actionInfoButton, style: .info)
+        
+        view.addSubview(titleStack)
+        titleStack.addArrangedSubview(pageTitle)
+        titleStack.addArrangedSubview(InfoButton)
+        
         NSLayoutConstraint.activate([
-            pageTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            pageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
-            pageTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.indent)
+            titleStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
+            titleStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.indent)
         ])
     }
     
-    func setInfoStack(name: String, count: String) {
+    func setInfoStack() {
         let nameTitle = AppLabel(style: .nameTitle)
         nameTitle.text = "Имя"
-       
-        let nameLabel = AppLabel(style: .value)
-        nameLabel.text = name
+        nameLabel.text = currentName
         
         let nameStack = manager.createHorizontStack(views: [nameTitle, nameLabel])
         
         let countTitle = AppLabel(style: .nameTitle)
         countTitle.text = "Попытки"
-       
-        let countLabel = AppLabel(style: .value)
-        countLabel.text = count
+        countLabel.text = currentCount
         
         let countStack = manager.createHorizontStack(views: [countTitle, countLabel])
         
@@ -98,21 +114,53 @@ final class ViewBuilder {
         ])
     }
     
-    func setAnswersTable(dataSourse: UITableViewDataSource) {
+    func setAnswersTable() {
         answersTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         answersTable.translatesAutoresizingMaskIntoConstraints = false
-        answersTable.dataSource = dataSourse
+        answersTable.dataSource = self
         
         view.addSubview(answersTable)
         NSLayoutConstraint.activate([
             answersTable.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor,constant: Constant.spacing),
             answersTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
             answersTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.indent),
-            answersTable.heightAnchor.constraint(equalToConstant: 300)
+            answersTable.heightAnchor.constraint(equalToConstant: 270)
         ])
+    }
+    
+    func reloadData() {
+        answersTable.reloadData()
+        countLabel.text = currentCount
+        nameLabel.text = currentName
     }
     
     private func checkAction() {
         service.guessTheNumber(userNumber: textField.text ?? "")
+        reloadData()
+        textField.text = nil
+    }
+    
+    private func actionInfoButton() {
+        let vc = InfoViewController(action: {newname in
+            self.service.saveName(name: newname)
+            self.service.saveRandomNumber(range: Int.random(in: 0...10))
+            self.service.removeCounts()
+            self.service.deleteAnswers()
+            self.reloadData()
+        })
+        controller.present(vc, animated: true)
+    }
+}
+
+extension ViewBuilder: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        answers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else { return UITableViewCell() }
+        cell.textLabel?.text = answers[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
+        return cell
     }
 }

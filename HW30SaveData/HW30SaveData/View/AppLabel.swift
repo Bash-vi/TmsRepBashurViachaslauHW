@@ -13,7 +13,7 @@ class AppLabel: UILabel {
         case pageTitle
         case nameTitle
         case value
-        case error
+        case subtitle
     }
     
     init(
@@ -30,9 +30,9 @@ class AppLabel: UILabel {
         case .value:
             self.font = .systemFont(ofSize: 17, weight: .semibold)
             self.textAlignment = .center
-        case .error:
-            self.font = .systemFont(ofSize: 12, weight: .medium)
-            self.textAlignment = .center
+        case .subtitle:
+            self.font = .systemFont(ofSize: 14, weight: .medium)
+            self.textAlignment = .justified
         }
         self.translatesAutoresizingMaskIntoConstraints = false
         self.textColor = .black

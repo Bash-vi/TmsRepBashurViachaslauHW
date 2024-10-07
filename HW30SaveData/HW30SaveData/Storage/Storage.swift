@@ -12,16 +12,18 @@ class Storage {
     
     private enum keyForSave {
         static let name = "name"
+        static let count = "count"
         static let randomNumber = "randomNumber"
         static let answers = "answers"
+        static let achievements = "achievements"
     }
     
-    func saveRandomNumber() {
-        let randomNumber = Int.random(in: 0...10)
+    func saveRandomNumber(range: Int) {
+        let randomNumber = range
         defaults.set(randomNumber, forKey:  keyForSave.randomNumber)
     }
     
-    func returnRandomNumber() -> Int{
+    func returnRandomNumber() -> Int {
         defaults.integer(forKey: keyForSave.randomNumber)
     }
     
@@ -30,8 +32,23 @@ class Storage {
     }
     
     func returnName() -> String {
-        guard let name = defaults.string(forKey: keyForSave.name) else { return "" }
+        guard let name = defaults.string(forKey: keyForSave.name) else { return "Введите" }
         return name
+    }
+    
+    func removeCount() {
+        let count: Int = 0
+        defaults.set(count, forKey:  keyForSave.count)
+    }
+    
+    func accCount() {
+        let count: Int = returnCount()
+        let currentCount = count + 1
+        defaults.set(currentCount, forKey:  keyForSave.count)
+    }
+    
+    func returnCount() -> Int {
+        defaults.integer(forKey: keyForSave.count)
     }
     
     func saveAnswers(answers: [String]) {
@@ -53,6 +70,22 @@ class Storage {
         var currentAnswers = savedAnswers()
         currentAnswers.removeAll()
         saveAnswers(answers: currentAnswers)
+    }
+    
+    func saveAchievements(achievements: [String]) {
+        defaults.set(achievements, forKey: keyForSave.achievements)
+    }
+    
+    func addAchievements(name: String, count: String) {
+        var currentAchievements = savedAchievements()
+        let achievement = "\(name) \(count)"
+        currentAchievements.append(achievement)
+        saveAchievements(achievements: currentAchievements)
+    }
+    
+    func savedAchievements() -> [String] {
+        guard let achievements = defaults.array(forKey: keyForSave.achievements) as? [String] else { return [] }
+        return achievements
     }
 
 }

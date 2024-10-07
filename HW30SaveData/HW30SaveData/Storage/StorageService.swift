@@ -8,8 +8,6 @@
 import UIKit
 
 class StorageService {
-    
-    
     let storage: Storage
     
     init(storage: Storage) {
@@ -20,36 +18,53 @@ class StorageService {
         storage.returnName()
     }
     
+    func saveName(name: String) {
+        storage.saveName(name: name)
+    }
+    
+    func saveRandomNumber(range: Int) {
+        storage.saveRandomNumber(range: range)
+    }
+    
     func currentAnswers() -> [String] {
         let answers = storage.savedAnswers()
-        return answers
+        return answers.reversed()
+    }
+    
+    func currentCount() -> String {
+        let count = storage.returnCount()
+        return String(count)
+    }
+    
+    func deleteAnswers() {
+        storage.deleteAnswers()
+    }
+    
+    func removeCounts() {
+        storage.removeCount()
+    }
+    
+    func currentAchievements() -> [String] {
+        storage.savedAchievements()
     }
     
     func guessTheNumber(userNumber: String) {
-        let number = Int(userNumber)!
-        storage.saveRandomNumber()
+        storage.accCount()
+        let number = Int(userNumber) ?? 0
         let randomNumber: Int = storage.returnRandomNumber()
-        var isWin = false
-//        repeat {
-        // попытка преобразования введенного значения к UInt8
-//            guard number > 0, number < 10 else {
-//        print("Вы ввели некорректное число. Попробуйте снова")
-//                storage.addAnswers(answer: "Вы ввели некорректное число. Попробуйте снова")
-//        continue
-//        }
-        // проверка введенного числа
+        guard number > 0, number <= 10 else {
+            return storage.addAnswers(answer: "Вы ввели некорректное число. Попробуйте снова")
+        }
             if number < randomNumber{
-        print("Ваш вариант меньше загаданного числа")
-                storage.addAnswers(answer: "Ваш вариант меньше загаданного числа")
+                storage.addAnswers(answer: "Число \(userNumber) меньше загаданного числа")
         } else if number > randomNumber {
-        print("Ваш вариант больше загаданного числа")
-            storage.addAnswers(answer: "Ваш вариант меньше загаданного числа")
+            storage.addAnswers(answer: "Число \(userNumber) больше загаданного числа")
         } else {
         print("Вы угадали")
-            
-        isWin = true
+            storage.addAchievements(name: currentName(), count: currentCount())
+            deleteAnswers()
+            removeCounts()
         }
-//        } while !isWin
     }
     
 }
