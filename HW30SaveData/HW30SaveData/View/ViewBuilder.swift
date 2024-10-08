@@ -9,9 +9,12 @@ import UIKit
 
 final class ViewBuilder: NSObject {
     
-    let service = StorageService(storage: Storage())
+    private let service = StorageService(storage: Storage())
+    
     private let manager = ViewManager.shared
+    
     private var controller: UIViewController
+    
     private var view: UIView
     
     init(controller: UIViewController) {
@@ -55,24 +58,27 @@ final class ViewBuilder: NSObject {
         return stack
     }()
     
+    private lazy var imageView: UIImageView = .init()
+    
     private lazy var countLabel = AppLabel(style: .value)
+    
     private lazy var nameLabel = AppLabel(style: .value)
     
     private lazy var answersTable = UITableView()
     
     private var answers: [String] {service.currentAnswers()}
+    
     private var currentCount: String {service.currentCount()}
+    
     private var currentName: String {service.currentName()}
     
     func setPageTitle(title: String) {
         let pageTitle = AppLabel(style: .pageTitle)
         pageTitle.text = title
         let InfoButton = AppButton(actionButton: self.actionInfoButton, style: .info)
-        
         view.addSubview(titleStack)
         titleStack.addArrangedSubview(pageTitle)
         titleStack.addArrangedSubview(InfoButton)
-        
         NSLayoutConstraint.activate([
             titleStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             titleStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
@@ -82,17 +88,13 @@ final class ViewBuilder: NSObject {
     
     func setInfoStack() {
         let nameTitle = AppLabel(style: .nameTitle)
+        let countTitle = AppLabel(style: .nameTitle)
         nameTitle.text = "Имя"
         nameLabel.text = currentName
-        
-        let nameStack = manager.createHorizontStack(views: [nameTitle, nameLabel])
-        
-        let countTitle = AppLabel(style: .nameTitle)
         countTitle.text = "Попытки"
         countLabel.text = currentCount
-        
+        let nameStack = manager.createHorizontStack(views: [nameTitle, nameLabel])
         let countStack = manager.createHorizontStack(views: [countTitle, countLabel])
-        
         infoStack.addArrangedSubview(nameStack)
         infoStack.addArrangedSubview(countStack)
         view.addSubview(infoStack)
@@ -118,13 +120,38 @@ final class ViewBuilder: NSObject {
         answersTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         answersTable.translatesAutoresizingMaskIntoConstraints = false
         answersTable.dataSource = self
-        
         view.addSubview(answersTable)
         NSLayoutConstraint.activate([
-            answersTable.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor,constant: Constant.spacing),
-            answersTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
-            answersTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.indent),
-            answersTable.heightAnchor.constraint(equalToConstant: 270)
+            answersTable.topAnchor.constraint(
+                equalTo: textFieldStack.bottomAnchor,
+                constant: Constant.spacing
+            ),
+            answersTable.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constant.indent
+            ),
+            answersTable.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -Constant.indent
+            ),
+            answersTable.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                constant: -Constant.botTableIndent
+            )
+        ])
+    }
+    
+    func setImageView() {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "questionmark.square")
+        imageView.tintColor = .systemBlue.withAlphaComponent(0.5)
+        imageView.contentMode = .scaleAspectFit
+        view.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: titleStack.bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.indent),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.indent),
+            imageView.bottomAnchor.constraint(equalTo: infoStack.topAnchor)
         ])
     }
     
@@ -134,8 +161,9 @@ final class ViewBuilder: NSObject {
         nameLabel.text = currentName
     }
     
+    //MARK: Button actions
     private func checkAction() {
-        service.guessTheNumber(userNumber: textField.text ?? "")
+        service.guessTheNumber(userNumber: textField.text ?? "", controller: controller)
         reloadData()
         textField.text = nil
     }

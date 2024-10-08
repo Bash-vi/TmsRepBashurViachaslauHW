@@ -20,6 +20,7 @@ class GuessTheNumberVC: UIViewController {
         builder.setInfoStack()
         builder.setTextFieldStack()
         builder.setAnswersTable()
+        builder.setImageView()
     }
 }
 

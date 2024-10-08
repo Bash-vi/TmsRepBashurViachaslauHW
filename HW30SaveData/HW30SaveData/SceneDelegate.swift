@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         func createTabBarController() -> UITabBarController {
             let tabBarController = UITabBarController()
-            tabBarController.tabBar.backgroundColor = .systemGray2
+            tabBarController.tabBar.backgroundColor = .systemCyan.withAlphaComponent(0.2)
             tabBarController.viewControllers = [
                 createGuessTheNumberVC(),
                 createAchievementsVC()

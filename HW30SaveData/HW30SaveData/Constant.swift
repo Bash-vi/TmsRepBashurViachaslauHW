@@ -10,4 +10,5 @@ import UIKit
 enum Constant {
     static let spacing: CGFloat = 5
     static let indent: CGFloat = 20
+    static let botTableIndent: CGFloat = 30
 }

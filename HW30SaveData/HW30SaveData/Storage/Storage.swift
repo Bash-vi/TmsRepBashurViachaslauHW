@@ -8,6 +8,7 @@
 import UIKit
 
 class Storage {
+    
     private let defaults = UserDefaults.standard
     
     private enum keyForSave {
@@ -34,6 +35,11 @@ class Storage {
     func returnName() -> String {
         guard let name = defaults.string(forKey: keyForSave.name) else { return "Введите" }
         return name
+    }
+    
+    func removeName() {
+        let defaultName = "Введите"
+        saveName(name: defaultName)
     }
     
     func removeCount() {
@@ -78,7 +84,7 @@ class Storage {
     
     func addAchievements(name: String, count: String) {
         var currentAchievements = savedAchievements()
-        let achievement = "\(name) \(count)"
+        let achievement = "\(name) справился за \(count) попыток"
         currentAchievements.append(achievement)
         saveAchievements(achievements: currentAchievements)
     }
@@ -87,5 +93,10 @@ class Storage {
         guard let achievements = defaults.array(forKey: keyForSave.achievements) as? [String] else { return [] }
         return achievements
     }
-
+    
+    func deleteAchievements() {
+        var currentAchievements = savedAchievements()
+        currentAchievements.removeAll()
+        saveAchievements(achievements: currentAchievements)
+    }
 }

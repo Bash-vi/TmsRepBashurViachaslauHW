@@ -23,9 +23,11 @@ class InfoViewController: UIViewController {
     }
     
     private lazy var saveButton = AppButton(actionButton: { self.actionSaveButton() }, style: .save)
+   
     private lazy var backButton = AppButton(actionButton: { self.actionBackButton() }, style: .back)
     
     private lazy var titleLabel = AppLabel(style: .pageTitle)
+    
     private lazy var subtitleLabel = AppLabel(style: .subtitle)
     
     private lazy var textField = {
@@ -52,10 +54,8 @@ class InfoViewController: UIViewController {
     
     private func setStack() {
         titleLabel.text = "Информация"
-        subtitleLabel.text = "Приведствую, я загадал число от 0 до 100, попробуй его угадать, введи число ниже и следи за подскасками, ты справишься. Чтобы начать введи свое имя"
-        
+        subtitleLabel.text = "Приведствую, я загадал число от 0 до 10, попробуй его угадать, введи число ниже и следи за подскасками, ты справишься. Чтобы начать введи свое имя"
         let buttonStack = manager.createHorizontStack(views: [backButton, saveButton])
-        
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(subtitleLabel)
         stack.addArrangedSubview(textField)

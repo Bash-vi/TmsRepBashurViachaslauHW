@@ -13,6 +13,7 @@ class AppButton: UIButton {
         case info
         case save
         case back
+        case remove
     }
     
     let actionButton: () -> Void
@@ -32,10 +33,14 @@ class AppButton: UIButton {
             self.backgroundColor = .green.withAlphaComponent(0.5)
         case .info:
             self.setTitle("Инфо", for: .normal)
-            self.backgroundColor = .systemBlue.withAlphaComponent(0.5)
+            self.backgroundColor = .systemCyan.withAlphaComponent(0.5)
         case .back:
             self.setTitle("Назад", for: .normal)
             self.backgroundColor = .red.withAlphaComponent(0.5)
+        case .remove:
+            self.setImage(UIImage(systemName: "arrow.triangle.2.circlepath"), for: .normal)
+            self.tintColor = .black
+            self.backgroundColor = .red.withAlphaComponent(0.3)
         }
         self.addAction(.init(handler: { _ in self.actionButton() }), for: .touchUpInside)
         self.layer.cornerRadius = 5
