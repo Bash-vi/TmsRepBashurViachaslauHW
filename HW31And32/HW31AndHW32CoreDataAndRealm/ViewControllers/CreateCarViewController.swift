@@ -28,9 +28,11 @@ class CreateCarViewController: UIViewController {
     let saveCar: (String, String, String, String) -> Void
     
     init(
-        saveCar: @escaping (String, String, String, String) -> Void
+        saveCar: @escaping (String, String, String, String) -> Void,
+        delegate: CreateCarViewControllerDelegete?
     ) {
         self.saveCar = saveCar
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,7 +40,7 @@ class CreateCarViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    weak var delegate: CreateCarViewControllerDelegete?
+    weak var delegate: CreateCarViewControllerDelegete?
     
     lazy var titleLabel = {
         let label = UILabel()
@@ -130,9 +132,8 @@ class CreateCarViewController: UIViewController {
               let mileage = mileageTextField.text, !mileage.isEmpty
         else { return }
         saveCar(make, model, year, mileage)
-        
+//        спросить про делегат
 //        delegate?.createCar(make: make, model: model, year: year, mileage: mileage)
-        
         self.dismiss(animated: true)
     }
     

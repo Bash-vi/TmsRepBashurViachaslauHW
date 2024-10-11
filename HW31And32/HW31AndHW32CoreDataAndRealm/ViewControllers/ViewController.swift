@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let service = CarService(storage: CoreDataStorage())
+    let service = CarService(storage: RealmStorage())
     
     var cars: [Car] {
         service.currentCars
@@ -83,10 +83,13 @@ class ViewController: UIViewController {
     }
     
     func add() {
-        let createCarVC = CreateCarViewController { [weak self] make, model, year, mileage in
-            _ = self?.service.createCar(make: make, model: model, year: year, mileage: mileage)
-            self?.tableView.reloadData()
-        }
+        let createCarVC = CreateCarViewController(
+            saveCar: { [weak self] make, model, year, mileage in
+                _ = self?.service.createCar(make: make, model: model, year: year, mileage: mileage)
+                self?.tableView.reloadData()
+            },
+            delegate: self
+        )
         mediumPresentViewController(createCarVC)
     }
 }
@@ -118,6 +121,7 @@ extension ViewController: UITableViewDelegate {
         let carViewController = CarViewController(
             car: selectedCar,
             carReplace: {
+//              не презентит контроллер, не понимаю почему
                 print(1)
                 self.mediumPresentViewController(ViewController())
         })
@@ -147,7 +151,7 @@ extension ViewController: UITableViewDelegate {
                             year: year, mileage: mileage
                         )
                         tableView.reloadData()
-                    })
+                    },delegate: self)
                     mediumPresentViewController(vc)
                 })
             ]

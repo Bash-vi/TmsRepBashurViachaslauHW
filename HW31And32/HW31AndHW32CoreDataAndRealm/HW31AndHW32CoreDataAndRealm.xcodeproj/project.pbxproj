@@ -19,6 +19,8 @@
 		A88B37882CB82CFF008734DC /* CarModel+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88B37872CB82CFE008734DC /* CarModel+ext.swift */; };
 		A88B378A2CB82D14008734DC /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88B37892CB82D14008734DC /* Array+ext.swift */; };
 		A88B378C2CB868AF008734DC /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88B378B2CB868AF008734DC /* CarViewController.swift */; };
+		A8D9DAB62CB9AD02000D33A5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A8D9DAB52CB9AD02000D33A5 /* RealmSwift */; };
+		A8D9DAB82CB9AD3D000D33A5 /* CarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D9DAB72CB9AD3D000D33A5 /* CarRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,7 @@
 		A88B37872CB82CFE008734DC /* CarModel+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarModel+ext.swift"; sourceTree = "<group>"; };
 		A88B37892CB82D14008734DC /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
 		A88B378B2CB868AF008734DC /* CarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewController.swift; sourceTree = "<group>"; };
+		A8D9DAB72CB9AD3D000D33A5 /* CarRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D9DAB62CB9AD02000D33A5 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,11 +77,12 @@
 			isa = PBXGroup;
 			children = (
 				A84C557C2CB7E3EA003F2C7A /* Constant.swift */,
-				A88B37842CB82C6E008734DC /* Extension  */,
 				A84C55842CB808C4003F2C7A /* Storage.swift */,
-				A88B378D2CB868BB008734DC /* ViewControllers */,
-				A84C55822CB7FD1D003F2C7A /* Car.swift */,
 				A84C55862CB8123F003F2C7A /* CarService.swift */,
+				A8D9DA8B2CB9889D000D33A5 /* Realm */,
+				A8D9DA8A2CB98870000D33A5 /* CoreData */,
+				A88B37842CB82C6E008734DC /* Extension  */,
+				A88B378D2CB868BB008734DC /* ViewControllers */,
 				A88B37762CB8251F008734DC /* AppDelegate.swift */,
 				A88B377B2CB8251F008734DC /* SceneDelegate.swift */,
 				A84C55512CB7D0E8003F2C7A /* HW31AndHW32CoreDataAndRealm */,
@@ -106,11 +111,27 @@
 		A88B378D2CB868BB008734DC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A84C55802CB7F31D003F2C7A /* CreateCarViewController.swift */,
 				A88B378B2CB868AF008734DC /* CarViewController.swift */,
 				A84C55702CB7D2AA003F2C7A /* ViewController.swift */,
+				A84C55802CB7F31D003F2C7A /* CreateCarViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A8D9DA8A2CB98870000D33A5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A84C55822CB7FD1D003F2C7A /* Car.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A8D9DA8B2CB9889D000D33A5 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				A8D9DAB72CB9AD3D000D33A5 /* CarRealm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +154,7 @@
 			);
 			name = HW31AndHW32CoreDataAndRealm;
 			packageProductDependencies = (
+				A8D9DAB52CB9AD02000D33A5 /* RealmSwift */,
 			);
 			productName = HW31AndHW32CoreDataAndRealm;
 			productReference = A84C554F2CB7D0E8003F2C7A /* HW31AndHW32CoreDataAndRealm.app */;
@@ -162,6 +184,9 @@
 			);
 			mainGroup = A84C55462CB7D0E8003F2C7A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A8D9DAB42CB9AD02000D33A5 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A84C55502CB7D0E8003F2C7A /* Products */;
 			projectDirPath = "";
@@ -196,6 +221,7 @@
 				A84C55852CB808C4003F2C7A /* Storage.swift in Sources */,
 				A84C55872CB8123F003F2C7A /* CarService.swift in Sources */,
 				A88B378A2CB82D14008734DC /* Array+ext.swift in Sources */,
+				A8D9DAB82CB9AD3D000D33A5 /* CarRealm.swift in Sources */,
 				A84C55832CB7FD1D003F2C7A /* Car.swift in Sources */,
 				A84C55792CB7D2AA003F2C7A /* ViewController.swift in Sources */,
 				A88B378C2CB868AF008734DC /* CarViewController.swift in Sources */,
@@ -406,6 +432,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8D9DAB42CB9AD02000D33A5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A8D9DAB52CB9AD02000D33A5 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8D9DAB42CB9AD02000D33A5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A84C55472CB7D0E8003F2C7A /* Project object */;
 }

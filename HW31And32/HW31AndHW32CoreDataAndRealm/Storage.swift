@@ -8,11 +8,52 @@
 import Foundation
 import UIKit
 import CoreData
+import RealmSwift
 
 protocol CarsStorage {
     func add(car: Car)
     func prepearedCars() -> [Car]
     func delete(car: Car)
+}
+
+class RealmStorage : CarsStorage {
+    
+    var realm: Realm {
+        try! Realm()
+    }
+    
+    func add(car: Car) {
+        let realmCar = RealmCar()
+        realmCar.id = car.id
+        realmCar.make = car.make
+        realmCar.model = car.model
+        realmCar.year = car.year
+        realmCar.mileage = car.mileage
+        try? realm.write {
+            realm.add(realmCar)
+        }
+    }
+    
+    func prepearedCars() -> [Car] {
+        let cars = realm.objects(RealmCar.self)
+        return cars.map {
+            .init(
+                id: $0.id,
+                make: $0.make,
+                model: $0.model,
+                year: $0.year,
+                mileage: $0.mileage
+            )
+        }
+    }
+    
+    func delete(car: Car) {
+        let selectedCar = realm.object(ofType: RealmCar.self, forPrimaryKey: car.id)
+        guard let selectedCar else { return }
+        try? realm.write {
+            realm.delete(selectedCar)
+        }
+    }
 }
 
 class CoreDataStorage: CarsStorage {

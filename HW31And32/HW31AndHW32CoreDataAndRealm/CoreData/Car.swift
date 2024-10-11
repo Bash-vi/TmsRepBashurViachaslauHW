@@ -10,8 +10,8 @@ import CoreData
 
 struct Car {
     let id: String
-    var make: String
-    var model: String
-    var year: String
-    var mileage: String
+    let make: String
+    let model: String
+    let year: String
+    let mileage: String
 }
