@@ -75,8 +75,10 @@ class StorageService {
         
         if number < randomNumber{
             storage.addAnswers(answer: "Число \(userNumber) меньше загаданного числа")
+            storage.addAnswers(answer: "загаданное число больше \(userNumber) ")
         } else if number > randomNumber {
             storage.addAnswers(answer: "Число \(userNumber) больше загаданного числа")
+            storage.addAnswers(answer: "загаданное число меньше \(userNumber)")
         } else {
             storage.addAchievements(name: currentName(), count: currentCount())
             removeData()
