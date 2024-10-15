@@ -6,8 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A8DA03772CBEEC5A009A188D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03762CBEEC5A009A188D /* TabBarController.swift */; };
+		A8DA03882CBEF1AC009A188D /* VolumeMVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03872CBEF1AC009A188D /* VolumeMVPViewController.swift */; };
+		A8DA038A2CBEF1C1009A188D /* VolumeVIPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03892CBEF1C1009A188D /* VolumeVIPViewController.swift */; };
+		A8DA038C2CBEF207009A188D /* VolumeMVVMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA038B2CBEF207009A188D /* VolumeMVVMViewController.swift */; };
+		A8DA03912CBEFF67009A188D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03902CBEFF5E009A188D /* Constant.swift */; };
+		A8DA03952CBF073E009A188D /* volumeMVPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03942CBF073E009A188D /* volumeMVPModel.swift */; };
+		A8DA03972CBF0757009A188D /* VolumeMVPPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03962CBF0757009A188D /* VolumeMVPPresenter.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A8DA036F2CBEEC5A009A188D /* HW34&HW35ArchitecturalPatterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW34&HW35ArchitecturalPatterns.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8DA03762CBEEC5A009A188D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A8DA03872CBEF1AC009A188D /* VolumeMVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVPViewController.swift; sourceTree = "<group>"; };
+		A8DA03892CBEF1C1009A188D /* VolumeVIPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeVIPViewController.swift; sourceTree = "<group>"; };
+		A8DA038B2CBEF207009A188D /* VolumeMVVMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVVMViewController.swift; sourceTree = "<group>"; };
+		A8DA03902CBEFF5E009A188D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A8DA03942CBF073E009A188D /* volumeMVPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volumeMVPModel.swift; sourceTree = "<group>"; };
+		A8DA03962CBF0757009A188D /* VolumeMVPPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVPPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -46,6 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				A8DA03712CBEEC5A009A188D /* HW34&HW35ArchitecturalPatterns */,
+				A8DA03762CBEEC5A009A188D /* TabBarController.swift */,
+				A8DA03902CBEFF5E009A188D /* Constant.swift */,
+				A8DA038F2CBEF6C7009A188D /* MVVM */,
+				A8DA038E2CBEF6C1009A188D /* VIP */,
+				A8DA038D2CBEF67C009A188D /* MVP */,
 				A8DA03702CBEEC5A009A188D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +78,32 @@
 				A8DA036F2CBEEC5A009A188D /* HW34&HW35ArchitecturalPatterns.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A8DA038D2CBEF67C009A188D /* MVP */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03872CBEF1AC009A188D /* VolumeMVPViewController.swift */,
+				A8DA03942CBF073E009A188D /* volumeMVPModel.swift */,
+				A8DA03962CBF0757009A188D /* VolumeMVPPresenter.swift */,
+			);
+			path = MVP;
+			sourceTree = "<group>";
+		};
+		A8DA038E2CBEF6C1009A188D /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03892CBEF1C1009A188D /* VolumeVIPViewController.swift */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
+		A8DA038F2CBEF6C7009A188D /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA038B2CBEF207009A188D /* VolumeMVVMViewController.swift */,
+			);
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8DA03912CBEFF67009A188D /* Constant.swift in Sources */,
+				A8DA03772CBEEC5A009A188D /* TabBarController.swift in Sources */,
+				A8DA03952CBF073E009A188D /* volumeMVPModel.swift in Sources */,
+				A8DA038C2CBEF207009A188D /* VolumeMVVMViewController.swift in Sources */,
+				A8DA03882CBEF1AC009A188D /* VolumeMVPViewController.swift in Sources */,
+				A8DA03972CBF0757009A188D /* VolumeMVPPresenter.swift in Sources */,
+				A8DA038A2CBEF1C1009A188D /* VolumeVIPViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +204,6 @@
 				INFOPLIST_FILE = "HW34&HW35ArchitecturalPatterns/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -159,6 +213,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Bashvicorp.HW34-HW35ArchitecturalPatterns";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -176,7 +234,6 @@
 				INFOPLIST_FILE = "HW34&HW35ArchitecturalPatterns/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -186,6 +243,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Bashvicorp.HW34-HW35ArchitecturalPatterns";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
