@@ -8,16 +8,18 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    let volumeMVC = VolumeMVCViewController()
     let volumeMVP = VolumeMVPViewController()
     let volumeVIP = VolumeVIPViewController()
     let volumeMVVM = VolumeMVVMViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        volumeMVP.tabBarItem = .init(title: "MVP", image: UIImage(systemName: "viewfinder.rectangular"), tag: 0)
-        volumeVIP.tabBarItem = .init(title: "VIP", image: UIImage(systemName: "viewfinder.rectangular"), tag: 1)
-        volumeMVVM.tabBarItem = .init(title: "MVVM", image: UIImage(systemName: "viewfinder.rectangular"), tag: 2)
-        self.viewControllers = [volumeMVP, volumeVIP, volumeMVVM]
+        volumeMVC.tabBarItem = .init(title: "MVC", image: UIImage(systemName: "viewfinder.rectangular"), tag: 0)
+        volumeMVP.tabBarItem = .init(title: "MVP", image: UIImage(systemName: "viewfinder.rectangular"), tag: 1)
+        volumeVIP.tabBarItem = .init(title: "VIP", image: UIImage(systemName: "viewfinder.rectangular"), tag: 2)
+        volumeMVVM.tabBarItem = .init(title: "MVVM", image: UIImage(systemName: "viewfinder.rectangular"), tag: 3)
+        self.viewControllers = [volumeMVC, volumeMVP, volumeVIP, volumeMVVM]
         self.tabBar.backgroundColor = .systemGray3
     }
 

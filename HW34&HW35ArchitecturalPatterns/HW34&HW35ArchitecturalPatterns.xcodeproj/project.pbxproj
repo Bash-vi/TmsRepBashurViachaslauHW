@@ -14,6 +14,14 @@
 		A8DA03912CBEFF67009A188D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03902CBEFF5E009A188D /* Constant.swift */; };
 		A8DA03952CBF073E009A188D /* volumeMVPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03942CBF073E009A188D /* volumeMVPModel.swift */; };
 		A8DA03972CBF0757009A188D /* VolumeMVPPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03962CBF0757009A188D /* VolumeMVPPresenter.swift */; };
+		A8DA03BB2CC15AAC009A188D /* VolumeMVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03BA2CC15AAC009A188D /* VolumeMVCViewController.swift */; };
+		A8DA03BD2CC15AD5009A188D /* VolumeMVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03BC2CC15AD5009A188D /* VolumeMVCView.swift */; };
+		A8DA03BF2CC15C6B009A188D /* VolumeMVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03BE2CC15C6B009A188D /* VolumeMVCModel.swift */; };
+		A8DA03C12CC16D6B009A188D /* VolumeMVVMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03C02CC16D6B009A188D /* VolumeMVVMView.swift */; };
+		A8DA03C52CC1728A009A188D /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03C42CC1728A009A188D /* Bindable.swift */; };
+		A8DA03C72CC18C83009A188D /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03C62CC18C83009A188D /* VolumeViewModel.swift */; };
+		A8DA03C92CC1B591009A188D /* VolumeVIPInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03C82CC1B591009A188D /* VolumeVIPInteractor.swift */; };
+		A8DA03CB2CC1B5AE009A188D /* VolumeVIPViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03CA2CC1B5AE009A188D /* VolumeVIPViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +33,14 @@
 		A8DA03902CBEFF5E009A188D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A8DA03942CBF073E009A188D /* volumeMVPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volumeMVPModel.swift; sourceTree = "<group>"; };
 		A8DA03962CBF0757009A188D /* VolumeMVPPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVPPresenter.swift; sourceTree = "<group>"; };
+		A8DA03BA2CC15AAC009A188D /* VolumeMVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVCViewController.swift; sourceTree = "<group>"; };
+		A8DA03BC2CC15AD5009A188D /* VolumeMVCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVCView.swift; sourceTree = "<group>"; };
+		A8DA03BE2CC15C6B009A188D /* VolumeMVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVCModel.swift; sourceTree = "<group>"; };
+		A8DA03C02CC16D6B009A188D /* VolumeMVVMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMVVMView.swift; sourceTree = "<group>"; };
+		A8DA03C42CC1728A009A188D /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		A8DA03C62CC18C83009A188D /* VolumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
+		A8DA03C82CC1B591009A188D /* VolumeVIPInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeVIPInteractor.swift; sourceTree = "<group>"; };
+		A8DA03CA2CC1B5AE009A188D /* VolumeVIPViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeVIPViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,9 +81,10 @@
 				A8DA03712CBEEC5A009A188D /* HW34&HW35ArchitecturalPatterns */,
 				A8DA03762CBEEC5A009A188D /* TabBarController.swift */,
 				A8DA03902CBEFF5E009A188D /* Constant.swift */,
+				A8DA03B92CC15A86009A188D /* MVC */,
+				A8DA038D2CBEF67C009A188D /* MVP */,
 				A8DA038F2CBEF6C7009A188D /* MVVM */,
 				A8DA038E2CBEF6C1009A188D /* VIP */,
-				A8DA038D2CBEF67C009A188D /* MVP */,
 				A8DA03702CBEEC5A009A188D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				A8DA03892CBEF1C1009A188D /* VolumeVIPViewController.swift */,
+				A8DA03C82CC1B591009A188D /* VolumeVIPInteractor.swift */,
+				A8DA03CA2CC1B5AE009A188D /* VolumeVIPViewPresenter.swift */,
 			);
 			path = VIP;
 			sourceTree = "<group>";
@@ -101,9 +120,22 @@
 		A8DA038F2CBEF6C7009A188D /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				A8DA03C42CC1728A009A188D /* Bindable.swift */,
+				A8DA03C02CC16D6B009A188D /* VolumeMVVMView.swift */,
+				A8DA03C62CC18C83009A188D /* VolumeViewModel.swift */,
 				A8DA038B2CBEF207009A188D /* VolumeMVVMViewController.swift */,
 			);
 			path = MVVM;
+			sourceTree = "<group>";
+		};
+		A8DA03B92CC15A86009A188D /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03BA2CC15AAC009A188D /* VolumeMVCViewController.swift */,
+				A8DA03BE2CC15C6B009A188D /* VolumeMVCModel.swift */,
+				A8DA03BC2CC15AD5009A188D /* VolumeMVCView.swift */,
+			);
+			path = MVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +216,17 @@
 				A8DA03772CBEEC5A009A188D /* TabBarController.swift in Sources */,
 				A8DA03952CBF073E009A188D /* volumeMVPModel.swift in Sources */,
 				A8DA038C2CBEF207009A188D /* VolumeMVVMViewController.swift in Sources */,
+				A8DA03C72CC18C83009A188D /* VolumeViewModel.swift in Sources */,
+				A8DA03CB2CC1B5AE009A188D /* VolumeVIPViewPresenter.swift in Sources */,
+				A8DA03BD2CC15AD5009A188D /* VolumeMVCView.swift in Sources */,
+				A8DA03C92CC1B591009A188D /* VolumeVIPInteractor.swift in Sources */,
+				A8DA03C52CC1728A009A188D /* Bindable.swift in Sources */,
 				A8DA03882CBEF1AC009A188D /* VolumeMVPViewController.swift in Sources */,
 				A8DA03972CBF0757009A188D /* VolumeMVPPresenter.swift in Sources */,
 				A8DA038A2CBEF1C1009A188D /* VolumeVIPViewController.swift in Sources */,
+				A8DA03BF2CC15C6B009A188D /* VolumeMVCModel.swift in Sources */,
+				A8DA03BB2CC15AAC009A188D /* VolumeMVCViewController.swift in Sources */,
+				A8DA03C12CC16D6B009A188D /* VolumeMVVMView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

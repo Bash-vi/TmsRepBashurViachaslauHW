@@ -23,13 +23,11 @@ class VolumeMVPPresenter {
     func buttonPlusDidTap() {
         guard model.currentValue < 50 else { return }
         model.addValue(value: 5)
-        
     }
     
     func buttonMinusDidTap() {
         guard model.currentValue > 0 else { return }
         model.addValue(value: -5)
-        
     }
     
     func updateValue(value: Int) {
