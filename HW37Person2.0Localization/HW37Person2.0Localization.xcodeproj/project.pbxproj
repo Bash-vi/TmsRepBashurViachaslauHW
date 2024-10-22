@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8DA03E52CC42CD7009A188D /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03E42CC42CD7009A188D /* PersonViewController.swift */; };
+		A8DA03FA2CC44915009A188D /* PersonInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03F92CC44915009A188D /* PersonInteractor.swift */; };
+		A8DA03FC2CC44970009A188D /* PersonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03FB2CC44970009A188D /* PersonPresenter.swift */; };
+		A8DA03FF2CC44A6F009A188D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03FE2CC44A6F009A188D /* Storage.swift */; };
+		A8DA040D2CC50B4E009A188D /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA040C2CC50B4E009A188D /* PersonView.swift */; };
+		A8DA040F2CC50B64009A188D /* PersonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA040E2CC50B64009A188D /* PersonButton.swift */; };
+		A8DA04112CC50B7C009A188D /* PersonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA04102CC50B7C009A188D /* PersonLabel.swift */; };
+		A8DA04132CC50D44009A188D /* ViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA04122CC50D44009A188D /* ViewService.swift */; };
+		A8DA04172CC50FB9009A188D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA04162CC50FB9009A188D /* Constant.swift */; };
+		A8DA04192CC51A61009A188D /* PersonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA04182CC51A61009A188D /* PersonTextField.swift */; };
+		A8F75EF42CC66264001D0B31 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F75EF32CC66264001D0B31 /* Models.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A8DA03DD2CC42CD7009A188D /* HW37Person2.0Localization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW37Person2.0Localization.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8DA03E42CC42CD7009A188D /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		A8DA03F92CC44915009A188D /* PersonInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInteractor.swift; sourceTree = "<group>"; };
+		A8DA03FB2CC44970009A188D /* PersonPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPresenter.swift; sourceTree = "<group>"; };
+		A8DA03FE2CC44A6F009A188D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A8DA040C2CC50B4E009A188D /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		A8DA040E2CC50B64009A188D /* PersonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonButton.swift; sourceTree = "<group>"; };
+		A8DA04102CC50B7C009A188D /* PersonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLabel.swift; sourceTree = "<group>"; };
+		A8DA04122CC50D44009A188D /* ViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewService.swift; sourceTree = "<group>"; };
+		A8DA04162CC50FB9009A188D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A8DA04182CC51A61009A188D /* PersonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTextField.swift; sourceTree = "<group>"; };
+		A8F75EF32CC66264001D0B31 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A8DA03EF2CC42CD9009A188D /* Exceptions for "HW37Person2.0Localization" folder in "HW37Person2.0Localization" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A8DA03DC2CC42CD7009A188D /* HW37Person2.0Localization */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A8DA03DF2CC42CD7009A188D /* HW37Person2.0Localization */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A8DA03EF2CC42CD9009A188D /* Exceptions for "HW37Person2.0Localization" folder in "HW37Person2.0Localization" target */,
+			);
+			path = HW37Person2.0Localization;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8DA03DA2CC42CD7009A188D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8DA03D42CC42CD7009A188D = {
+			isa = PBXGroup;
+			children = (
+				A8DA03DF2CC42CD7009A188D /* HW37Person2.0Localization */,
+				A8DA03F52CC42D10009A188D /* Person2.0 */,
+				A8DA03DE2CC42CD7009A188D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8DA03DE2CC42CD7009A188D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03DD2CC42CD7009A188D /* HW37Person2.0Localization.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8DA03F52CC42D10009A188D /* Person2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA04162CC50FB9009A188D /* Constant.swift */,
+				A8F75EF22CC6621E001D0B31 /* Models */,
+				A8DA03FD2CC44A55009A188D /* Strorage */,
+				A8DA03F72CC42E9D009A188D /* View */,
+				A8DA03F62CC42DF1009A188D /* PersonViewControllers */,
+			);
+			path = Person2.0;
+			sourceTree = "<group>";
+		};
+		A8DA03F62CC42DF1009A188D /* PersonViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03E42CC42CD7009A188D /* PersonViewController.swift */,
+				A8DA03F92CC44915009A188D /* PersonInteractor.swift */,
+				A8DA03FB2CC44970009A188D /* PersonPresenter.swift */,
+			);
+			path = PersonViewControllers;
+			sourceTree = "<group>";
+		};
+		A8DA03F72CC42E9D009A188D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA04122CC50D44009A188D /* ViewService.swift */,
+				A8DA040C2CC50B4E009A188D /* PersonView.swift */,
+				A8DA040B2CC50B1E009A188D /* Custom */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A8DA03FD2CC44A55009A188D /* Strorage */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA03FE2CC44A6F009A188D /* Storage.swift */,
+			);
+			path = Strorage;
+			sourceTree = "<group>";
+		};
+		A8DA040B2CC50B1E009A188D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				A8DA040E2CC50B64009A188D /* PersonButton.swift */,
+				A8DA04102CC50B7C009A188D /* PersonLabel.swift */,
+				A8DA04182CC51A61009A188D /* PersonTextField.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		A8F75EF22CC6621E001D0B31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8F75EF32CC66264001D0B31 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8DA03DC2CC42CD7009A188D /* HW37Person2.0Localization */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8DA03F02CC42CD9009A188D /* Build configuration list for PBXNativeTarget "HW37Person2.0Localization" */;
+			buildPhases = (
+				A8DA03D92CC42CD7009A188D /* Sources */,
+				A8DA03DA2CC42CD7009A188D /* Frameworks */,
+				A8DA03DB2CC42CD7009A188D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A8DA03DF2CC42CD7009A188D /* HW37Person2.0Localization */,
+			);
+			name = HW37Person2.0Localization;
+			packageProductDependencies = (
+			);
+			productName = HW37Person2.0Localization;
+			productReference = A8DA03DD2CC42CD7009A188D /* HW37Person2.0Localization.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8DA03D52CC42CD7009A188D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A8DA03DC2CC42CD7009A188D = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A8DA03D82CC42CD7009A188D /* Build configuration list for PBXProject "HW37Person2.0Localization" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8DA03D42CC42CD7009A188D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A8DA03DE2CC42CD7009A188D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8DA03DC2CC42CD7009A188D /* HW37Person2.0Localization */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8DA03DB2CC42CD7009A188D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8DA03D92CC42CD7009A188D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8DA04132CC50D44009A188D /* ViewService.swift in Sources */,
+				A8F75EF42CC66264001D0B31 /* Models.swift in Sources */,
+				A8DA04192CC51A61009A188D /* PersonTextField.swift in Sources */,
+				A8DA040F2CC50B64009A188D /* PersonButton.swift in Sources */,
+				A8DA04112CC50B7C009A188D /* PersonLabel.swift in Sources */,
+				A8DA03E52CC42CD7009A188D /* PersonViewController.swift in Sources */,
+				A8DA03FC2CC44970009A188D /* PersonPresenter.swift in Sources */,
+				A8DA03FA2CC44915009A188D /* PersonInteractor.swift in Sources */,
+				A8DA04172CC50FB9009A188D /* Constant.swift in Sources */,
+				A8DA03FF2CC44A6F009A188D /* Storage.swift in Sources */,
+				A8DA040D2CC50B4E009A188D /* PersonView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A8DA03F12CC42CD9009A188D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HW37Person2.0Localization/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bashvicorp.HW37Person2-0Localization";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A8DA03F22CC42CD9009A188D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HW37Person2.0Localization/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Bashvicorp.HW37Person2-0Localization";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A8DA03F32CC42CD9009A188D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A8DA03F42CC42CD9009A188D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8DA03D82CC42CD7009A188D /* Build configuration list for PBXProject "HW37Person2.0Localization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8DA03F32CC42CD9009A188D /* Debug */,
+				A8DA03F42CC42CD9009A188D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8DA03F02CC42CD9009A188D /* Build configuration list for PBXNativeTarget "HW37Person2.0Localization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8DA03F12CC42CD9009A188D /* Debug */,
+				A8DA03F22CC42CD9009A188D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8DA03D52CC42CD7009A188D /* Project object */;
+}
