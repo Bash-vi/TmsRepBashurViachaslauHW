@@ -20,6 +20,8 @@ class PersonView : UIView {
     
     lazy var pageTitleLabel = PersonLabel(style: .pageTitle)
     
+    lazy var headerLabel = PersonLabel(style: .header)
+    
     lazy var nameTitleLabel = PersonLabel(style: .subtitle)
     lazy var surenameTitleLabel = PersonLabel(style: .subtitle)
     lazy var ageTitleLabel = PersonLabel(style: .subtitle)
@@ -75,13 +77,16 @@ class PersonView : UIView {
         ageTitleLabel.text = "Возраст"
         birthdayTitleLabel.text = "Дата Рождения"
         maleTitleLabel.text = "Пол"
+        headerLabel.text = "Информация"
         
+        let title = serivice.horisontStack(subviews: [headerLabel, editInfoButton])
         let name = serivice.horisontStack(subviews: [nameTitleLabel, nameLabel])
         let surename = serivice.horisontStack(subviews: [surenameTitleLabel, surenameLabel])
         let age = serivice.horisontStack(subviews: [ageTitleLabel, ageLabel])
         let male = serivice.horisontStack(subviews: [maleTitleLabel, maleLabel])
         let birthday = serivice.horisontStack(subviews: [birthdayTitleLabel, birthdayLabel])
         
+        infoStack.addArrangedSubview(title)
         infoStack.addArrangedSubview(name)
         infoStack.addArrangedSubview(surename)
         infoStack.addArrangedSubview(male)
@@ -121,7 +126,7 @@ class PersonView : UIView {
         birthdayLabel.text = ViewModel.birthday
     }
     
-    func updateHobbies() {
-        
+    func updateHobbies(_ ViewModel: Models.Hobbie.ViewModel) {
+        hobbiesLabel.text = ViewModel.hobbies
     }
 }

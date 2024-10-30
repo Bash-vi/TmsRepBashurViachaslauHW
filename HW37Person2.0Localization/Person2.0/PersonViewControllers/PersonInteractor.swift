@@ -7,28 +7,43 @@
 
 import Foundation
 
-protocol PersonBissnesLogic: AnyObject {
-    func buttonActions(_ request: Models.Person.Request)
-    func currentPerson()
+protocol HobbiesBissnesLogic: AnyObject {
     
 }
 
-class PersonInteractor: PersonBissnesLogic {
+protocol EditPersonBissnesLogic: AnyObject {
+    func savePerson(_ request: Models.Person.Request)
+    func loadPerson()
+}
+
+protocol PersonBissnesLogic: AnyObject {
+    func loadPerson()
+    func loadHobbies()
+}
+
+class PersonInteractor: PersonBissnesLogic, EditPersonBissnesLogic {
   
     var presenter: PersonPresentatitionLogic?
-    let storage = Storage()
+    let storage: StoragePerson = Storage()
     
-    func currentPerson() {
-//        presenter?.presenterPerson(storage.person)
+    func loadPerson() {
+        presenter?.presenterPerson(storage.currentPerson())
     }
     
-    func buttonActions(_ request: Models.Person.Request) {
-        switch request.buttonActions {
-        case .editInfo:
-            print(1)
-        case .presentHobbies:
-            presenter?.presenterPerson(storage.person)
-        }
+    func loadHobbies() {
+        
     }
     
+    func savePerson(_ request: Models.Person.Request) {
+        let changedPerson: Models.Person.Response = .init(
+            name: request.changedPerson.name,
+            surename: request.changedPerson.surename,
+            age: request.changedPerson.age,
+            birthday: request.changedPerson.birthday,
+            male: request.changedPerson.male
+        )
+        storage.save(person: changedPerson)
+    }
 }
+    
+

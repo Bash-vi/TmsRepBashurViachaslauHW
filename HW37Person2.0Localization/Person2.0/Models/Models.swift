@@ -10,17 +10,30 @@ import UIKit
 
 class Models {
     
-    enum Person {
-        
+    enum Hobbie {
         struct Request {
-            let buttonActions: buttonActions
+            let changedHobbies: [String]
         }
         
-        struct Response {
+        struct Response: Codable {
+            var hobbies: [String]
+        }
+        
+        struct ViewModel {
+            let hobbies: String
+        }
+    }
+    
+    enum Person {
+        struct Request {
+            let changedPerson: Person.Response
+        }
+        
+        struct Response: Codable {
             let name: String
             let surename: String
             let age: String
-            let birthday: String
+            let birthday: Date
             let male: String
         }
         
@@ -30,11 +43,6 @@ class Models {
             let age: String
             let birthday: String
             let male: String
-        }
-        
-        enum buttonActions {
-            case editInfo
-            case presentHobbies
         }
     }
 }

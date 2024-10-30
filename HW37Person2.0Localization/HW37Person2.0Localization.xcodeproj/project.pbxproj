@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A85844552CC9A8FC00D1D4C0 /* EditPirsonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */; };
+		A85844582CC9A95800D1D4C0 /* EditPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85844572CC9A95800D1D4C0 /* EditPersonViewController.swift */; };
+		A8A75C9A2CCC25D80071033E /* PersonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75C992CCC25D80071033E /* PersonRouter.swift */; };
+		A8A75CA72CD2BD650071033E /* HobbiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA62CD2BD650071033E /* HobbiesView.swift */; };
+		A8A75CAA2CD2C2000071033E /* HobbieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA92CD2C2000071033E /* HobbieCell.swift */; };
+		A8A75CAD2CD2C5F20071033E /* HobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CAC2CD2C5F20071033E /* HobbiesViewController.swift */; };
 		A8DA03E52CC42CD7009A188D /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03E42CC42CD7009A188D /* PersonViewController.swift */; };
 		A8DA03FA2CC44915009A188D /* PersonInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03F92CC44915009A188D /* PersonInteractor.swift */; };
 		A8DA03FC2CC44970009A188D /* PersonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DA03FB2CC44970009A188D /* PersonPresenter.swift */; };
@@ -21,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPirsonView.swift; sourceTree = "<group>"; };
+		A85844572CC9A95800D1D4C0 /* EditPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonViewController.swift; sourceTree = "<group>"; };
+		A8A75C992CCC25D80071033E /* PersonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRouter.swift; sourceTree = "<group>"; };
+		A8A75CA62CD2BD650071033E /* HobbiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesView.swift; sourceTree = "<group>"; };
+		A8A75CA92CD2C2000071033E /* HobbieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbieCell.swift; sourceTree = "<group>"; };
+		A8A75CAC2CD2C5F20071033E /* HobbiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesViewController.swift; sourceTree = "<group>"; };
 		A8DA03DD2CC42CD7009A188D /* HW37Person2.0Localization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW37Person2.0Localization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DA03E42CC42CD7009A188D /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		A8DA03F92CC44915009A188D /* PersonInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInteractor.swift; sourceTree = "<group>"; };
@@ -67,11 +79,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A85844562CC9A91A00D1D4C0 /* EditPersonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A85844572CC9A95800D1D4C0 /* EditPersonViewController.swift */,
+			);
+			path = EditPersonViewController;
+			sourceTree = "<group>";
+		};
+		A8A75CA82CD2C1C20071033E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A8A75CA92CD2C2000071033E /* HobbieCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A8A75CAB2CD2C5D40071033E /* HobbiesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A8A75CAC2CD2C5F20071033E /* HobbiesViewController.swift */,
+			);
+			path = HobbiesViewController;
+			sourceTree = "<group>";
+		};
 		A8DA03D42CC42CD7009A188D = {
 			isa = PBXGroup;
 			children = (
 				A8DA03DF2CC42CD7009A188D /* HW37Person2.0Localization */,
 				A8DA03F52CC42D10009A188D /* Person2.0 */,
+				A85844562CC9A91A00D1D4C0 /* EditPersonViewController */,
+				A8A75CAB2CD2C5D40071033E /* HobbiesViewController */,
 				A8DA03DE2CC42CD7009A188D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +137,7 @@
 		A8DA03F62CC42DF1009A188D /* PersonViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8A75C992CCC25D80071033E /* PersonRouter.swift */,
 				A8DA03E42CC42CD7009A188D /* PersonViewController.swift */,
 				A8DA03F92CC44915009A188D /* PersonInteractor.swift */,
 				A8DA03FB2CC44970009A188D /* PersonPresenter.swift */,
@@ -111,6 +150,9 @@
 			children = (
 				A8DA04122CC50D44009A188D /* ViewService.swift */,
 				A8DA040C2CC50B4E009A188D /* PersonView.swift */,
+				A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */,
+				A8A75CA62CD2BD650071033E /* HobbiesView.swift */,
+				A8A75CA82CD2C1C20071033E /* Cell */,
 				A8DA040B2CC50B1E009A188D /* Custom */,
 			);
 			path = View;
@@ -218,13 +260,19 @@
 			files = (
 				A8DA04132CC50D44009A188D /* ViewService.swift in Sources */,
 				A8F75EF42CC66264001D0B31 /* Models.swift in Sources */,
+				A8A75CAA2CD2C2000071033E /* HobbieCell.swift in Sources */,
 				A8DA04192CC51A61009A188D /* PersonTextField.swift in Sources */,
+				A85844582CC9A95800D1D4C0 /* EditPersonViewController.swift in Sources */,
 				A8DA040F2CC50B64009A188D /* PersonButton.swift in Sources */,
+				A8A75CA72CD2BD650071033E /* HobbiesView.swift in Sources */,
+				A8A75C9A2CCC25D80071033E /* PersonRouter.swift in Sources */,
 				A8DA04112CC50B7C009A188D /* PersonLabel.swift in Sources */,
 				A8DA03E52CC42CD7009A188D /* PersonViewController.swift in Sources */,
 				A8DA03FC2CC44970009A188D /* PersonPresenter.swift in Sources */,
+				A8A75CAD2CD2C5F20071033E /* HobbiesViewController.swift in Sources */,
 				A8DA03FA2CC44915009A188D /* PersonInteractor.swift in Sources */,
 				A8DA04172CC50FB9009A188D /* Constant.swift in Sources */,
+				A85844552CC9A8FC00D1D4C0 /* EditPirsonView.swift in Sources */,
 				A8DA03FF2CC44A6F009A188D /* Storage.swift in Sources */,
 				A8DA040D2CC50B4E009A188D /* PersonView.swift in Sources */,
 			);

@@ -15,6 +15,7 @@ class PersonButton: UIButton {
         case add
         case close
         case replace
+        case save
     }
     
     enum Icon {
@@ -28,10 +29,13 @@ class PersonButton: UIButton {
             systemName: "plus.circle.fill"
         )
         static let close = UIImage(
-            systemName: "arrowshape.backward.circle.fill"
+            systemName: "x.circle.fill"
         )
         static let replace = UIImage(
             systemName: "arrow.clockwise.circle.fill"
+        )
+        static let save = UIImage(
+            systemName: "checkmark.circle.fill"
         )
     }
     
@@ -49,8 +53,12 @@ class PersonButton: UIButton {
             self.setImage(Icon.add, for: .normal)
         case .close:
             self.setImage(Icon.close, for: .normal)
+            self.backgroundColor = .red
         case .replace:
             self.setImage(Icon.replace, for: .normal)
+        case .save:
+            self.setImage(Icon.save, for: .normal)
+            self.backgroundColor = .systemGreen
         }
         self.addAction(action, for: .touchUpInside)
         self.tintColor = .systemGray3

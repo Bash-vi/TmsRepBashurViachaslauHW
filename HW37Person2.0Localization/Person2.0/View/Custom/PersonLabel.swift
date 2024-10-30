@@ -13,6 +13,7 @@ class PersonLabel: UILabel {
         case pageTitle
         case subtitle
         case value
+        case header
     }
     
     init(
@@ -29,13 +30,15 @@ class PersonLabel: UILabel {
                 equalToConstant: Constant.titleLabelWidth
             ).isActive = true
         case .value :
-            self.textAlignment = .center
+            self.textAlignment = .left
             self.font = .systemFont(ofSize: 18, weight: .medium)
             self.textColor = .systemGray4
+            self.numberOfLines = 0
+        case .header:
+            self.font = .systemFont(ofSize: 26, weight: .semibold)
         }
         self.translatesAutoresizingMaskIntoConstraints = false
         self.textColor = .white
-        self.numberOfLines = 0
     }
     
     required init?(coder: NSCoder) {

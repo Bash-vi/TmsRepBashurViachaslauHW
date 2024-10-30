@@ -12,7 +12,7 @@ class PersonTextField: UITextField {
     
     init() {
         super.init(frame: .zero)
-        borderStyle = .bezel
+        borderStyle = .roundedRect
         placeholder = "Введите"
     }
     

@@ -26,4 +26,22 @@ class ViewService {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }
+    
+    func createPageTitle(title: String, closeAction: UIAction, saveAction: UIAction) -> UIStackView {
+        let pageTitle = PersonLabel(style: .pageTitle)
+        pageTitle.text = title
+        let closeButton = PersonButton(style: .close, action: closeAction)
+        let saveButton = PersonButton(style: .save, action: saveAction)
+        let stack = horisontStack(subviews: [closeButton ,pageTitle, saveButton])
+        return stack
+    }
+    
+    func createHobbiesPageTitle(title: String, closeAction: UIAction, addAction: UIAction) -> UIStackView {
+        let pageTitle = PersonLabel(style: .pageTitle)
+        pageTitle.text = title
+        let closeButton = PersonButton(style: .close, action: closeAction)
+        let saveButton = PersonButton(style: .add, action: addAction)
+        let stack = horisontStack(subviews: [closeButton ,pageTitle, saveButton])
+        return stack
+    }
 }

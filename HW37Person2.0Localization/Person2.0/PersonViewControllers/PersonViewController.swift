@@ -9,15 +9,16 @@ import UIKit
 
 protocol PersonDisplayLogic: AnyObject {
     func displayPerson(_ ViewModel: Models.Person.ViewModel)
+    func displayHobbies(_ ViewModel: Models.Hobbie.ViewModel)
 }
 
 class PersonViewController: UIViewController {
     let personView = PersonView()
     
     var interactor: PersonBissnesLogic?
-    
-    let person = Models.Person.ViewModel(name: "qqqqq", surename: "Aaaaa", age: "23", birthday: "12.33.44", male: "male")
 
+    let router = PersonRouter.shared
+    
     override func loadView() {
         view = personView
         personView.delegate = self
@@ -26,7 +27,7 @@ class PersonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         start()
-        interactor?.currentPerson()
+        interactor?.loadPerson()
     }
     
     private func start() {
@@ -40,21 +41,26 @@ class PersonViewController: UIViewController {
 
 extension PersonViewController: PersonViewDelegate {
     func editPersonInfo() {
-       
-        print(1)
+        router.presentEditPersonController(self)
     }
     
     func presentHobbiesList() {
-        print(2)
-        let request = Models.Person.Request.init(buttonActions: .presentHobbies)
-        interactor?.buttonActions(request)
+        
     }
 }
 
 extension PersonViewController: PersonDisplayLogic {
+    func displayHobbies(_ ViewModel: Models.Hobbie.ViewModel) {
+        personView.updateHobbies(ViewModel)
+    }
+    
     func displayPerson(_ ViewModel: Models.Person.ViewModel) {
         personView.updatePersonInfo(ViewModel)
     }
-    
-    
+}
+
+extension PersonViewController: EditPersonViewControllerDelegate {
+    func loadChangedPerson() {
+        interactor?.loadPerson()
+    }
 }
