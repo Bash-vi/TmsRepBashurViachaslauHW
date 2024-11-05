@@ -14,12 +14,12 @@ protocol EditPersonViewDelegate: AnyObject {
 }
 
 class EditPersonView : UIView {
-    let serivice = ViewService.shared
+    let service = ViewService.shared
     
     weak var delegate: EditPersonViewDelegate?
     
-    lazy var pageTitle = serivice.createPageTitle(
-        title: "Настройки Пользователя",
+    lazy var pageTitle = service.createPageTitle(
+        title: "Настройки",
         closeAction: .init(
             handler: { [weak self] _ in self?.delegate?.closePageSettings() }
         ),
@@ -43,6 +43,7 @@ class EditPersonView : UIView {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .inline
+        picker.setLayerSettings()
         picker.backgroundColor = .white
         return picker
     }()
@@ -56,6 +57,8 @@ class EditPersonView : UIView {
     }()
     
     lazy var editStack = UIStackView()
+    
+    lazy var editWrapper = service.createWrapper()
     
     init() {
         super.init(frame: .zero)
@@ -81,25 +84,31 @@ class EditPersonView : UIView {
         birthdayTitleLabel.text = "Дата Рождения"
         maleTitleLabel.text = "Пол"
         
-        let nameStack = serivice.horisontStack(subviews: [nameTitleLabel, name])
-        let surenameStack = serivice.horisontStack(subviews: [surenameTitleLabel, surename])
-        let maleStack = serivice.horisontStack(subviews: [maleTitleLabel, male])
-        let ageStack = serivice.horisontStack(subviews: [ageTitleLabel, age])
-        let birthdayStack = serivice.verticalStack(subviews: [birthdayTitleLabel, birthday])
+        let nameStack = service.horisontStack(subviews: [nameTitleLabel, name])
+        let surenameStack = service.horisontStack(subviews: [surenameTitleLabel, surename])
+        let maleStack = service.horisontStack(subviews: [maleTitleLabel, male])
+        let ageStack = service.horisontStack(subviews: [ageTitleLabel, age])
+        let birthdayStack = service.verticalStack(subviews: [birthdayTitleLabel, birthday])
         
         editStack.axis = .vertical
         editStack.spacing = Constant.spacing
         editStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(editStack)
+        addSubview(editWrapper)
+        editWrapper.addSubview(editStack)
         editStack.addArrangedSubview(nameStack)
         editStack.addArrangedSubview(surenameStack)
         editStack.addArrangedSubview(maleStack)
         editStack.addArrangedSubview(ageStack)
         editStack.addArrangedSubview(birthdayStack)
         NSLayoutConstraint.activate([
-            editStack.topAnchor.constraint(equalTo: pageTitle.bottomAnchor, constant: Constant.beetwenViews),
-            editStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
-            editStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            editWrapper.topAnchor.constraint(equalTo: pageTitle.bottomAnchor, constant: Constant.beetwenViews),
+            editWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
+            editWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            
+            editStack.topAnchor.constraint(equalTo: editWrapper.topAnchor, constant: Constant.Indent.top),
+            editStack.leadingAnchor.constraint(equalTo: editWrapper.leadingAnchor, constant: Constant.Indent.left),
+            editStack.trailingAnchor.constraint(equalTo: editWrapper.trailingAnchor, constant: Constant.Indent.right),
+            editStack.bottomAnchor.constraint(equalTo: editWrapper.bottomAnchor, constant: Constant.Indent.bot),
         ])
     }
     

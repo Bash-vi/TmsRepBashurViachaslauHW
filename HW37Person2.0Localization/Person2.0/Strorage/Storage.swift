@@ -33,7 +33,7 @@ class Storage: StoragePerson, StorageHobbie {
         male: "Ваш пол"
     )
     
-    let defaultHobbies = Models.Hobbie.Response(hobbies: ["Ваши увлечения"])
+    let defaultHobbies = Models.Hobbie.Response(hobbies: [])
     
     func currentPerson() -> Models.Person.Response {
         guard let data = defaults.data(forKey: keyPerson) else { return defaultPerson }

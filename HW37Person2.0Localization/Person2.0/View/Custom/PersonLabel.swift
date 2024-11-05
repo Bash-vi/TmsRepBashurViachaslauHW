@@ -22,20 +22,21 @@ class PersonLabel: UILabel {
         super.init(frame: .zero)
         switch style {
         case .pageTitle:
-            self.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+            self.font = UIFont.systemFont(ofSize: 26, weight: .bold)
             self.textAlignment = .center
+            self.numberOfLines = 0
         case .subtitle:
-            self.font = .systemFont(ofSize: 20, weight: .semibold)
+            self.font = .systemFont(ofSize: 16, weight: .light)
+            self.textColor = .systemGray3
             self.widthAnchor.constraint(
                 equalToConstant: Constant.titleLabelWidth
             ).isActive = true
         case .value :
             self.textAlignment = .left
-            self.font = .systemFont(ofSize: 18, weight: .medium)
-            self.textColor = .systemGray4
+            self.font = .systemFont(ofSize: 18, weight: .regular)
             self.numberOfLines = 0
         case .header:
-            self.font = .systemFont(ofSize: 26, weight: .semibold)
+            self.font = .systemFont(ofSize: 24, weight: .semibold)
         }
         self.translatesAutoresizingMaskIntoConstraints = false
         self.textColor = .white

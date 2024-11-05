@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		A85844552CC9A8FC00D1D4C0 /* EditPirsonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */; };
 		A85844582CC9A95800D1D4C0 /* EditPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85844572CC9A95800D1D4C0 /* EditPersonViewController.swift */; };
+		A87321D42CD6A878005EFDC2 /* HobbiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321D32CD6A878005EFDC2 /* HobbiesInteractor.swift */; };
+		A87321D62CD6A88F005EFDC2 /* HobbiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321D52CD6A88F005EFDC2 /* HobbiesPresenter.swift */; };
+		A87321DA2CD6BD9D005EFDC2 /* EditHobbiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321D92CD6BD9D005EFDC2 /* EditHobbiesView.swift */; };
+		A87321DD2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321DC2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift */; };
+		A87321EA2CD7E400005EFDC2 /* View+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321E92CD7E400005EFDC2 /* View+Extansion.swift */; };
+		A87321EC2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321EB2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift */; };
 		A8A75C9A2CCC25D80071033E /* PersonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75C992CCC25D80071033E /* PersonRouter.swift */; };
 		A8A75CA72CD2BD650071033E /* HobbiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA62CD2BD650071033E /* HobbiesView.swift */; };
 		A8A75CAA2CD2C2000071033E /* HobbieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA92CD2C2000071033E /* HobbieCell.swift */; };
@@ -29,6 +35,12 @@
 /* Begin PBXFileReference section */
 		A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPirsonView.swift; sourceTree = "<group>"; };
 		A85844572CC9A95800D1D4C0 /* EditPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonViewController.swift; sourceTree = "<group>"; };
+		A87321D32CD6A878005EFDC2 /* HobbiesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesInteractor.swift; sourceTree = "<group>"; };
+		A87321D52CD6A88F005EFDC2 /* HobbiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesPresenter.swift; sourceTree = "<group>"; };
+		A87321D92CD6BD9D005EFDC2 /* EditHobbiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHobbiesView.swift; sourceTree = "<group>"; };
+		A87321DC2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHobbieViewController.swift; sourceTree = "<group>"; };
+		A87321E92CD7E400005EFDC2 /* View+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extansion.swift"; sourceTree = "<group>"; };
+		A87321EB2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceHobbieViewController.swift; sourceTree = "<group>"; };
 		A8A75C992CCC25D80071033E /* PersonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRouter.swift; sourceTree = "<group>"; };
 		A8A75CA62CD2BD650071033E /* HobbiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesView.swift; sourceTree = "<group>"; };
 		A8A75CA92CD2C2000071033E /* HobbieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbieCell.swift; sourceTree = "<group>"; };
@@ -87,6 +99,22 @@
 			path = EditPersonViewController;
 			sourceTree = "<group>";
 		};
+		A87321DB2CD6C3C8005EFDC2 /* CreateHobbieViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A87321DC2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift */,
+			);
+			path = CreateHobbieViewController;
+			sourceTree = "<group>";
+		};
+		A87321ED2CD975B7005EFDC2 /* ReplaceHobbieViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A87321EB2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift */,
+			);
+			path = ReplaceHobbieViewController;
+			sourceTree = "<group>";
+		};
 		A8A75CA82CD2C1C20071033E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +126,8 @@
 		A8A75CAB2CD2C5D40071033E /* HobbiesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A87321D32CD6A878005EFDC2 /* HobbiesInteractor.swift */,
+				A87321D52CD6A88F005EFDC2 /* HobbiesPresenter.swift */,
 				A8A75CAC2CD2C5F20071033E /* HobbiesViewController.swift */,
 			);
 			path = HobbiesViewController;
@@ -108,8 +138,6 @@
 			children = (
 				A8DA03DF2CC42CD7009A188D /* HW37Person2.0Localization */,
 				A8DA03F52CC42D10009A188D /* Person2.0 */,
-				A85844562CC9A91A00D1D4C0 /* EditPersonViewController */,
-				A8A75CAB2CD2C5D40071033E /* HobbiesViewController */,
 				A8DA03DE2CC42CD7009A188D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +158,10 @@
 				A8DA03FD2CC44A55009A188D /* Strorage */,
 				A8DA03F72CC42E9D009A188D /* View */,
 				A8DA03F62CC42DF1009A188D /* PersonViewControllers */,
+				A8A75CAB2CD2C5D40071033E /* HobbiesViewController */,
+				A85844562CC9A91A00D1D4C0 /* EditPersonViewController */,
+				A87321DB2CD6C3C8005EFDC2 /* CreateHobbieViewController */,
+				A87321ED2CD975B7005EFDC2 /* ReplaceHobbieViewController */,
 			);
 			path = Person2.0;
 			sourceTree = "<group>";
@@ -148,10 +180,12 @@
 		A8DA03F72CC42E9D009A188D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A87321E92CD7E400005EFDC2 /* View+Extansion.swift */,
 				A8DA04122CC50D44009A188D /* ViewService.swift */,
 				A8DA040C2CC50B4E009A188D /* PersonView.swift */,
 				A85844542CC9A8FC00D1D4C0 /* EditPirsonView.swift */,
 				A8A75CA62CD2BD650071033E /* HobbiesView.swift */,
+				A87321D92CD6BD9D005EFDC2 /* EditHobbiesView.swift */,
 				A8A75CA82CD2C1C20071033E /* Cell */,
 				A8DA040B2CC50B1E009A188D /* Custom */,
 			);
@@ -258,22 +292,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87321DD2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift in Sources */,
 				A8DA04132CC50D44009A188D /* ViewService.swift in Sources */,
 				A8F75EF42CC66264001D0B31 /* Models.swift in Sources */,
 				A8A75CAA2CD2C2000071033E /* HobbieCell.swift in Sources */,
+				A87321DA2CD6BD9D005EFDC2 /* EditHobbiesView.swift in Sources */,
 				A8DA04192CC51A61009A188D /* PersonTextField.swift in Sources */,
 				A85844582CC9A95800D1D4C0 /* EditPersonViewController.swift in Sources */,
 				A8DA040F2CC50B64009A188D /* PersonButton.swift in Sources */,
 				A8A75CA72CD2BD650071033E /* HobbiesView.swift in Sources */,
 				A8A75C9A2CCC25D80071033E /* PersonRouter.swift in Sources */,
+				A87321EC2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift in Sources */,
 				A8DA04112CC50B7C009A188D /* PersonLabel.swift in Sources */,
 				A8DA03E52CC42CD7009A188D /* PersonViewController.swift in Sources */,
 				A8DA03FC2CC44970009A188D /* PersonPresenter.swift in Sources */,
+				A87321D42CD6A878005EFDC2 /* HobbiesInteractor.swift in Sources */,
 				A8A75CAD2CD2C5F20071033E /* HobbiesViewController.swift in Sources */,
 				A8DA03FA2CC44915009A188D /* PersonInteractor.swift in Sources */,
 				A8DA04172CC50FB9009A188D /* Constant.swift in Sources */,
 				A85844552CC9A8FC00D1D4C0 /* EditPirsonView.swift in Sources */,
+				A87321D62CD6A88F005EFDC2 /* HobbiesPresenter.swift in Sources */,
 				A8DA03FF2CC44A6F009A188D /* Storage.swift in Sources */,
+				A87321EA2CD7E400005EFDC2 /* View+Extansion.swift in Sources */,
 				A8DA040D2CC50B4E009A188D /* PersonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +334,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,6 +365,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

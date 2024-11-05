@@ -27,7 +27,7 @@ class PersonView : UIView {
     lazy var ageTitleLabel = PersonLabel(style: .subtitle)
     lazy var birthdayTitleLabel = PersonLabel(style: .subtitle)
     lazy var maleTitleLabel = PersonLabel(style: .subtitle)
-    lazy var hobbiesTitleLabel = PersonLabel(style: .subtitle)
+    lazy var hobbiesTitleLabel = PersonLabel(style: .header)
     
     lazy var nameLabel = PersonLabel(style: .value)
     lazy var surenameLabel = PersonLabel(style: .value)
@@ -50,9 +50,35 @@ class PersonView : UIView {
     
     lazy var hobbiesStack = UIStackView()
     
+    lazy var infoWrapper = serivice.createWrapper()
+    
+    lazy var hobbiesWrapper = serivice.createWrapper()
+    
+    lazy var fullNameLabel = PersonLabel(style: .value)
+    
+    lazy var icon = {
+        let icon = UIImageView(image: .init(systemName: "person.crop.circle.fill"))
+        icon.contentMode = .scaleAspectFill
+        icon.tintColor = .systemGray3
+        icon.backgroundColor = .black
+        icon.layer.cornerRadius = Constant.iconSize / 2
+        icon.widthAnchor.constraint(
+            equalToConstant: Constant.iconSize
+        ).isActive = true
+        icon.heightAnchor.constraint(
+            equalToConstant: Constant.iconSize
+        ).isActive = true
+        return icon
+    }()
+    
+    lazy var fullNameStack = serivice.horisontStack(subviews: [icon, fullNameLabel])
+    
+    lazy var fullNameWrapper = serivice.createWrapper()
+    
     init() {
         super.init(frame: .zero)
         setPageTitle()
+        setFullName()
         setInfoPersonStack()
         setHobbiesStack()
     }
@@ -68,6 +94,26 @@ class PersonView : UIView {
             pageTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constant.top),
             pageTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
             pageTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+        ])
+    }
+    
+    private func setFullName() {
+        fullNameStack.distribution = .equalCentering
+        addSubview(fullNameWrapper)
+        fullNameWrapper.addSubview(fullNameStack)
+        NSLayoutConstraint.activate([
+            fullNameWrapper.topAnchor.constraint(equalTo: pageTitleLabel.bottomAnchor, constant: Constant.beetwenViews),
+            fullNameWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
+            fullNameWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            
+            fullNameStack.topAnchor.constraint(equalTo: fullNameWrapper.topAnchor, constant: Constant.Indent.top),
+            fullNameStack.leadingAnchor.constraint(
+                equalTo: fullNameWrapper.leadingAnchor, constant: Constant.Indent.left
+            ),
+            fullNameStack.trailingAnchor.constraint(
+                equalTo: fullNameWrapper.trailingAnchor, constant: Constant.Indent.right
+            ),
+            fullNameStack.bottomAnchor.constraint(equalTo: fullNameWrapper.bottomAnchor, constant: Constant.Indent.bot),
         ])
     }
     
@@ -95,26 +141,45 @@ class PersonView : UIView {
         infoStack.axis = .vertical
         infoStack.spacing = Constant.spacing
         infoStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(infoStack)
+        addSubview(infoWrapper)
+        infoWrapper.addSubview(infoStack)
         NSLayoutConstraint.activate([
-            infoStack.topAnchor.constraint(equalTo: pageTitleLabel.bottomAnchor, constant: Constant.beetwenViews),
-            infoStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
-            infoStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            infoWrapper.topAnchor.constraint(equalTo: fullNameWrapper.bottomAnchor, constant: Constant.beetwenViews),
+            infoWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
+            infoWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            
+            infoStack.topAnchor.constraint(equalTo: infoWrapper.topAnchor, constant: Constant.Indent.top),
+            infoStack.leadingAnchor.constraint(equalTo: infoWrapper.leadingAnchor, constant: Constant.Indent.left),
+            infoStack.trailingAnchor.constraint(equalTo: infoWrapper.trailingAnchor, constant: Constant.Indent.right),
+            infoStack.bottomAnchor.constraint(equalTo: infoWrapper.bottomAnchor, constant: Constant.Indent.bot),
         ])
     }
     
     private func setHobbiesStack() {
         hobbiesTitleLabel.text = "Увлечения"
-        let hobbies = serivice.verticalStack(subviews: [hobbiesTitleLabel, hobbiesLabel])
+        let hobbies = serivice.horisontStack(subviews: [hobbiesTitleLabel, editHobbiesButton])
         
+        hobbiesStack.axis = .vertical
+        hobbiesStack.spacing = Constant.spacing
+        hobbiesStack.distribution = .fillProportionally
         hobbiesStack.addArrangedSubview(hobbies)
-        hobbiesStack.addArrangedSubview(editHobbiesButton)
+        hobbiesStack.addArrangedSubview(hobbiesLabel)
         hobbiesStack.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(hobbiesStack)
+        addSubview(hobbiesWrapper)
+        hobbiesWrapper.addSubview(hobbiesStack)
         NSLayoutConstraint.activate([
-            hobbiesStack.topAnchor.constraint(equalTo: infoStack.bottomAnchor, constant: Constant.beetwenViews),
-            hobbiesStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
-            hobbiesStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            hobbiesWrapper.topAnchor.constraint(equalTo: infoWrapper.bottomAnchor, constant: Constant.beetwenViews),
+            hobbiesWrapper.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.left),
+            hobbiesWrapper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constant.right),
+            
+            hobbiesStack.topAnchor.constraint(equalTo: hobbiesWrapper.topAnchor, constant: Constant.Indent.top),
+            hobbiesStack.leadingAnchor.constraint(
+                equalTo: hobbiesWrapper.leadingAnchor, constant: Constant.Indent.left
+            ),
+            hobbiesStack.trailingAnchor.constraint(
+                equalTo: hobbiesWrapper.trailingAnchor, constant: Constant.Indent.right
+            ),
+            hobbiesStack.bottomAnchor.constraint(equalTo: hobbiesWrapper.bottomAnchor, constant: Constant.Indent.bot),
         ])
     }
     
@@ -124,6 +189,7 @@ class PersonView : UIView {
         ageLabel.text = ViewModel.age
         maleLabel.text = ViewModel.male
         birthdayLabel.text = ViewModel.birthday
+        fullNameLabel.text = ViewModel.fullName
     }
     
     func updateHobbies(_ ViewModel: Models.Hobbie.ViewModel) {

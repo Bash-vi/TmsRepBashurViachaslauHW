@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditPersonDisplayLogic: AnyObject {
+    func displayPerson(_ ViewModel: Models.Person.ViewModel)
+}
+
 protocol EditPersonViewControllerDelegate: AnyObject {
     func loadChangedPerson()
 }
@@ -27,16 +31,11 @@ class EditPersonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.loadPerson()
+        interactor?.loadEditPerson()
     }
-
 }
 
-extension EditPersonViewController: PersonDisplayLogic {
-    func displayHobbies(_ ViewModel: Models.Hobbie.ViewModel) {
-        <#code#>
-    }
-    
+extension EditPersonViewController: EditPersonDisplayLogic {
     func displayPerson(_ ViewModel: Models.Person.ViewModel) {
         editView.updatePersonInfo(ViewModel)
     }
@@ -48,7 +47,6 @@ extension EditPersonViewController: EditPersonViewDelegate {
     }
     
     func savePersonSettings() {
-        
         guard let name = editView.name.text, !name.isEmpty,
               let surename = editView.surename.text, !surename.isEmpty,
               let age = editView.age.text, !age.isEmpty,

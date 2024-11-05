@@ -11,11 +11,6 @@ import UIKit
 class PersonRouter {
     static let shared = PersonRouter()
     
-    private func fullScreenPresent(view: UIViewController, on vc: UIViewController) {
-        vc.modalPresentationStyle = .fullScreen
-        vc.present(view, animated: true)
-    }
-    
     func close(vc: UIViewController) {
         vc.dismiss(animated: true)
     }
@@ -24,10 +19,43 @@ class PersonRouter {
         let vc = EditPersonViewController()
         let interactor = PersonInteractor()
         let presenter = PersonPresenter()
+        interactor.editPresenter = presenter
+        presenter.editController = vc
+        vc.interactor = interactor
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
+    
+    func presentHobbiesController(_ self: UIViewController & EditHobbieDelegate) {
+        let vc = HobbiesViewController()
+        let interactor = HobbiesInteractor()
+        let presenter = HobbiesPresenter()
         interactor.presenter = presenter
         presenter.controller = vc
         vc.interactor = interactor
-        vc.delegate = self 
-        fullScreenPresent(view: vc, on: self)
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
+    
+    func presentEditHobbiesController(_ self: UIViewController & EditHobbieDelegate) {
+        let vc = CreateHobbieViewController()
+        let interactor = HobbiesInteractor()
+        vc.interactor = interactor
+        vc.delegate = self
+        vc.modalPresentationStyle = .pageSheet
+        vc.sheetPresentationController?.detents = [.medium()]
+        self.present(vc, animated: true)
+    }
+    
+    func presentReplaceHobbiesController(_ self: UIViewController & EditHobbieDelegate, deletedHobbies: String) {
+        let vc = ReplaceHobbieViewController(deletedHobbies: deletedHobbies)
+        let interactor = HobbiesInteractor()
+        vc.interactor = interactor
+        vc.delegate = self
+        vc.modalPresentationStyle = .pageSheet
+        vc.sheetPresentationController?.detents = [.medium()]
+        self.present(vc, animated: true)
     }
 }

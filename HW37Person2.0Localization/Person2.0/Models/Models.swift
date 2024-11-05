@@ -43,6 +43,9 @@ class Models {
             let age: String
             let birthday: String
             let male: String
+            var fullName: String  {
+                "\(name) \(surename)"
+            }
         }
     }
 }

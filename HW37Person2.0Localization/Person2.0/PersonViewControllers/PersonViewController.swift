@@ -28,6 +28,7 @@ class PersonViewController: UIViewController {
         super.viewDidLoad()
         start()
         interactor?.loadPerson()
+        interactor?.loadHobbies()
     }
     
     private func start() {
@@ -45,7 +46,7 @@ extension PersonViewController: PersonViewDelegate {
     }
     
     func presentHobbiesList() {
-        
+        router.presentHobbiesController(self)
     }
 }
 
@@ -62,5 +63,11 @@ extension PersonViewController: PersonDisplayLogic {
 extension PersonViewController: EditPersonViewControllerDelegate {
     func loadChangedPerson() {
         interactor?.loadPerson()
+    }
+}
+
+extension PersonViewController: EditHobbieDelegate {
+    func reloadHobbies() {
+        interactor?.loadHobbies()
     }
 }

@@ -7,13 +7,9 @@
 
 import Foundation
 
-protocol HobbiesBissnesLogic: AnyObject {
-    
-}
-
 protocol EditPersonBissnesLogic: AnyObject {
     func savePerson(_ request: Models.Person.Request)
-    func loadPerson()
+    func loadEditPerson()
 }
 
 protocol PersonBissnesLogic: AnyObject {
@@ -22,16 +18,24 @@ protocol PersonBissnesLogic: AnyObject {
 }
 
 class PersonInteractor: PersonBissnesLogic, EditPersonBissnesLogic {
-  
+    
+    var editPresenter: EditPersonPresentanionLogic?
+    
     var presenter: PersonPresentatitionLogic?
+    
     let storage: StoragePerson = Storage()
+    let HobbiesStorage: StorageHobbie = Storage()
     
     func loadPerson() {
         presenter?.presenterPerson(storage.currentPerson())
     }
     
+    func loadEditPerson() {
+        editPresenter?.presenterEditPerson(storage.currentPerson())
+    }
+    
     func loadHobbies() {
-        
+        presenter?.presenterHobbies(HobbiesStorage.currentHobbies())
     }
     
     func savePerson(_ request: Models.Person.Request) {

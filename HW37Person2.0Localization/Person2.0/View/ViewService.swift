@@ -44,4 +44,11 @@ class ViewService {
         let stack = horisontStack(subviews: [closeButton ,pageTitle, saveButton])
         return stack
     }
+    
+    func createWrapper() -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setLayerSettings()
+        return view
+    }
 }
