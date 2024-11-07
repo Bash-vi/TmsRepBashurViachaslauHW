@@ -51,4 +51,9 @@ class ViewService {
         view.setLayerSettings()
         return view
     }
+    
+    func localised(key: String) -> String {
+        let localizedString = NSLocalizedString(key, comment: "")
+        return localizedString
+    }
 }

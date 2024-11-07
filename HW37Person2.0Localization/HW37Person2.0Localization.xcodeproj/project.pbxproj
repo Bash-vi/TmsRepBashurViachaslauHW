@@ -15,6 +15,7 @@
 		A87321DD2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321DC2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift */; };
 		A87321EA2CD7E400005EFDC2 /* View+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321E92CD7E400005EFDC2 /* View+Extansion.swift */; };
 		A87321EC2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87321EB2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift */; };
+		A87321F12CDCCC58005EFDC2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A87321EF2CDCCC58005EFDC2 /* Localizable.strings */; };
 		A8A75C9A2CCC25D80071033E /* PersonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75C992CCC25D80071033E /* PersonRouter.swift */; };
 		A8A75CA72CD2BD650071033E /* HobbiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA62CD2BD650071033E /* HobbiesView.swift */; };
 		A8A75CAA2CD2C2000071033E /* HobbieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A75CA92CD2C2000071033E /* HobbieCell.swift */; };
@@ -41,6 +42,8 @@
 		A87321DC2CD6C3FF005EFDC2 /* CreateHobbieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHobbieViewController.swift; sourceTree = "<group>"; };
 		A87321E92CD7E400005EFDC2 /* View+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extansion.swift"; sourceTree = "<group>"; };
 		A87321EB2CD96F22005EFDC2 /* ReplaceHobbieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceHobbieViewController.swift; sourceTree = "<group>"; };
+		A87321F02CDCCC58005EFDC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A87321F62CDCCD6E005EFDC2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8A75C992CCC25D80071033E /* PersonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRouter.swift; sourceTree = "<group>"; };
 		A8A75CA62CD2BD650071033E /* HobbiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesView.swift; sourceTree = "<group>"; };
 		A8A75CA92CD2C2000071033E /* HobbieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbieCell.swift; sourceTree = "<group>"; };
@@ -115,6 +118,14 @@
 			path = ReplaceHobbieViewController;
 			sourceTree = "<group>";
 		};
+		A87321EE2CDCCBF9005EFDC2 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A87321EF2CDCCC58005EFDC2 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		A8A75CA82CD2C1C20071033E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +164,7 @@
 		A8DA03F52CC42D10009A188D /* Person2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				A87321EE2CDCCBF9005EFDC2 /* Localization */,
 				A8DA04162CC50FB9009A188D /* Constant.swift */,
 				A8F75EF22CC6621E001D0B31 /* Models */,
 				A8DA03FD2CC44A55009A188D /* Strorage */,
@@ -264,6 +276,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = A8DA03D42CC42CD7009A188D;
 			minimizedProjectReferenceProxies = 1;
@@ -282,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87321F12CDCCC58005EFDC2 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +333,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A87321EF2CDCCC58005EFDC2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A87321F02CDCCC58005EFDC2 /* en */,
+				A87321F62CDCCD6E005EFDC2 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A8DA03F12CC42CD9009A188D /* Debug */ = {
@@ -388,6 +414,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -451,6 +478,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

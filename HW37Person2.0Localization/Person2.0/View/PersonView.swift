@@ -88,7 +88,7 @@ class PersonView : UIView {
     }
     
     private func setPageTitle() {
-        pageTitleLabel.text = "Пользователь"
+        pageTitleLabel.text = serivice.localised(key: "Пользователь")
         addSubview(pageTitleLabel)
         NSLayoutConstraint.activate([
             pageTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constant.top),
@@ -118,12 +118,12 @@ class PersonView : UIView {
     }
     
     private func setInfoPersonStack() {
-        nameTitleLabel.text = "Имя"
-        surenameTitleLabel.text = "Фамилия"
-        ageTitleLabel.text = "Возраст"
-        birthdayTitleLabel.text = "Дата Рождения"
-        maleTitleLabel.text = "Пол"
-        headerLabel.text = "Информация"
+        nameTitleLabel.text = serivice.localised(key: "Имя")
+        surenameTitleLabel.text = serivice.localised(key: "Фамилия")
+        ageTitleLabel.text = serivice.localised(key: "Возраст")
+        birthdayTitleLabel.text = serivice.localised(key: "Дата Рождения")
+        maleTitleLabel.text = serivice.localised(key: "Пол")
+        headerLabel.text = serivice.localised(key: "Информация")
         
         let title = serivice.horisontStack(subviews: [headerLabel, editInfoButton])
         let name = serivice.horisontStack(subviews: [nameTitleLabel, nameLabel])
@@ -156,7 +156,7 @@ class PersonView : UIView {
     }
     
     private func setHobbiesStack() {
-        hobbiesTitleLabel.text = "Увлечения"
+        hobbiesTitleLabel.text = serivice.localised(key: "Увлечения")
         let hobbies = serivice.horisontStack(subviews: [hobbiesTitleLabel, editHobbiesButton])
         
         hobbiesStack.axis = .vertical

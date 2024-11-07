@@ -19,7 +19,7 @@ class EditPersonView : UIView {
     weak var delegate: EditPersonViewDelegate?
     
     lazy var pageTitle = service.createPageTitle(
-        title: "Настройки",
+        title: service.localised(key: "Настройки"),
         closeAction: .init(
             handler: { [weak self] _ in self?.delegate?.closePageSettings() }
         ),
@@ -50,8 +50,8 @@ class EditPersonView : UIView {
     
     lazy var male: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.insertSegment(withTitle: "Мужской", at: 0, animated: true)
-        segment.insertSegment(withTitle: "Женский", at: 1, animated: true)
+        segment.insertSegment(withTitle: service.localised(key: "Мужской"), at: 0, animated: true)
+        segment.insertSegment(withTitle: service.localised(key: "Женский"), at: 1, animated: true)
         segment.backgroundColor = .systemGray5
         return segment
     }()
@@ -78,11 +78,11 @@ class EditPersonView : UIView {
     }
     
     private func setEditStack() {
-        nameTitleLabel.text = "Имя"
-        surenameTitleLabel.text = "Фамилия"
-        ageTitleLabel.text = "Возраст"
-        birthdayTitleLabel.text = "Дата Рождения"
-        maleTitleLabel.text = "Пол"
+        nameTitleLabel.text = service.localised(key: "Имя")
+        surenameTitleLabel.text = service.localised(key: "Фамилия")
+        ageTitleLabel.text = service.localised(key: "Возраст")
+        birthdayTitleLabel.text = service.localised(key: "Дата Рождения")
+        maleTitleLabel.text = service.localised(key: "Пол")
         
         let nameStack = service.horisontStack(subviews: [nameTitleLabel, name])
         let surenameStack = service.horisontStack(subviews: [surenameTitleLabel, surename])

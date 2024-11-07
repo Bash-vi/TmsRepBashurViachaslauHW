@@ -12,7 +12,9 @@ protocol EditHobbieDelegate: AnyObject {
 }
 
 class CreateHobbieViewController: UIViewController {
-    let createHobbieView = EditHobbiesView(titleText: "Новое Увлечение")
+    let createHobbieView = EditHobbiesView(
+        titleText: NSLocalizedString("Новое Увлечение", comment: "")
+    )
     
     weak var delegate: EditHobbieDelegate?
     

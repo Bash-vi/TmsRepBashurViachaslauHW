@@ -29,7 +29,9 @@ class ReplaceHobbieViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let createHobbieView = EditHobbiesView(titleText: "Замени увлечение")
+    let createHobbieView = EditHobbiesView(
+        titleText: NSLocalizedString("Замени увлечение", comment: "")
+    )
     
     weak var delegate: EditHobbieDelegate?
     

@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  HW37Person2.0Localization
+
+  Created by Вячеслав Башур on 07/11/2024.
+  
+*/
+"Пользователь" = "Person";
+"Имя" = "Name";
+"Фамилия" = "Surename";
+"Возраст" = "Age";
+"Дата Рождения" = "Birthday";
+"Пол" = "Male";
+"Информация" = "Information";
+"Увлечения" = "Hobbies";
+"Настройки" = "Settings";
+"Мужской" = "Male";
+"Женский" = "Female";
+"Новое Увлечение" = "New Hobby";
+"Замени увлечение" = "Replace hobby";
+"Введите" = "Enter";

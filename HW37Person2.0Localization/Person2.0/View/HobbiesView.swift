@@ -27,7 +27,7 @@ class HobbiesView: UIView {
     }
     
     lazy var pageTitle = service.createHobbiesPageTitle(
-        title: "Увлечения",
+        title: service.localised(key: "Увлечения"),
         closeAction: .init(handler: { [weak self] _ in self?.delegate?.closePageHobbies() }),
         addAction: .init(handler: { [weak self] _ in self?.delegate?.addHobbie() })
     )
@@ -85,10 +85,5 @@ extension HobbiesView: HobbieCellDelegate {
     
     func replaceHobbie(hobbie: String) {
         delegate?.replaceHobbie(hobbie: hobbie)
-        
     }
-    
-//    func deleteHobbie() {
-//        delegate?.deleteHobbie()
-//    }
 }

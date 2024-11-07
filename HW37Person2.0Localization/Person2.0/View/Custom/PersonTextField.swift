@@ -13,7 +13,7 @@ class PersonTextField: UITextField {
     init() {
         super.init(frame: .zero)
         borderStyle = .roundedRect
-        placeholder = "Введите"
+        placeholder = NSLocalizedString("Введите", comment: "ok")
     }
     
     required init(coder: NSCoder) {
