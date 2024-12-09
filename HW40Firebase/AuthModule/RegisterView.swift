@@ -1,51 +1,13 @@
 //
-//  AuthView.swift
+//  RegisterView.swift
 //  HW40Firebase
 //
-//  Created by Вячеслав Башур on 12/11/2024.
+//  Created by Вячеслав Башур on 08/12/2024.
 //
 
-import Foundation
 import UIKit
 
-enum AuthViewDelegateLoginError: Error {
-    case emptyLogin
-    case emptyPassword
-    case emptyLoginAndPassword
-    case wrongLoginOrPassword
-    
-    var errorMessage: String {
-        return switch self {
-        case .emptyLogin: "Empty login"
-        case .emptyLoginAndPassword: "Empty login and password"
-        case .emptyPassword: "Empty password"
-        case .wrongLoginOrPassword: "Wrong login or password"
-        }
-    }
-}
-enum AuthViewDelegateRegisterError: Error {
-    case emptyLogin
-    case emptyPassword
-    case emptyLoginAndPassword
-    case save
-    
-    var errorMessage: String {
-        return switch self {
-        case .emptyLogin: "Empty login"
-        case .emptyLoginAndPassword: "Empty login and password"
-        case .emptyPassword: "Empty password"
-        case .save: "Something wrong with storage"
-        }
-    }
-}
-
-protocol AuthViewDelegate: AnyObject {
-    func login(login: String?, password: String?) -> Result<Void, AuthViewDelegateLoginError>
-    func register(login: String?, password: String?, user: User) -> Result<Void, AuthViewDelegateRegisterError>
-    func presentRegisterView()
-}
-
-final class AuthView: UIView {
+class RegisterView: UIView {
     // MARK: - Elements
     
     weak var delegate: AuthViewDelegate?
@@ -67,18 +29,19 @@ final class AuthView: UIView {
         return field
     }()
     
-    lazy var loginButton: UIButton = {
-        let button = UIButton(
-            type: .system,
-            primaryAction: UIAction(
-                handler: { [weak self] _ in
-                    self?.loginButtonDidTap()
-                }
-            )
-       )
-       button.setTitle("Login", for: .normal)
-       return button
-    }()
+    lazy var nameField: UITextField  = {
+        let field = UITextField()
+        field.placeholder = "имя"
+        field.keyboardType = .emailAddress
+        return field
+     }()
+    
+    lazy var surenameField: UITextField  = {
+        let field = UITextField()
+        field.placeholder = "фамилия"
+        field.keyboardType = .emailAddress
+        return field
+     }()
     
     lazy var registerButton: UIButton = {
         let button = UIButton(
@@ -89,7 +52,7 @@ final class AuthView: UIView {
                 }
             )
        )
-       button.setTitle("Register", for: .normal)
+       button.setTitle("Зарегистрироваться", for: .normal)
        return button
     }()
     
@@ -111,7 +74,7 @@ final class AuthView: UIView {
         
         errorLabel.isHidden = false
         
-        let buttons = UIStackView(arrangedSubviews: [loginButton, registerButton])
+        let buttons = UIStackView(arrangedSubviews: [registerButton])
         buttons.distribution = .equalCentering
         buttons.spacing = 10
         
@@ -122,6 +85,8 @@ final class AuthView: UIView {
         fieldsStackView.addArrangedSubview(loginField)
         fieldsStackView.addArrangedSubview(passwordField)
         fieldsStackView.addArrangedSubview(errorLabel)
+        fieldsStackView.addArrangedSubview(nameField)
+        fieldsStackView.addArrangedSubview(surenameField)
         fieldsStackView.addArrangedSubview(buttons)
         
         addSubview(fieldsStackView)
@@ -136,10 +101,12 @@ final class AuthView: UIView {
     
     // MARK: - Actions
     
-    func loginButtonDidTap() {
-        guard let result = delegate?.login(
+    func registerButtonDidTap() {
+        guard let name = nameField.text, let surename = surenameField.text else { return }
+        let user = User(name: name, surename: surename)
+        guard let result = delegate?.register(
             login: loginField.text,
-            password: passwordField.text
+            password: passwordField.text, user: user
         ) else { return }
         
         switch result {
@@ -152,8 +119,6 @@ final class AuthView: UIView {
             break
         }
     }
-    
-    func registerButtonDidTap() {
-        delegate?.presentRegisterView()
-    }
 }
+
+

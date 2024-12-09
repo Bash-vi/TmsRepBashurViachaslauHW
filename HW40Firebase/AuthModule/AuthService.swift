@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol AuthProtocol {
     
@@ -23,25 +24,50 @@ enum AuthError: Error {
     }
 }
 
-actor AuthService: AuthProtocol {
-    func createUser(email: String, password: String) async -> Result<User, AuthError> {
+class AuthService: AuthProtocol {
+    func createUser(email: String, password: String, user: User) async -> Result<User, AuthError> {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
 //            try await result.user.sendEmailVerification()
+            let uid = Auth.auth().currentUser?.uid
+            let userData: User = .init(id: uid!, name: user.name, surename: user.surename)
+            try Firestore.firestore()
+                .collection("users")
+                .document(userData.id)
+                .setData(from: userData)
+//                .setData([
+//                    "name" : userData.name ?? "",
+//                    "surename" : userData.surename ?? ""
+//                         ])
             signOut()
-            return .success(.init(id: result.user.uid))
+            return .success(userData)
         } catch {
             print(AuthError.wrongLoginOrPassword.errorMessege)
             return .failure(.wrongLoginOrPassword)
         }
     }
     
-    func sighIn(email: String, password: String) async -> Result<Bool, AuthError> {
+    func sighIn(email: String, password: String) async -> Result<User, AuthError> {
         do {
             _ = try await Auth.auth().signIn(withEmail: email, password: password)
-            return .success(true)
+            
+           
+           
+            return await .success(getUserData())
         } catch {
             return .failure(.wrongLoginOrPassword)
+        }
+    }
+    
+    func getUserData() async -> User {
+        do {
+            guard let uid = Auth.auth().currentUser?.uid else {return User()}
+            let snapShot = try await Firestore.firestore().collection("users").document(uid).getDocument()
+            
+            let userData = try snapShot.data(as: User.self)
+            return userData
+        } catch {
+            return User()
         }
     }
     

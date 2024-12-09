@@ -20,10 +20,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         
         if authService.isLogin() {
-            self.window?.rootViewController = AppViewController()
+            
+            let vc = AppViewController()
+            Task {
+                let user = await authService.getUserData()
+                print(user)
+               
+                
+            }
+            
+            self.window?.rootViewController = vc
         } else {
             self.window?.rootViewController = AuthViewController()
         }
+        
         self.window?.makeKeyAndVisible()
     }
 

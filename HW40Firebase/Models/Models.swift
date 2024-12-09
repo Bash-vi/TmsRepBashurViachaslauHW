@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct UserData: Identifiable {
+struct Element: Identifiable {
     var id: String = UUID().uuidString
-    let email: String
-    let password: String
-    var name: String? = nil
+    let price: String
+    var name: String
 }
 
-struct User: Identifiable {
+struct User: Identifiable, Codable {
     var id: String = UUID().uuidString
     var name: String? = nil
+    var surename: String? = nil
 }
