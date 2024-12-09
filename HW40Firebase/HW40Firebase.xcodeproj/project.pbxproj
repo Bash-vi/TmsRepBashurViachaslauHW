@@ -21,6 +21,7 @@
 		A87322F92D062726005EFDC2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87322F82D062726005EFDC2 /* RegisterView.swift */; };
 		A87322FD2D062AF5005EFDC2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87322FC2D062AF5005EFDC2 /* RegisterViewController.swift */; };
 		A87323002D063949005EFDC2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A87322FF2D063949005EFDC2 /* FirebaseFirestore */; };
+		A87323042D06FA41005EFDC2 /* ElementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87323032D06FA41005EFDC2 /* ElementService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A87322E92D0202BB005EFDC2 /* CreateElementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateElementViewController.swift; sourceTree = "<group>"; };
 		A87322F82D062726005EFDC2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A87322FC2D062AF5005EFDC2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		A87323032D06FA41005EFDC2 /* ElementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -118,6 +120,7 @@
 			children = (
 				A87322DA2CFFBB9F005EFDC2 /* AppViewController.swift */,
 				A87322E92D0202BB005EFDC2 /* CreateElementViewController.swift */,
+				A87323032D06FA41005EFDC2 /* ElementService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				A87322F92D062726005EFDC2 /* RegisterView.swift in Sources */,
 				A87322FD2D062AF5005EFDC2 /* RegisterViewController.swift in Sources */,
 				A873228D2CE3B42B005EFDC2 /* AuthViewController.swift in Sources */,
+				A87323042D06FA41005EFDC2 /* ElementService.swift in Sources */,
 				A87322D82CFF88CB005EFDC2 /* AuthService.swift in Sources */,
 				A87322DB2CFFBB9F005EFDC2 /* AppViewController.swift in Sources */,
 				A87322AD2CE3BD40005EFDC2 /* AuthView.swift in Sources */,

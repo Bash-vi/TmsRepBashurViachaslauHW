@@ -27,7 +27,7 @@ enum AuthError: Error {
 class AuthService: AuthProtocol {
     func createUser(email: String, password: String, user: User) async -> Result<User, AuthError> {
         do {
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            _ = try await Auth.auth().createUser(withEmail: email, password: password)
 //            try await result.user.sendEmailVerification()
             let uid = Auth.auth().currentUser?.uid
             let userData: User = .init(id: uid!, name: user.name, surename: user.surename)
@@ -35,10 +35,6 @@ class AuthService: AuthProtocol {
                 .collection("users")
                 .document(userData.id)
                 .setData(from: userData)
-//                .setData([
-//                    "name" : userData.name ?? "",
-//                    "surename" : userData.surename ?? ""
-//                         ])
             signOut()
             return .success(userData)
         } catch {
@@ -50,8 +46,6 @@ class AuthService: AuthProtocol {
     func sighIn(email: String, password: String) async -> Result<User, AuthError> {
         do {
             _ = try await Auth.auth().signIn(withEmail: email, password: password)
-            
-           
            
             return await .success(getUserData())
         } catch {

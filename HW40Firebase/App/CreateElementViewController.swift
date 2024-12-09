@@ -11,8 +11,10 @@ class CreateElementViewController: UIViewController {
     
     var element: Element?
     
+    var service = ElementService()
+    
     lazy var nameField = {
-        let field = UITextField(frame: .zero, primaryAction: .init(title: "dgsg", handler: { _ in print(1) }))
+        let field = UITextField()
         field.placeholder = "имя"
         field.text = element?.name
         field.borderStyle = .roundedRect
@@ -30,8 +32,13 @@ class CreateElementViewController: UIViewController {
     lazy var saveButton = {
         let button = UIButton(type: .system, primaryAction: .init(handler: { [weak self] _ in
             self?.onLight()
+            self?.save()
         }))
-        button.setTitle("сохранить", for: .normal)
+        if self.element != nil {
+            button.setTitle("изменить", for: .normal)
+        } else {
+            button.setTitle("сохранить", for: .normal)
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -63,4 +70,21 @@ class CreateElementViewController: UIViewController {
         stack.layer.borderWidth = 4
     }
     
+    func save() {
+        guard let price = priceField.text, let name = nameField.text else { return }
+        let element = Element(price: price, name: name)
+        if self.element != nil {
+            Task {
+                guard let elementId = self.element?.id else { return }
+                await service.update(elementId: elementId, element: element)
+            }
+        } else {
+            Task {
+                await service.create(element: element)
+            }
+        }
+        dismiss(animated: true)
+    }
+    
 }
+

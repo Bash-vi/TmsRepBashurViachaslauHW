@@ -7,14 +7,21 @@
 
 import UIKit
 
+protocol AppViewControllerDelegate {
+    func updateData()
+}
+
 class AppViewController: UIViewController {
     
     var user: User?
     
     let service = AuthService()
     
+    var elementService = ElementService()
+    
     let cellId = "cell"
     
+    @MainActor
     var list: [Element] = [] {
         willSet{
             tableView.reloadData()
@@ -40,6 +47,37 @@ class AppViewController: UIViewController {
         return button
     }()
     
+    lazy var addButton = {
+        let button = UIButton(type: .system, primaryAction: .init(handler: { [weak self] _ in
+            let vc = CreateElementViewController()
+            let service = ElementService()
+            vc.service = service
+            self?.present(vc, animated: true)
+        }))
+        button.setTitle("добавить элемент", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    func loadUserData() {
+        Task {
+            let currentUser = await service.getUserData()
+            let elements = await elementService.readElements()
+            Task { @MainActor in
+                self.user = currentUser
+                self.list = elements
+                if user != nil {
+                    guard let name = user?.name, let surename = user?.surename else { return }
+                    fullNamelabel.text = "Пользователь: \(name) \(surename)"
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.loadUserData()
+    }
+    
     lazy var tableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.dataSource = self
@@ -51,17 +89,22 @@ class AppViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUserData()
         view.backgroundColor = .systemGray4
         view.addSubview(fullNamelabel)
         view.addSubview(tableView)
         view.addSubview(exitButton)
+        view.addSubview(addButton)
         NSLayoutConstraint.activate([
             fullNamelabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             fullNamelabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             fullNamelabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            fullNamelabel.bottomAnchor.constraint(equalTo: tableView.topAnchor),
             
-            tableView.topAnchor.constraint(equalTo: fullNamelabel.bottomAnchor),
+            addButton.topAnchor.constraint(equalTo: fullNamelabel.bottomAnchor),
+            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor,constant: 10),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: exitButton.topAnchor),
@@ -69,13 +112,7 @@ class AppViewController: UIViewController {
             exitButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             exitButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-        if user != nil {
-            guard let name = user?.name, let surename = user?.surename else { return }
-            fullNamelabel.text = "Пользователь: \(name) \(surename))"
-        }
     }
-
 }
 
 extension AppViewController: UITableViewDelegate, UITableViewDataSource {
@@ -102,8 +139,19 @@ extension AppViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return .init(actions: [.init(style: .destructive, title: "del", handler: { _,_,_  in
-            print(1)
+        return .init(actions: [.init(style: .destructive, title: "удалить", handler: { [weak self] _,_,_  in
+            let elementId = self?.list[indexPath.row].id
+            guard let elementId else { return }
+            Task {
+                await self?.elementService.delete(elementId: elementId)
+                Task {@MainActor in tableView.reloadData()}
+            }
         })])
+    }
+}
+
+extension AppViewController: AppViewControllerDelegate {
+    func updateData() {
+        tableView.reloadData()
     }
 }

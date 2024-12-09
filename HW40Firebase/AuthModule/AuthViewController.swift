@@ -10,7 +10,10 @@ import FirebaseAuth
 
 class AuthViewController: UIViewController {
     let authView = AuthView()
+    
     let service = AuthService()
+    
+    var elementServise: ElementServiceLogic?
 
     override func loadView() {
         view = authView
@@ -39,16 +42,17 @@ extension AuthViewController: AuthViewDelegate {
         }
         
         Task {
-            _ = try await service.sighIn(email: login, password: password).get()
-            let userData = await service.getUserData()
+            let user = try await service.sighIn(email: login, password: password).get()
+//            let userData = await service.getUserData()
+            let elements = await elementServise?.readElements()
+            Task { @MainActor in
+                let vc = AppViewController()
+                vc.user = user
+                vc.list = elements ?? []
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true)
+            }
             
-            let vc = AppViewController()
-            vc.user = userData
-            
-        
-            
-//            vc.modalPresentationStyle = .overFullScreen
-            present(vc, animated: true)
         }
         return .success(Void())
     }
