@@ -23,7 +23,7 @@ class AppViewController: UIViewController {
     
     @MainActor
     var list: [Element] = [] {
-        willSet{
+        didSet{
             tableView.reloadData()
         }
     }
@@ -144,7 +144,7 @@ extension AppViewController: UITableViewDelegate, UITableViewDataSource {
             guard let elementId else { return }
             Task {
                 await self?.elementService.delete(elementId: elementId)
-                Task {@MainActor in tableView.reloadData()}
+                self?.loadUserData()
             }
         })])
     }
@@ -152,6 +152,6 @@ extension AppViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension AppViewController: AppViewControllerDelegate {
     func updateData() {
-        tableView.reloadData()
+        
     }
 }
