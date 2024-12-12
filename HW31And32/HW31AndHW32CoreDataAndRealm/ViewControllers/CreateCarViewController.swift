@@ -25,7 +25,7 @@ class CreateCarViewController: UIViewController {
         static let mileage: String = "Пробег в километрах"
     }
     
-    let saveCar: (String, String, String, String) -> Void
+    let saveCar: (Car) -> Void
     
     init(
         saveCar: @escaping (String, String, String, String) -> Void,
@@ -131,9 +131,9 @@ class CreateCarViewController: UIViewController {
               let year = yearTextField.text, !year.isEmpty,
               let mileage = mileageTextField.text, !mileage.isEmpty
         else { return }
-        saveCar(make, model, year, mileage)
+//        saveCar(make, model, year, mileage)
 //        спросить про делегат
-//        delegate?.createCar(make: make, model: model, year: year, mileage: mileage)
+        delegate?.createCar(make: make, model: model, year: year, mileage: mileage)
         self.dismiss(animated: true)
     }
     
